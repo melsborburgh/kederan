@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='Cp1252'>
+  
+  <title>Responsive Table</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Georgia, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(0):before { content: "NPC_ID"; }
+td:nth-of-type(1):before { content: "NPC_RACE"; }
+td:nth-of-type(2):before { content: "NPC_NAME"; }
+td:nth-of-type(3):before { content: "NPC_PERSONALITY"; }
+td:nth-of-type(4):before { content: "NPC_SKILLS"; }
+td:nth-of-type(5):before { content: "NPC_HITPOINTS"; }
+td:nth-of-type(6):before { content: "NPC_MANA"; }
+td:nth-of-type(7):before { content: "NPC_ARC_MANA"; }
+td:nth-of-type(8):before { content: "NPC_CHAOS_MANA"; }
+td:nth-of-type(9):before { content: "NPC_DIVINITY"; }
+td:nth-of-type(10):before { content: "NPC_ITEMS"; }
+td:nth-of-type(11):before { content: "NPC_DRESSCODE"; }
+td:nth-of-type(12):before { content: "NPC_DESC"; }
+td:nth-of-type(13):before { content: "NPC_SHORT_DESC"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+lsearch = function(){
+  //this.term = document.getElementById('S').value.toUpperCase();
+  var s = document.getElementById('search').value.toLowerCase();
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if (s =="" ){
+      rows[i].style.display ='';
+    } else if ( rows[i].innerText.toLowerCase().indexOf(s) != -1 ) {
+      rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+  this.time = false;
+}
+
+</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="lsearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>NPC_ID</th>
+	<th>NPC_RACE</th>
+	<th>NPC_NAME</th>
+	<th>NPC_PERSONALITY</th>
+	<th>NPC_SKILLS</th>
+	<th>NPC_HITPOINTS</th>
+	<th>NPC_MANA</th>
+	<th>NPC_ARC_MANA</th>
+	<th>NPC_CHAOS_MANA</th>
+	<th>NPC_DIVINITY</th>
+	<th>NPC_ITEMS</th>
+	<th>NPC_DRESSCODE</th>
+	<th>NPC_DESC</th>
+	<th>NPC_SHORT_DESC</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td align="right">37</td>
+<td>Human</td>
+<td>Radius Marcallas</td>
+<td>Onbarmhartig, wreed en niet de meest sociale persoon. Kan wel ‘professioneel vriendelijk’ zijn, maar dit is een masker. Bovendien is hij behoorlijk sluw en meedogenloos in zijn aanpak.</td>
+<td>- Staff weapens (niv. 1)
+- Adeptschap Natuur (niv. 3)
+- Ritualist (niv. 2)
+- Adeptschap Lucht (niv. 2)
+- Ritual breaker (niv 2)
+- Extra mana (niv. 3)
+- PriestHood (Almoeder) (niv. 3)
+- Extra Divinity (niv. 2)
+- Gelovige (Almoeder) (niv. 3)
+- Toughness (niv. 2)
+- High Priest (Almoeder) (niv. 1)
+
+Gebeden (deze vereisen geen gebed naar de specifieke Godheid, maar naar de Almoeder)
+- Algemeen: Bless Water (N1)
+- Zorax: Caring Aura (N1), Enhance &lt;emotion&gt; (N1)
+- Rach'tsor: Rejuvenation (N1), Body Heal (N2)
+- Erasu: Focus (N1), Comprehend Languages (N1)
+- Mohr: Intimidate (N1), Flaming Strike (N2)
+- Mishka: Azure protection (N1), Shield of Faith (N1)
+- Huntress: Enhance sense (N1), Thorny retribution (N2)
+- Seductress: Shield of illusions (N1), Gift (N2)
+
+Spreuken
+- Algemeen: Elemental Projectile (N1), Elemental Weapon (N2)
+- Natuur: Badger’s Anger (N1), Return to Circle (N1), Create Food (N1), Create poison (N2), Ensnare (N2), Tree Transport (N3)
+- Lucht: Gale Force (N1), Wind Whisper (N1), Air Pocket (N1), Dimension door (N2), Protection from arrows (N2), Invisibility (N3)</td>
+<td align="right">7</td>
+<td align="right">10</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">20</td>
+<td>Heeft enkele manastenen en wat heilig water bij zich</td>
+<td>Imposante gestalte + druïdekleding</td>
+<td>Radius is een afstammeling van mensen die zich hebben gevestigd op de Emerald Dream. In het bijzonder heeft hij, en de clan waar hij toe behoorde, veel te maken gehad met de Emerald Nightmare. Dit is een gebied op de gauntlet van de Emerald Dream waar vooral de dodelijke en gevaarlijke kant van de natuur overheerst. Binnen de gauntlet is een zeker vorm van balans, al is de Nightmare over de afgelopen eeuwen wel in verhouding erg sterk geworden.
+Enkele jaren geleden heeft hij besloten om de taken op Kederan zelf op te pakken en heeft een woonplaats voor zichzelf gecreëerd in het Mystic Forest. Op deze manier kan hij sneller worden benaderd voor de taken die hij als leider van de lokale Dark Druid cirkel heeft. (Dit gebied bestreikt ongeveer alles wat op dit moment op de kaart van Kederan gebruikt wordt als speelterrein).Voor deze taken reist hij veel rond, dus hij is niet veel ‘thuis’. Wel onderhoudt hij ook nog goede contacten met de Dark Druids op de Emerald Dream.
+In zijn opgroeiing heeft Radius veel problemen gehad in zijn jeugd om te overleven. Dit heeft hem gevormd tot een meedogeloze en harde persoon. Hoewel hij naar de buitenwereld toe nog wel eens een sociaal masker op kan zetten, spreken zijn daden boekdelen. Hij gaat letterlijk over lijken en is zich ter dege bewust van het feit, dat hij ooit zijn einde zal vinden en doet er dan ook alles aan, om zijn leven te wijden aan het nastreven na de missie van de Dark Druids. 
+De onbarmhartige houding zorgt er voor, dat hij geen gevaar uit de weg gaat en ten alle tijden zal streven naar bewijzen dat hij tot de sterkste van de natuur behoort. Dit heeft hem dan ook met weinig moeite de leiderschapspositie van de cirkel bezorgd. 
+Er is slechts 1 kracht die nog sterker is voor hem, de Moeder. Dit is de Almoeder. Zij is de moeder van de Goden en alleen als zij al haar kracht terugkrijgt, door de volledige bestaande realiteit der creatie te vernietigen en opnieuw te laten opbouwen, kan zij weer haar oude krachten ten toon spreiden en zal de wereld in het juiste beeld opnieuw worden geschapen.
+Achtergrond Dark Druids
+De missie van de Dark Druids omvat met name het doel om Kederan opnieuw te laten creëren. Zo geloven namelijk, dat Kederan bestaat uit de essentie van Almoeder, welke in 9 delen is versplinterd. Deze 9 delen bestaan uit de 8 Goden en als negende deel de rest van Creatie. 
+Echter zorgt dit er voor, dat hiervoor alle delen van deze essentie weer beschikbaar moeten komen. Als gevolg hiervan, moet dus effectief alles worden vernietigd. Dit ambitieuze plan om de realiteit zelf te willen vernietigen, is al enkele eeuwen oud inmiddels en vindt een oorsprong bij een extermistische tak van de Dark Druid, genaamd de Shadow Druids, op de Emerald Dream (een belangrijke gauntlet van Natuur).</td>
+<td>Leider van lokale Dark Druids circle</td>
+	</tr>
+	<tr>
+<td align="right">39</td>
+<td>Dragonborn</td>
+<td>Thelonius Shynzomi</td>
+<td>Manupulatief en niet erg sociaal. Maakt zich meer zorgen over geld en de overige middelen die nodig zijn voor de missie, dan om personen. Iedereen gaat uiteindelijk toch dood.</td>
+<td>- Gelovige (Almoeder) (niv. 1)
+- Adeptschap Natuur (niv. 2)
+- Adeptschap Geest (niv. 2)
+- Extra mana (niv. 1)
+- Fixer (niv. 3) (kan goed met geld omgaan)
+- Reading, Writing, Speaking (niv. 2) (Common, Dragonborn, Elven, Dwarven, Goblin)
+- (Dragonborn): Elemental breath (Water)
+
+Spreuken
+- Natuur: Return to Circle (N1), Badger’s Anger (N1), Create poison (N2)
+- Geest: Fear (N1), Mislead (N1), Charm (N2), Forget (N3)</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Schrijfgerei</td>
+<td>Dragonborn masker/proteses</td>
+<td>Thelonius heeft een ongebruikelijke dualiteit tussen zijn roeping als druïde, hetzij één van de dark druids, en zijn culturele achtergrond en quasi-aangeboren verlangen naar rijkdom en materialistische bezittingen. Hij balanceert deze vaak conflicterende verlangens door als penningmeester dienst te doen voor de dark druids.
+Hij behoort tot een selecte groep kroost van de drakenouder, de rode draak, van het eiland Magni. Zijn moeder, een Human afkomstig uit de lokale bevolking van Neovare, heeft grootse plannen gehad om haar macht op het eiland te laten groeien en haar kind klaar te stomen om leider te worden.
+Dit heeft hem erg geschapen in het geloof dat macht alles is. Hoewel hij zelf niet de ambitie heeft om de daadwerkelijke leider te zijn, speelt hij wel een manipulatief spel om Radius de ‘juiste’ kant op te leiden. Dit gaat hem prima af. Thelonius heeft op deze manier al veel van zijn eigen plannen kunnen laten uitvoeren door Radius. Wie heeft er immers de leiderspositie nodig, als je effectief op veel vlakken als de touwtjes in handen hebt.
+Achtergrond Dark Druids
+De missie van de Dark Druids omvat met name het doel om Kederan opnieuw te laten creëren. Zo geloven namelijk, dat Kederan bestaat uit de essentie van de Almoeder, welke in 9 delen is versplinterd. Deze 9 delen bestaan uit de 8 Goden en als negende deel de rest van Creatie. 
+Echter zorgt dit er voor, dat hiervoor alle delen van deze essentie weer beschikbaar moeten komen. Als gevolg hiervan, moet dus effectief alles worden vernietigd. Dit ambitieuze plan om de realiteit zelf te willen vernietigen, is al enkele eeuwen oud inmiddels en vindt een oorsprong bij een extremistische tak van de Dark Druid, genaamd de Shadow Druids, op de Emerald Dream (een belangrijke gauntlet van Natuur).</td>
+<td>Penningmeester lokale Dark Druid circle</td>
+	</tr>
+	<tr>
+<td align="right">30</td>
+<td>Mens</td>
+<td>Madelijn (moeder)</td>
+<td>Bezorgde moeder van een ziek klein meisje Annelotte.</td>
+<td>- Reading, Writing, Speaking (Common)
+- Field Farmer (niv. 1)
+
+Plot: Little girl</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Beschermend amulet (Teardrop, 1 v/d 12 amuletten van Al)</td>
+<td>Boeren vrouwen kleding</td>
+<td>Moeder gelooft dat haar Annelotte alleen genezen kan worden door een echte heks en gaat de roddels achterna.
+Annelotte heeft alle stadia al voor doorstaan en heeft vooral nog last van een pijnlijk tong en spierkrampen. Haar moeder (Madelijn) vond het allemaal wel erg vreemd en is met haar bijgeloof op zoek gegaan naar een echte heks.
+Het amulet dat ze bij zich heeft, is gevonden op de akkers van haar boerderij. 
+Sinds ze het draagt, is ze eigenlijk altijd vrolijk en wantrouwt het daarom wel een klein beetje. Echter vind ze het een geschikt geschenk om iemand die haar oogappel, Annelotte, kan helpen, te geven.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">31</td>
+<td>Human Mishka Nephilim</td>
+<td>Leona(rdo) Bohemond</td>
+<td>Machtsbelust en voelt zich beraden door Mishka. Tegenwoordig dus voor uit op wraak en kracht.</td>
+<td>- Small Weapons (niv. 1)
+- One handed weapons (niv. 3)
+- Heavy Metal Armour (niv. 4)
+- Small Shield (niv. 2)</td>
+<td align="right">8</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">20</td>
+<td>&nbsp;</td>
+<td>Pantser en aankleding waardig voor een paladijn van Mishka.</td>
+<td>Leona(rdo) Bohemond is een oud-voorvechter/paladijn van Mishka en ex-lid van Clan Kazila (Mishka-stam). Ze is haar geliefde kwijtgeraakt aan een ziekte die niet te genezen bleek. Gestoord door het verlies, besloot ze dat de God van de Bescherming haar had verraden na haar jaren van liefde en toewijding. Ze gaf Hem de schuld dat Hij haar familie niet beschermde toen die Hem het meest nodig hadden en besloot om haar krachten te wijden om Mishka te doden. Ze zoekt naar een legendarisch artefact, waarvan gezegd werd dat ze in staat is om een God te vernietigen.
+Een dergelijk artefact is gevonden, samen met Eric(a) Galdua, de gelovige van Rach'tsor en geestmagiër die overlappende belangen had.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">32</td>
+<td>Mens</td>
+<td>Eric(a) Galdua</td>
+<td>Mentaal niet helemaal meer in orde en dit uit zich vooral in erg in eigen gedachten blijven hangen en deze vaak hardop, mompelend, uit te spreken.
+Bovendien is Eric(a) van menig, dat de bescherming van iedereen op Kederan, beter kan worden gedaan door de stervelingen, aangezien de Goden er altijd maar een bende van hebben gemaakt. Zoals ook in de Godenoorlog.</td>
+<td>- Small Weapons (niv. 1)
+- Adeptschap Geest (niv. 2)
+- Spreuken (Geest):
+    * Mind blank (niv. 1)
+    * Mislead (niv. 1)
+    * See memory (niv. 1)
+    * Mind lock (niv. 2)
+    * Sleep (niv. 2)
+    * Stay Away (niv. 3)
+    * Commander (niv. 4)
+- Ritualist (niv. 4)
+- Ritual breaker (niv. 3)
+- Priesthood (niv. 4)
+- Ceremony master (niv. 4)
+- Gelovige Rach’tsor (niv. 3)
+- Gebeden (Rach'tsor):
+    * Chaos influence (niv. 1)
+    * Rejuvenation (niv. 1)
+    * Godly Life (niv. 1)
+    * Healing arrow (niv. 1)
+    * Disrupt Order (niv. 1)
+    * Body Heal (niv. 2)
+    * Cure Fatal (niv. 2)
+    * Field of Healing (niv. 3)
+    * Adaptability (niv. 3)
+    * Champion of Life (niv. 4)</td>
+<td align="right">6</td>
+<td align="right">20</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">20</td>
+<td>- 1 lichtgevende bol</td>
+<td>Witte en paarse effecten.
+Is priester/gelovige van Rach'tsor en geestmagiër.</td>
+<td>Eric(a) Galdua is gelovige en priester van Rach’tsor en bekwaam Geestmagiër. Eric(a) is niet geheel ongeschonden na een aanvaring met wezens op een Gauntlet van Geest. Dit uitstapje naar deze wereld heeft permanente schade toegebracht op diens mentale gesteldheid. Dit zorgt er bijv. voor, dat hij/zij sterk gelooft dat de populatie van Kederan enkel kan worden beschermd door de ruwe krachten van de Goden te kunnen benutten. Hij/zij zal dan ook uit zijn op het vinden van Godenartefacten en heeft hierin de steun gevonden van Leona(rdo) Bohemond, oud-voorvechter/paladijn van Mishka en ex-lid van Clan Kazila (Mishka-stam).</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">33</td>
+<td>Mens</td>
+<td>Gaspar Sarimarcus</td>
+<td>Gaspar heeft een nieuwsgierige, doortastende houding in het leven. Deze houding leunt een beetje naar het argwanende als het gaat om de geestelijke 'gezond'heid van anderen. 
+Deze houding weet hij van zichzelf en is ook bereid dit toe te geven, maar richt zich vooral op de problemen van anderen.</td>
+<td>Divination (niv. 3)
+Reading, Writing, Speaking (niv. 4)
+Magical Reading, Writing, Speaking (niv. 2)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- Schrijfmateriaal
+- Officiële onderzoekspapieren
+- Magische scrollcase map</td>
+<td>Verzorgd</td>
+<td>&nbsp;</td>
+<td>psycholoog van Orde van de Geest uit Aurum</td>
+	</tr>
+	<tr>
+<td align="right">34</td>
+<td>Mens</td>
+<td>Melichior(a) Frumentius</td>
+<td>Streng gelovige priester van Erasu die vooral de kennis en orde wil handhaven. Open-minded genoeg om alle geloven wel te accepteren voor studie, maar heeft het niet zo op Rach'tsor (tegenpool van Erasu) en wantrouwend jegens Seductress</td>
+<td>Reading, Writing, Speaking (niv. 2)
+Magical Reading, Writing, Speaking (niv. 2)
+Priesthood (Erasu) (niv. 3)
+Gelovige Erasu (niv 2)
+Gebeden (Erasu)
+- Truth (niv. 1)
+- Comprehend Languages (niv. 1)
+- Revert form (niv. 2)
+- Zone of Truth (niv. 2)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">10</td>
+<td>- Schrijfmateriaal
+- Officiële onderzoekspapieren
+- Magische scrollcase map</td>
+<td>Verzorgd</td>
+<td>Melichior Frumentius is een theoloog van de orde van de Geest uit Aurum. Dit houdt in, dat hij zich vooral bezig houdt met het bestuderen van religieuze teksten en onderzoek doet naar de manieren waarop religie wordt beoefend in het koninkrijk. Voor deze missie is hij samen met 2 collega's op pad gestuurd om de inwoners van het gebied rondom de Lofty Chalice te onderzoeken. 
+Hij is niet geheel onbevooroordeeld over het geloof van anderen. Met name de lieden die geloven in de Seductress (die maken altijd maar plannen en spelen met andermans gevoelens) en Rach'tsor (Orde boven alles, zo zegt ook de staatsreligie van Erasu in Aurum) zijn moeilijker te vertrouwen. Dit zal hij dan ook zeker noteren.</td>
+<td>Theoloog uit Aurum</td>
+	</tr>
+	<tr>
+<td align="right">35</td>
+<td>Mens</td>
+<td>Bithisarea Trimalchio</td>
+<td>Opgewekt en leergierig persoon en bij tijden zelfs een beetje (te) amicaal en te snel afgeleid om zijn werk als professor efficiënt te doen.</td>
+<td>Staff Weapons (niv. 1)
+Magical Reading, Writing, Speaking (niv. 4)
+Reading, Writing, Speaking (niv. 2) (Common, Elven, Dwarven, Ancient, Draconic)
+Analyze Object (niv. 2)
+Adeptschappen (Aarde, Lucht, Natuur, Geest, Wit, Zwart, Water, Vuur) (niv. 2)
+Ritualist (niv. 2)
+Ritual breaker (niv. 2)
+Spreuken
+- Algemeen: Elemental Projectile (N1), Elemental Weapon (N2)
+- Aarde: Stable Ground (N1), Mana shield (N2)
+- Lucht: Blink (N1), Minor Invisibility (N2)
+- Natuur: Create Food (N1), Ensnare (N2)
+- Geest: See memory (N1), Sleep (N2)
+- Wit: Analyze (N1), Minor Healing (N2)
+- Zwart: Autopsy (N1), Speak with the Dead (N2)
+- Water: Detect Magic (N1), True Sight (N2)
+- Vuur: Create Light (N1), Shatter (N2)</td>
+<td align="right">4</td>
+<td align="right">20</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- Schrijfmateriaal
+- Officiële onderzoekspapieren
+- Magische scrollcase map</td>
+<td>Verzorgd</td>
+<td>Bithisarea Trimalchio is een professor in elementaire magie uit het Koninkrijk Aurum. Hij is op missie gestuurd door de academie en de orde van de Geest om de inwoners van het gebied rondom de Lofty Chalice te bestuderen omtrent kennis en kunde in de elementaire magie.
+Zijn aandachtsspanne is lang genoeg om zijn werk te doen, maar doordat hij zoveel verschillende zaken interessant vindt, kan hij op den duur nog wel eens afgeleid worden door randonderwerpen. Bovendien houdt hij van veel praten, wat de efficiënte niet altijd ten goede komt. Hij is echter dusdanig goed en zorgvuldig genoeg in zijn werk, dat hij de uitgelezen persoon was om hem op deze missie te sturen. (Ze zijn eigenlijk blij dat ze van hem af zijn op de academie. In ieder geval voor een tijdje, maar dat heeft hij niet echt door).</td>
+<td>professor in elementaire magie, Aurum</td>
+	</tr>
+	<tr>
+<td align="right">23</td>
+<td>Half Elf</td>
+<td>Laurentius/Laurana Pertinax</td>
+<td>Betrokken, opgewekt persoon. Duidelijk en ferm met delegeren.</td>
+<td>- Small Weapons (niv. 1)
+- One handed weapons (niv. 2)
+- Small shield (niv. 2)
+- Toughness (niv. 1)
+- Fixer (niv. 2)
+- Reading, Writing, Speaking (niv. 1) (Common, Dwarven)
+- Arcane connected: +3 elementaire mana</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- Wapen
+- Beloning voor quest Materials Made (500 dukaten)</td>
+<td>Standaard Aurum leger kledij</td>
+<td>Begonnen als standaard soldaat, opgegroeid in het regelen van materieel voor personeel.</td>
+<td>Bevoorradingsofficier</td>
+	</tr>
+	<tr>
+<td align="right">24</td>
+<td>Tree-ent</td>
+<td>Ranculus</td>
+<td>I AM GROOT.</td>
+<td>Damage reduction Through 1</td>
+<td align="right">30</td>
+<td align="right">10</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Natural Weapons</td>
+<td>Tree-ent pantser. groen of bruin er onder</td>
+<td>Tree-ent die magisch tot leven is gekomen. Afhankelijk van afronden van Fair flowers veranderingen in character sheet --&gt; welke veranderingen Mels??? gr Galadriel. 
+Als er dispel magic gedaan wordt op het monster telt dit als -8 HP, anders SL.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">25</td>
+<td>Woudelf</td>
+<td>Woudelf</td>
+<td>Ze zijn niet de boomknuffelende elven zoals normaal gedacht bij woudelven. Ze zijn boos, hatend maar niet specifiek strijdlustig. Hun bos is in gevaar dus tijd voor counter attacks.</td>
+<td>- Reading, writing, speaking (Elven)
+- One-Handed Weapons (niv. 2)
+- Archery (niv. 3)
+- Improved Archery (race ability)
+- Hardened Armour (niv. 2)
+  o 2 AP per locatie
+  o treffers tellen altijd alsof ze op pantser zijn
+- Armour Casting (niv. 1)
+- Adeptschap Natuur (niv. 2)
+- Adeptschap Wit (niv. 2)
+- Adeptschap Aarde (niv. 2)
+
+Spreuken: 
+- Aarde: (kies er één, verdeeld over de groep): Mystical Shirt (N1), Stable Ground (N1), Temper Weapon (N1), Smashing(N1), Repair (N1).
+- Natuur: (kies er één, verdeeld over de groep): Shocking Grasp (N1), Badger’s Anger (N1)
+- Wit: Stabilize (N1)</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>eenhandig wapen
+Boog + pijlen</td>
+<td>Elfig
+Leren Pantser</td>
+<td>Ze zijn boos en willen hun bos terug! Ze hebben de houthakkers gewaarschuwd, maar ze gaan niet weg... dat betekend wraak nemen hopen voor hen, dat de boodschap nu wel duidelijk is.</td>
+<td>generieke strijder</td>
+	</tr>
+	<tr>
+<td align="right">26</td>
+<td>Wraith</td>
+<td>Wraith general</td>
+<td>Duistere geest die de zielen uit mensen wil zuigen. Een generaal die zelf zijn leger van de frontlinie aanstuurt.
+(Denk aan dementor van Harry potter)</td>
+<td>Large Weapon (lvl 3)
+Warlord (lvl 1)
+(Heavy) metal armor (lvl 2)
+3x Spectral Ray</td>
+<td align="right">8</td>
+<td align="right">9</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Groot wapen</td>
+<td>Zwarte gewaden met metalen harnas
+Zwarte Geest</td>
+<td>Generaal van ondode leger aanstuurt en ten strijde gaat in een oorlog. Hij is de brenger van de dood en hij komt voor je ziel.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">27</td>
+<td>Ghost</td>
+<td>Ghost officier</td>
+<td>De geesten zijn de onderofficieren van de wraith general en sturen zijn troepen aan.
+Standaard geest</td>
+<td>One/two-handed weapons (lvl 2)
+Small/Large shield (lvl 2)
+(Heavy) metal armor (lvl 2)
+1x Spectral ray</td>
+<td align="right">6</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Wapen (+ schild)</td>
+<td>Metalen armor
+Witte geest</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td>Mens</td>
+<td>Dokter Nero Galgaris</td>
+<td>Achterdochtig, Zorgeloos, gefixeerd op geliefde
+Is een uitermate nors en afstandelijk persoon. Was vroeger een reizende muzikant.
+Is relatief gezien een persoon bij zijn verstand, maar zal ten kosten wat het kost zijn geliefde te doen herrijzen. Dit heeft een zoektocht voor hem gestart naar alle lichamelijke kenmerken van mensen die op diegene lijken.
+
+Is alles behalve een vechter, dus zal de jeukpoeder gebruiken ter zelfverdediging en dan de benen nemen. heeft een beste hoeveelheid kennis over medicinale en magische genezing.</td>
+<td>- Medic (niv. 4)
+- Small weapons (niv. 1)
+- Ritualist (niv. 3)
+- Adeptschap Zwart (niv. 2)
+- Extra mana (niv. 3)
+
+Spreuken:
+- Zwart: Feign Death (N1), Necrotic Touch (N1), Autopsy (N1), Speak with the Dead (N2)</td>
+<td align="right">4</td>
+<td align="right">12</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- 2 dosis Jeukpoeder
+- 60 Dukaten</td>
+<td>Nette zwarte (dokters-)kleding + mantel</td>
+<td>Is de doktor met lugubere hobby. Heeft geprobeerd dmv medisch/magisch knip en plakwerk zijn liefde proberen te recreeren. Dit is gefaald door de spelers op K31, en nu wil hij weer opnieuw starten. Dus komt hij bij The lofty chalice langs!</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">4</td>
+<td>Tree-ent</td>
+<td>Ranunculus</td>
+<td>Het is een bloem. op steroïden. hulk smash!</td>
+<td>&nbsp;</td>
+<td align="right">30</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Groen. Morphsuit met bloemen?
+trek een NPC door slijk en leg er daarna groen op?
+Carnaval Bloem pak?
+spelen moet een bloemknuffel?</td>
+<td>Bloemmonster gemaakt door een Fea die zijn land wou beschermen en bloemen magisch had versterkt om te kijken wat dit doet. Dit experiment resulteerde in het Bloemmonster!</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td>Mens</td>
+<td>Bandiet</td>
+<td>Moordlustig  maar  voor  de  rest  normale  mensen.  Standaard bandieten.</td>
+<td>One-handed  Weapons
+Small  shield
+Leather  armour
+1x Strike</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>een-, tweehandige wapens (+ shild)
+Leren/metalen bepanstering</td>
+<td>Dragen  gewone  kleding  met  mogelijk  losse  stukken  harnas</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">6</td>
+<td>Mens</td>
+<td>Bandiet leider</td>
+<td>leider figuur  met  een  lust  voor  geld  en  bloed</td>
+<td>One-handed  Weapons
+Large  Weapons
+Small  shield
+Metal  armour
+2x  strike
+1x Crush</td>
+<td align="right">6</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>een- of tweehandige wapens
+schild (met eenhandig wapen)
+Leren/metalen bepantsering</td>
+<td>Draagt  gewone  kleren  met  losse  stukken  harnas. Zwaarder bepantserd dan de gewone bandieten</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">7</td>
+<td>High Elf</td>
+<td>Hostus Arrius</td>
+<td>Hostus is een vlugge prater met charme. Als hij wordt aangevallen zal hij schuilen achter sterke personen en zich erg angstig gedragen.</td>
+<td>&nbsp;</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Klein wapen</td>
+<td>Nette en luxe kleding</td>
+<td>&nbsp;</td>
+<td>Handelaar</td>
+	</tr>
+	<tr>
+<td align="right">15</td>
+<td>Mens</td>
+<td>Cato Antonius Maximus</td>
+<td>Cato is een strenge en gedisciplineerde man die zijn positie bloed serieus neemt. Het land betekend alles voor hem en is een grote Erasu aanhanger. Hij zal niet snel met het gewone volk praten en als hij dat doet is het om commandos te geven.</td>
+<td>- Alle weapon skills (lvl 3)
+- Large shield (Level 3)
+- Warlord (Lvl 4)
+- Strength (Lvl 2)
+- Toughness (lvl 2)</td>
+<td align="right">8</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>een-handig Wapen</td>
+<td>Luxe kleding
+Aurum uniform</td>
+<td>Vorige keer door Roos gespeeld.</td>
+<td>Hand van de koning</td>
+	</tr>
+	<tr>
+<td align="right">16</td>
+<td>Mens/Goblin/Ork</td>
+<td>Kortoga bandieten</td>
+<td>opportunistisch, hebberig, laf als het er slecht uit ziet voor ze.</td>
+<td>Miner(Niv. 2)
+Small weapons(Niv. 2)
+one handed weapons(Niv. 2)
+Two handed weapons(Niv. 1)
+Throwing weapons (niv. 1)
+leather armour (niv. 2)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>wapen/pikhouweel/schep/bijl</td>
+<td>Piraat die te lang aan wal is geweest
+Schaars met pantser, een enkele mag vol</td>
+<td>wildmijners in de mijn van The Mystic Forest. hebben een kort lontje, maar geld spreekt voor ze.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">17</td>
+<td>Mens</td>
+<td>Erasas Septus</td>
+<td>Erasas is een zachtaardige man die alle gelovingen als zijn kinderen ziet (behalve aanhangers van Rach’tsor en de Seductress). Hij zal Erasu aanhangers met respect behandelen.</td>
+<td>- High priest (lvl 3)
+- Priesthood (lvl 4)
+- Ceremony master (lvl 4)
+- Gelovige Erasu (lvl 3)</td>
+<td align="right">5</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">15</td>
+<td>Staff</td>
+<td>Erg luxe priester kleding
+Goud</td>
+<td>Het liefst dezelfde figurant als vorige keer</td>
+<td>Profeet van de zon</td>
+	</tr>
+	<tr>
+<td align="right">18</td>
+<td>Mens</td>
+<td>Sextus Decima</td>
+<td>Sextus is een vervelende en arrogante man. Echter als hij eenmaal begint te handelen verandert hij in een aardige, maar gluiperige man die alles zal doen om een deal te laten slagen.</td>
+<td>- Guildmaster (lvl 4)
+- Reading, Writing, Speaking (Common, Elven, Draconic, Dwarven, Gnome en halfling)
+- Wealth (lvl 4)
+- Trader (lvl 4)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Klein wapen
+Veel geld</td>
+<td>Luxe kleding</td>
+<td>het liefst gespeeld worden door dezelfde figurant als vorige keer</td>
+<td>Meester van de munt</td>
+	</tr>
+	<tr>
+<td align="right">19</td>
+<td>Mens</td>
+<td>Serban Ripnu</td>
+<td>Een duister en mysterieus figuur die eruit ziet of hij/zij half dood is, maar laat dit niet bedriegen. Er zit kracht in hem/haar. Hij/zij straalt een aura van duistere magie uit en zal hierdoor erg imponerend overkomen. Hij/zij zal zich er verzetten tijdens het ondervragen maar uiteindelijk toegeven en vertellen wat de spelers willen weten.</td>
+<td>- One-handed weapons (niv. 2)
+- Two-handed weapons (niv. 2)
+- Leather armor (niv. 3)
+- Strength (niv. 3)
+- Adeptschap (Zwart) (niv. 2)
+- 2x Strike
+- 1x shatter
+
+Spreuken:
+- Zwart: Necrotic Touch (N1), Repair Undead (N1), Raise Zombie (N2), Speak with the Dead (N2)</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Eenhandig wapen</td>
+<td>Donkere kleding
+Donkere leren bepantsering</td>
+<td>&nbsp;</td>
+<td>Dark Dannings officier</td>
+	</tr>
+	<tr>
+<td align="right">20</td>
+<td>Elf</td>
+<td>Aien Eilkas</td>
+<td>Vrolijk, extrovert persoon. vind het heerlijk om met mensen te praten. Houdt van curiositeiten.</td>
+<td>Analyse Object(Niv. 2)
+Fixer (Niv 3)
+Handelaar (Niv 3)
+Small weapons (Niv. 1)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>300 dukaten (of andere hoeveelheid goed voor handelaar)
+dolk
+Enchanted ring (Teleport)
+Enchanted ring (Mind lock)</td>
+<td>nette kleding. Groen gekleurd.</td>
+<td>Uit Kortoga komende Elf. Loopt rondjes en vind geld.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">21</td>
+<td>Shifter (Lamia)</td>
+<td>Casephon</td>
+<td>Schuw, agressief en paranoïde</td>
+<td>- Leather Armor (niv. 3)
+- Toughness (niv. 3)
+- Evade (niv. 2)
+- Strenght (niv. 2)
+
+Shifter (Lamia) (niv. 2): 
+- Cold blooded - Je mag 1x per dag een mind affecting effect negeren (altijd te gebruiken)
+- One with nature - Je kan praten met dieren en in bosrijke omgeving heb je een natuurlijke onzichtbaarheid. (te gebruiken als je in je monsterlijke vorm bent)</td>
+<td align="right">6</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Wapen</td>
+<td>Vieze kleren en ziet eruit als een slang.</td>
+<td>De shifter is al een langere tijd op de vlucht voor de Bewaker. Als hij ontdekt wordt, zal hij hissen om de spelers op afstand te houden. Als de spelers te dichtbij komen zal hij ze aanvallen.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">64</td>
+<td>Mountain dwarf</td>
+<td>Snarmick "Drakehide" Gralmin</td>
+<td>In voor een knokpartij, maar liever een goede mok met bier. Tevens streng gelovig in "Strenge Rots" (Tarkyss).</td>
+<td>- Dwarven Plate: Als je op alle locaties metaal pantser draagt, krijg je er 1 AP bij op je torso.
+- Dwarven Toughness: + 1 HP
+- One Handed Weapons (niv. 2)
+- Two Handed Weapons (niv. 3)
+- Large Weapons (niv. 2)
+- Metal Armor (niv. 2)
+- Heavy Metal Armor (niv. 2)
+- Small Shield (niv. 1)
+- Large Shield (niv. 1)
+- Gelovige Tarkyss (niv. 2)
+
+Gebeden: 
+- Tarkyss: Learn Craft (N1), Refine Common component (N1)</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Plaatpantser
+Veel en grote wapens</td>
+<td>Dwerg</td>
+<td>Opgegroeid in de bergen in clan Gralmin, de wapensmeden; de enige clan die wapens mag maken wegens een clan-oorlog 100 jaar geleden. Het lijkt hierdoor wellicht dat deze clan veel macht heeft, maar dit is niet het geval. Zij vormen namelijk tevens de enige clan die geen zelfstandig leger mag hebben. Vele clans hebben daarom respect voor deze clan.
+Snarmick heeft een tweeling broer en een jongere zus. Vader is overleden tijdens de clan-oorlog. In de jongere jaren is er een grote wisseling in de clan geweest voor Snarmick, waardoor hij de kans kreeg om Paladijn van de Steen te worden. Dit is een paladijnenorde gewijd aan "Strenge Rots" (Tarkyss).</td>
+<td>Paladijn van de Steen/plaataap</td>
+	</tr>
+	<tr>
+<td align="right">9</td>
+<td>Ondood</td>
+<td>Zombie</td>
+<td>Standaard zombie</td>
+<td>- One-handed/Two-handed/Large Weapons (niv. 1)
+- evt. (Hardend) Leather Armor (niv. 1)
+- Resillient: Je hebt DR 1 tegen stompe wapens</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Diverse wapens</td>
+<td>Smink,  zwarte  kleding  en  ondood  achtige  gewaden,  maskers  etc.</td>
+<td>&nbsp;</td>
+<td>Generiek</td>
+	</tr>
+	<tr>
+<td align="right">10</td>
+<td>Ondood</td>
+<td>Skelet</td>
+<td>Standaard skelet</td>
+<td>- One-handed/Two-handed/Large Weapons (niv. 1)
+- evt. (Hardend) Leather Armor (niv. 1)
+- Solid skeleton: Je hebt DR 1 tegen scherpe wapens</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Verschillende wapens
+Verschillende bepantsering</td>
+<td>Smink,  zwarte  kleding  en  ondood  achtige  gewaden,  maskers  etc.</td>
+<td>&nbsp;</td>
+<td>Generiek</td>
+	</tr>
+	<tr>
+<td align="right">12</td>
+<td>Mens</td>
+<td>Bertram Julianus</td>
+<td>Nieuwschierig, welbezonnen.</td>
+<td>- Analyse object (niv. 3)
+- Reading, Writing, Speaking (Common, Elven, Draconic, Dwarven, Firbolg, Ancient, Gnome, Halfling) (spreekt enkel Common en Elven goed, de rest niet)
+- Magical Reading, Writing, Speaking (Basic, Ancient, Necromatic, Enchanter, Illusionist)
+- Potion Brewer (niv. 1)
+- Refine (niv. 3)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>200 dukaten
+onderzoeks/alchemisten gerei</td>
+<td>Nette Gotische kleding. Licht pompeus.</td>
+<td>Bertram Julianus is een wat oudere man uit huis Dagda-Mor, dat al zeer veel onderzoeken heeft gepleegd en altijd meer wil weten. Door de technologische voorsprong van andere landen, wil hij weten hoe dit is gekomen en hoe het zich uit op de mensen.</td>
+<td>Hoofdonderzoeker voor Dark Dannings</td>
+	</tr>
+	<tr>
+<td align="right">14</td>
+<td>High elf</td>
+<td>Lucius Vindex</td>
+<td>Lucius straalt autoriteit uit. Hij is een beetje een snob zoals gewoonlijk is bij mensen van adel maar hij zal niet proberen te onderdrukken als hij met spelers praat (Dit lukt niet 100%). Hij is een veteraan met tactisch inzicht en goede leiderschapsvaardigheden.</td>
+<td>- One-handed weapons (lvl 3)
+- Two-handed weapons (lvl 2)
+- Small Shield (lvl 4)
+- Large Shield (lvl 4)
+- Metal armor (lvl 3)
+- Warlord (lvl 3)
+- Evade (niv. 4)
+- Toughness (niv. 2)
+- (High Elf): Ancient knowledge</td>
+<td align="right">7</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Wapen</td>
+<td>Luxe Aurum uniform.</td>
+<td>Lucius Vindex is een officier in het leger van Aurum.</td>
+<td>Kampleider</td>
+	</tr>
+	<tr>
+<td align="right">36</td>
+<td>Mens</td>
+<td>Shankar Kashikar</td>
+<td>suïcidale zeeman/-vrouw.</td>
+<td>Reading, Writing, Speaking (Common)
+Small Weapons (niv. 2)
+One handed Weapons (niv. 2)
+Dodge (niv. 2)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Slonzig gekleed, zelfs voor een bemanningslid van een schip.</td>
+<td>Shankar was tot voor kort bemanningslid op een Kortegaans handelsschip, dat is gekapseisd doordat er zware lading niet goed vast zat. Deze fout is door zijn/haar toedoen. Deze fout heeft er voor gezorgd, dat veel andere bemanningsleden van het schip, waaronder hun zeer geliefde kapitein Isabelle Leamhanach, kassiewijle zijn.
+Met deze schuld zwaar drukkend op het geweten van Shankar, ziet hij/zij het niet meer zitten in het leven en zoekt nu een uitweg.
+Als je iets hoort over schepen, grote ladingen en andere zaken die een verband kunnen hebben met het voorval zoals hierboven besproken, wordt je enigszins gestrest en voel je je hartslag versnellen en je begint te zweten voor een korte tijd. Zonder je dan een beetje af (net niet helemaal buiten zicht van alle spelers).</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">38</td>
+<td>Human</td>
+<td>Armeus Blakemore</td>
+<td>Charismatisch. Heeft veel gezien. Gelooft in de missie van de groepering, maar is vooral bezig met personen werven, minder met de uitvoering van de taken om de missie zelf te doen slagen.</td>
+<td>- Priesthood (Almoeder) (niv. 3)
+- Gelovige (Almoeder) (niv. 3)
+- High Priest (Almoeder) (niv. 1)
+- Adeptschap Natuur (niv. 2)
+- Extra mana (niv. 2)
+- Extra Divinity (niv. 2)
+- Staff Weapons (niv. 1)
+
+Gebeden (deze vereisen geen gebed naar de specifieke Godheid, maar naar de Almoeder)
+- Algemeen: Bless Water (N1)
+- Zorax: Reinforce emotion (N1), Caring Aura (N1), Fascinate Person (N2), Rousing performance (N2)
+- Rach'tsor: Healing arrow (N1), Cure Fatal (N2)
+- Huntress: Mark of the Owl (N1), Minor regeneration (N2)
+
+Spreuken
+- Algemeen: Elemental Projectile (Natuur) (N1)
+- Natuur: Badger’s Anger (N1), Return to Circle (N1), Create Food (N1), Speak with Animals (N1)</td>
+<td align="right">4</td>
+<td align="right">5</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">9</td>
+<td>Wandelstok/-staf</td>
+<td>Druïdekleding</td>
+<td>Armeus is een charismatisch persoon, afkomstig uit Kortoga, die veelal in z’n eentje reist en besteed veel van diens tijd aan het rondselen van personen voor de missie van de Dark Druids. Veel van de personen die worden ingelijfd bij de Dark Druids, worden gevonden onder de hopelozen, de verslagenen en de zelfmoordenaars (mensen die niets meer te verliezen hebben en een enorme wrok koesteren tegen de wereld in het algemeen hebben).
+Het vereist dan ook een zekere expertise om met dergelijke personen te communiceren. Deze gesprekken zijn zo nu en dan ook een zware last voor Armeus’ gestel. Zo nu en dan is hij dan ook in meditatie te vinden op rustige plaatsen. Hij staat dan wel volledig achter het denkbeeld van de Dark Druids, maar is niet altijd even blij met de personen die zich aansluiten bij de stroming.
+Tevens is hij veel te vinden op plaatsen waar veel personen samenkomen, al is hij zich er zeker van bewust, dat dit een gevaarlijke situatie kan zijn, gezien het denkbeeld van zijn groepering.
+Armeus heeft zich opgewerkt binnen de rangen van de druïdecirkels, naar zijn huidige positie in de binnenkring van de lokale druïdecirkel. (Deze cirkel beheerd een groot deel van het speelgebied van de huidige Kederan.) Hierdoor is het gebied waarin hij reist om nieuwe leden te werven, behoorlijk groot. Hij maakt zo nu en dan wel uitstappen naar de Emerald Dream, maar voelt er niet veel voor, om hier lange tijden te verblijven. De natuur aldaar is immers soms wel erg sterk en vaak ook té sterk voor Armeus om zich in z’n eentje in staande te houden. 
+
+Achtergrond Dark Druids
+De missie van de Dark Druids omvat met name het doel om Kederan opnieuw te laten creëren. Zo geloven namelijk, dat Kederan bestaat uit de essentie van Almoeder, welke in 9 delen is versplinterd. Deze 9 delen bestaan uit de 8 Goden en als negende deel de rest van Creatie. 
+Echter zorgt dit er voor, dat hiervoor alle delen van deze essentie weer beschikbaar moeten komen. Als gevolg hiervan, moet dus effectief alles worden vernietigd. Dit ambitieuze plan om de realiteit zelf te willen vernietigen, is al enkele eeuwen oud inmiddels en vindt een oorsprong bij een extermistische tak van de Dark Druid, genaamd de Shadow Druids, op de Emerald Dream (een belangrijke gauntlet van Natuur).</td>
+<td>Recruiter lokale Dark Druid circle</td>
+	</tr>
+	<tr>
+<td align="right">40</td>
+<td>Mens</td>
+<td>Lucas "de Dab" Monster</td>
+<td>&TODO</td>
+<td>&nbsp;</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">56</td>
+<td>High elf</td>
+<td>Isily'nor Heleynore</td>
+<td>Vriendelijk en opgewekt persoon met een vrolijke babbel, maar er gaat een hoop om in haar hoofd terwijl ze aan het kletsen is. Ze is een beetje een verwend nest verder.</td>
+<td>- Ancient knowledge (ras): Je hebt een dusdanig leerzaam leven gehad, dat je van veel zaken in ieder geval iets af weet. Hierdoor kan je 1x/dag aan een spelleiding informatie vragen om je op weg te helpen. Deze kennis zal een korte omschrijving zijn van wat je zou kunnen weten als (gestudeerde) High Elf.
+- Reading, Writing, Speaking (niv. 2) (Common, Elven, Ancient, Gnome, Halfling)
+- Ritualist (niv. 2)
+- Adeptschap Wit (niv. 1)
+- Adeptschap Zwart (niv. 1)
+- Adeptschap Water (niv. 1)
+
+Spreuken:
+- Wit: Analyze (N1), Protection from Poison / Disease (N1), Minor Healing (N1)
+- Zwart: Detect Undead (N1), Feign Death (N1)
+- Water: Detect Magic (N1), Create Water (N1), True Sight (N2), Dispel Magic (N3)</td>
+<td align="right">4</td>
+<td align="right">14</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>donkere nette kleding
+als mogelijk leer pantser er onder verwerkt
+verder stereotype tovenares</td>
+<td>Isily'nor is het enige kind van haar ouders en werd van jongs af aan enorm verwend door haar ouders. Vooral haar vader was gek op haar. Het gezin woonde in het Koninkrijk Aurum toen ze werd geboren, nu ongeveer 176 jaren geleden. Hoewel haar ouders haar enorm verwende, hadden ze het niet per se heel erg breed thuis met inkomsten. Daarom besloot Isily'nor om hard te gaan studeren om een goede baan te krijgen. Deze studie leidde haar naar de Dark Dannings, waar ze onderricht kreeg in verscheidene vormen van magie. Ze deed dit zo goed, dat ze haar gehele gezin kon laten verhuizen naar daar.
+Sinds een kleine 5 jaar is ze actief als begeleider van allerlei missies voor de Dark Dannings. Haar capaciteiten als genezeres en kennis over allerlei verschillende zaken, heeft haar al vaak een waardevolle toevoeging gemaakt van deze missies.
+Is één van de helpende handjes van Bertram Julianus en is licht intrusief op mensen hun eigendommen (steelt niet), zal onderzoek voeren en opletten op het aanwezige arsenaal.</td>
+<td>Assistent onderzoeker/verkenner voor de Dark Dannings</td>
+	</tr>
+	<tr>
+<td align="right">57</td>
+<td>Human</td>
+<td>Wildmijner</td>
+<td>Kort lontje, met name het duidelijk zou zijn, dat de andere aanwezigen zijn gekomen om ook te mijnen. Ze dulden geen competitie.</td>
+<td>- Small, One-Handed of Two-handed Weapons (niv. 2)
+- Ambidex (niv. 2)
+- Leather/Hardened Armour of Small Shield (niv. 1)
+- Strike/Evade/Disarm (kies er 1 per respawn): 1x per encounter</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- pikhouweel
+- emmers</td>
+<td>Mijnwerkers-/bandietenkleding</td>
+<td>Dit zijn bandieten/'wildmijners' uit Kortoga, die op een kans hebben gewacht om "veilig" materialen te halen uit de mijn, om hiermee geld te verdienen. Sinds het werk wat zij verrichten uitermate competitief is, zullen ze vrijwel meteen overgaan op de aanval.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">58</td>
+<td>Human</td>
+<td>Riarke Bargelsam</td>
+<td>Jaloers en achterdochtig als het haar man aangaat. Verder een enorme roddeltante en best een vriendelijk persoon.</td>
+<td>- Reading, Writing, Speaking (Common)
+- Wealth (niv. 1) 
+- Fixer (niv. 1)</td>
+<td align="right">2</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Gewoontjes/middeleeuwse burgervrouw</td>
+<td>Riarke is een redelijke rijke burgervrouw van een naburig dorp (Meconium) die de verhalen van en over haar man Lorlunt beu is en polshoogte komt nemen bij de Lofty Chalice. Ze heeft al een tijdje geleden met wat extra geld dat ze apart heeft weten te leggen 2 ringen gekocht die haar man eventueel betaald kunnen zetten voor alle geruchten die over hem gaan. Als toppunt heeft hij niet eens opgemerkt, dat zij deze ringen heeft gekocht en draagt....</td>
+<td>jaloerse vrouw</td>
+	</tr>
+	<tr>
+<td align="right">59</td>
+<td>Human</td>
+<td>Lorlunt Bargelsam</td>
+<td>Hard werkende man en een beetje een flirt.</td>
+<td>- Reading, Writing, Speaking (Common)
+- Strength (niv. 2)
+- Small Weapons (niv. 1)</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- Buidel met wat geld om drank van te kopen.</td>
+<td>Arbeiderskleding</td>
+<td>Lorlunt is simpele arbeider bij een naburig pakhuis in Kortoga en spendeert veel van zijn werkende uren tussen voornamelijk mannen. Dus als er in de herberg (en omgeving) vrouwen aanwezig zijn, zal hij graag met hen een gesprek aanknopen. Dit is niet per se om daadwerkelijk te flirten, maar vooral voor wat gezellige gesprekken. Blijf dus vooral met de vrouwelijke spelers aan de praat.
+Je hebt net je salaris gehad, dus daar kan je best een beetje van gebruiken om in ieder geval wat te drinken in goed gezelschap.</td>
+<td>Man van jaloerse vrouw met gevaarlijke sieraden</td>
+	</tr>
+	<tr>
+<td align="right">60</td>
+<td>Halfling</td>
+<td>Ranugad Hedgehopper</td>
+<td>Vriendelijk en hulpvaardig. Wat nors als er niet genoeg gegeten of gedronken kan worden. Verder ietwat chaotisch in de omgang door een lichte concentratiestoornis.</td>
+<td>- Reading, Writing, Speaking (niv. 1) (Common + Halfling)
+- Priesthood (Rach'tsor) (niv. 2)
+- Gelovige (Rach'tsor) (niv. 2)
+- Extra Divinity (niv. 2)
+
+Gebeden:
+- Rach'tsor: Chaos influence (N1), Rejuvenation (N1), Healing arrow (N1), Cure Fatal (N2)</td>
+<td align="right">4</td>
+<td align="right">7</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- grote tas waar wat voedsel in kan worden gestopt.</td>
+<td>Zilveren/witte accenten. Kleding mag best chaotisch zitten en des noods wat gescheurd of vuil zijn.</td>
+<td>Is samen met 3 andere avonturiers in de jungle aan de oostzijde van het Mystic Forest geweest om een schat te zoeken. Deze is gevonden. Echter heeft de expert op het gebied van goed sloten openmaken (de rogue) bij de laatste aanvaring met wat rare wezens het loodje gelegd. Vandaar dat er nu nog maar 3 leden over zijn van de groep.
+Ranugad is altijd op zoek naar voedsel en drank. Zijn voorliefde voor van alles om hem heen, en de concentratiestoornis, maakt hem vaak wat chaotisch in de omgang. Daarmee is hij wel juist een goed voorbeeld voor mensen om zich heen wat Rach'tsor betreft. Of zo vind hij in ieder geval. Uiterlijke kenmerken maken voor hem niet veel uit.</td>
+<td>Genezer/priester</td>
+	</tr>
+	<tr>
+<td align="right">61</td>
+<td>Human</td>
+<td>Thomas Fern</td>
+<td>Spreekt weinig, maar vooral in daadkrachtige woorden. Liever iets doen, dan veel praten.</td>
+<td>- Two-Handed/Large Weapons (niv. 2)
+- Leather/Hardend/Metal Armour (niv. 2)
+- Berserk (niv. 1)
+- Strength (niv. 2)</td>
+<td align="right">7</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Een beetje barbaars</td>
+<td>Is samen met 3 andere avonturiers in de jungle aan de oostzijde van het Mystic Forest geweest om een schat te zoeken. Deze is gevonden. Echter heeft de expert op het gebied van goed sloten openmaken (de rogue) bij de laatste aanvaring met wat rare wezens het loodje gelegd. Vandaar dat er nu nog maar 3 leden over zijn van de groep.
+Thomas houdt vooral van de simpele zaken in het leven; knokken, zuipen en ... vertier.</td>
+<td>Vechter</td>
+	</tr>
+	<tr>
+<td align="right">62</td>
+<td>Orc</td>
+<td>Bridarg Clanfury</td>
+<td>Wel gemanierd en daadkrachtig met een groot intellect.</td>
+<td>- Sophisticated Orc: Je ontvangt 3 extra vaardigheidspunten die enkel aan Craftsman vaardigheden uit te geven zijn.
+- Medic (niv. 1)
+- Botanist (niv. 1)
+- Adeptschap Vuur (niv. 2)
+- Adeptschap Lucht (niv. 2)
+- Adeptschap Water (niv. 2)
+- Ritualist (niv. 1)
+
+Spreuken:
+- Vuur: Fiery Touch (N1), Inner Fire (N1), Shatter (N2)
+- Lucht: Telekinesis (N1), Blink (N1), Minor Invisibility (N2)
+- Water: Counter spell (N1), Detect Magic (N1), True Sight (N2), Dispel Magic (N3)</td>
+<td align="right">4</td>
+<td align="right">8</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Kleine slagtanden</td>
+<td>Opgegroeid tussen de Humans in Kortoga nadat hij is geadopteerd door een gezin van Humans. Bridarg kreeg aldaar een goed leven tussen de handelaren en heeft daar allerlei nuttige kennis en kunde opgedaan. Op jonge leeftijd realiseerden de mensen om Bridarg heen, dat Bridarg's intellect meer was dan alleen maar vroegrijpheid. Naarmate zijn nieuwsgierigheid groter werd, hebben de verantwoordelijken hem ertoe aangezet magie te studeren in de hoop dat hij oneindige puzzels zou vinden om op te lossen.
+Is samen met 3 andere avonturiers in de jungle aan de oostzijde van het Mystic Forest geweest om een schat te zoeken. Deze is gevonden. Echter heeft de expert op het gebied van goed sloten openmaken (de rogue) bij de laatste aanvaring met wat rare wezens het loodje gelegd. Vandaar dat er nu nog maar 3 leden over zijn van de groep.</td>
+<td>Magiër</td>
+	</tr>
+	<tr>
+<td align="right">63</td>
+<td>Human</td>
+<td>Nils Saibergsson / Nikki Saibergsdottir</td>
+<td>Ietwat te slim voor zijn eigen welzijn. Dit zorgt nog wel eens voor bijdehante opmerkingen die hij beter niet had gezegd.</td>
+<td>- Reading, Writing, Speaking (niv. 4) (alle talen)
+- Magical Reading, Writing, Speaking (niv. 4) 
+- Adeptschap Aarde (niv. 2)
+- Adeptschap Lucht (niv. 2)
+- Adeptschap Geest (niv. 2)
+- Adeptschap Natuur (niv. 2)
+- Adeptschap Wit (niv. 2)
+- Adeptschap Zwart (niv. 2)
+- Adeptschap Vuur (niv. 2)
+- Adeptschap Water (niv. 2)
+- Ritualist (niv. 3)
+- Ceremony Master (niv. 2)
+- Extra Mana (niv. 3)
+- Extra Divinity (niv. 3)
+
+Spreuken:
+- Kent alle niveau 1 en 2 spreuken.</td>
+<td align="right">4</td>
+<td align="right">40</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">20</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Een wijs persoon en iemand die al heel lang de wereld over reist. Wil liever niet zeggen hoe oud hij/zij is, of waar hij/zij precies vandaan komt. Dit wordt liever een beetje vaag gehouden. Het is vooral om een stukje mystiek te creëren rondom een persoon die dit soort zaken zou kunnen weten. 
+Deze persoon is echter al ruim 300 jaar oud en voedt zich met levensenergie van het leven om zich heen. Oorspronkelijk afkomstig uit een gebied ver ten Noorden van wat nu de Lost Plains zijn.</td>
+<td>Onderzoeker/wetenschapper</td>
+	</tr>
+	<tr>
+<td align="right">65</td>
+<td>Servitar</td>
+<td>Yaviane</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">0</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Is gedood door het Duo</td>
+<td>vermoord</td>
+	</tr>
+	<tr>
+<td align="right">66</td>
+<td>Halfling</td>
+<td>Jacob(a) Gaukrogers</td>
+<td>Redelijk gelukkig, omdat je tegenwoordig de andere twee hebt ontmoet.</td>
+<td>- Reading, Writing, Speaking (niv. 1) (Common + Halfling)</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>slordig</td>
+<td>Jacob(a) is opgegroeid in Dalfuryon, de halfling 'stad' (meer een verzameling aan woonwagens) en heeft door de problemen die haar familie heeft gehad (en veroorzaakt, maar daar praat hij/zij liever niet over) dat deel van het Mystic Forest moeten verlaten al enige tijd geleden. Sindsdien is hij/zij gaan rondreizen door de omgeving en leeft van het land. Een tekort aan voedsel is voor halflings (in ieder geval mentaal) nog een grotere last dan voor veel andere rassen, dus dat is het ook hetgene dat het meest wordt gemist. Op jonge leeftijd bevriend geweest met Wolfgang/Murielle Steichen, een priester(es) en gelovige van Zorax. Deze heeft hem/haar zwaar gemanipuleerd en er is een sterk vermoeden van onvrijwillige liefde. Dit heeft het vertrouwen in de wereld en religie sterk laten afnemen. De twee anderen zijn lotgenoten en enige optimisme heeft zich deel van je gemaakt in de tijd dat je hen kent: "Vriendschap vergroot het geluk en vermindert ellende, door onze vreugden te verdubbelen, en ons verdriet te delen."
+Recentelijk heb je een pamflet gevonden voor de bijeenkomsten van de dark druids. Ze bieden een betere wereld en roepen iedereen op om deze nieuwe wereld mogelijk te komen maken. Vanavond is er een bijeenkomst en daar wil je zeker heen. Omdat je weet, dat de twee mensen met wie je bevriend bent geraakt, ook een zwaar leven hebben en een doel zoeken om voor te leven, lijkt het je een goed plan om samen te gaan. Wellicht zijn er nog meer lieden die zich willen aansluiten bij een dergelijk goed doel...?</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">67</td>
+<td>Human</td>
+<td>Leen(dert) Maertens</td>
+<td>Leen(dert) is fel en ongeduldig</td>
+<td>&nbsp;</td>
+<td align="right">2</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>slorig/onverzorgd</td>
+<td>Leen(dert) is fel en ongeduldig. Maar wat verwachtte je van iemand met zijn onrustige verleden? Hij/zij werd geboren en groeide op in een arm gezin in een belangrijke gemeenschap in het Aurum, hij leefde zonder zorgen totdat hij ongeveer zeven jaar oud was. Op dat moment veranderde het leven drastisch. Hij/zij verloor de beste vriend in een vreselijke brand van de herberg waarin die verbleef en werd gearresteerd op verdenking van de brandstichting. Leen heeft dit niet daadwerkelijk gedaan, maar de ondervragingen van de paladijnen van Erasu hebben een blijvende indruk achtergelaten in het geheugen van Leen(dert). Met een loyale vriend (Isa) moest Leen overleven in een sombere wereld. Dit heeft hem/haar veranderd in de persoon die het nu is. Nog steeds geplaagd door het verleden, werkt hij nu aan vervolmaking van vaardigheden en talenten. Door dit te doen, hoopt hij te worden bevrijd van de beklijvende herinneringen en eindelijk een doel te vinden voor het leven dat hij nooit heeft gehad.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">44</td>
+<td>Mens</td>
+<td>Anthonio "Tony" Vellucci</td>
+<td>Rustig, beleefd, zelfverzekerd, maar niet arrogant.</td>
+<td>&nbsp;</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- Enkele zendstenen</td>
+<td>&nbsp;</td>
+<td>Anthonio is een rustige jonge man met veel ambitie om verder te groeien in het gilde.</td>
+<td>Postbode</td>
+	</tr>
+	<tr>
+<td align="right">45</td>
+<td>Allerlei</td>
+<td>Dolende ziel</td>
+<td>&nbsp;</td>
+<td>- Steal item (vergelijkbaar met het Seductress gebed): door met 2 zielen tezamen een voorwerp vast te pakken en minstens een seconde met beide handen vast te houden, verdwijnen de zielen met het voorwerp. Kan enkel worden gebruikt op voorwerpen die niet reeds vastgehouden worden.
+- Invisibility (N3 Lucht spreuk) (at will)
+- Ontvangen enkel schade van magische bronnen (dus calls met elementen of via spreuken bijv.)</td>
+<td align="right">2</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>De zielen zullen ronddwalen in allerlei lichamen en als spionnen dienen voor het Duo dat de kracht van de Goden wil bezitten. Het is de bedoeling dat deze zielen voorwerpen met kracht (magisch en Goddelijk) gaan opzoeken om deze later te stelen. Hiertoe zullen zij af en toe in het spel aanwezig zijn en van tijd tot tijd (on)zichtbaar rondlopen. De zielen lopen redelijk op hun gemak en proberen (zowel zichtbaar als onzichtbaar) geen verdachte bewegingen te maken. Loop bijv. een eind langzaam rechtuit en verdwijn ergens halverwege je pas en verschijn een paar meter verder weer.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">46</td>
+<td>Mens</td>
+<td>'Carola'</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Herbergin</td>
+	</tr>
+	<tr>
+<td align="right">47</td>
+<td>Woudelf</td>
+<td>Anniolis Scolaa</td>
+<td>Ietwat schuw in openbaar, maar zolang hij het idee heeft, dat niemand hem ziet, durft hij alles. Heeft een grote hekel aan Humans en al helemaal Half Elven.</td>
+<td>- (Woudelf) Favored Enemy (Humans): 1x/encounter +1 schade tegen Humans.
+- Poison extractor (niv. 1)
+- Hunter (niv. 1)
+- Small Weapons (niv. 3)
+- Leather Armor (niv. 2)
+- Evade (niv. 1)
+- Bush Ranger (niv. 4)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Opgegroeid in het Mystic Forest in één van de clans van woudelven aldaar. Heeft 2 oudere zussen die hem vroeger veel hebben gepest. Hierdoor is hij zich gaan toeleggen op het goed kunnen verstoppen en aanvallen vanuit hoeken waar hij niet te zien is. Recentelijk heeft Anniolis een baantje aangeboden gekregen via een groepering uit Kortoga die Leafdust verhandeld. Hierdoor smokkelt hij nu dit goedje de 'grens' met het Mystic Forest over en andere spullen die de woudelven maken weer terug naar Kortoga.</td>
+<td>Dief/drugssmokkelaar</td>
+	</tr>
+	<tr>
+<td align="right">48</td>
+<td>allerlei rassen (vooral Human, High Elf en Dwarf)</td>
+<td>Aurum infanterie</td>
+<td>Loyaal aan het Koninkrijk Aurum en zeer gedisciplineerd.</td>
+<td>- Small Weapons , One-handed Weapons of Two-handed Weapons (niv. 1)
+- Small of Large Shield (niv. 1)
+- Leather of Hardend Armor (niv. 1)
+- Toughness (niv. 1)
+- Ambidex (niv. 1)</td>
+<td align="right">5</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Verzorgde strijdersuitrusting (evt. pantser) + indien voorradig een tabbaard. Zoveel mogelijk rode kleding/accenten.</td>
+<td>Deze soldaten zijn getraind in het Koninkrijk Aurum en hebben een zekere indoctrinatie van het geloof van Erasu. Dit houdt vooral in, dat ze orde handhaven als één van de belangrijkste normen zien en hier dan ook naar zullen handelen. Indien anders vermeld in het plot, zullen deze soldaten vooral oplettend zijn en waar nodig de strijd aan gaan met lieden die de orde versturen. Vanuit dit oogpunt, is hiërarchie en gezag erg belangrijk. Om deze reden zullen ze dan ook (vrijwel) altijd naar de gezagvoerder luisteren.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">49</td>
+<td>Human</td>
+<td>Gaius Nipius Catilina</td>
+<td>Is sterk gedisciplineerd en zeer oplettend op ongebruikelijke situaties. Heeft een goed gevoel voor het vreemde gedragen van personen en vermoedt al snel, dat het een Shifter zou kunnen zijn. Streng en militaristisch. Is hier niet om te praten, maar om daden te verrichten.</td>
+<td>- Small-weapons (niv. 2)
+- One-handed weapons (niv. 3)
+- Two-handed weapons (niv. 2)
+- Ambidex (niv. 2)
+- Toughness (niv. 1)
+- Small shield (niv. 1)
+- Hardened armour (niv. 3)
+- Adeptschap Geest (niv. 2)
+- Gelovige Erasu (niv. 2)
+- Gelovige Mohr (niv. 2)
+
+Spreuken:
+- Geest: Mind blank (N1), Mislead (N1), Mind lock (N2), Command (N3)
+
+Gebeden: 
+- Mohr: Courage (N1), Fiery assault (N1), Scorch wound (N2)
+- Erasu: Focus (N1), Truth (N1), Repel (N2), Revert form (N2)</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">8</td>
+<td>- Memory Stick: Voorwerp dat dienst doet voor de "Mass Close Forget" en "Create Memory"</td>
+<td>Zwarte kleding met rode accenten en (indien aanwezig) 'Romeinse' stijl aan kleding.</td>
+<td>Gaius is opgegroeid als lagere adel en getraind in het Koninkrijk Aurum. Zijn training bestond uit veel studeren om Shifters te leren herkennen en heeft hem erg oplettend gemaakt om alles wat er ongebruikelijk uitziet te kunnen snappen. Dit gaat niet altijd goed, maar voor zijn gevoel zit hij er eigenlijk nooit naast. 
+Zijn status als adelman, hetzij een lagere adel, bracht hem al vroeg in zijn leven in contact met de Orde van het Recht. Deze orde heeft de sterkste band met Erasu en Zorax. In deze orde kom je als je ouders in deze orde zitten en de orde van het Recht draait om het inspireren van het volk. De adel ziet zichzelf als de herders van het gewone volk. Dit doen ze door het gewone volk te leiden en ze te inspireren om aan de wetten te houden.
+Door een ongeval, waarbij een Shifter een luxe diner heeft verstoord en al maanden zich onder de populatie te hebben begeven, werd Gaius opgedragen om zich hierin te verdiepen zo deze wantoestanden te kunnen tegengaan. Dit heeft hem bij de Bewakers van de Mensheid gebracht. 
+Aurum heeft een duidelijke stelling omtrent Shifters: De Shifters zijn monsters in de ogen van de Kingdom en moeten uitgeroeid worden. De Kingdom heeft een speciale militaire orde in het leger dat gespecialiseerd is in het opsporen van Shifters. Deze groep heet "Bewakers van de mensheid", maar wordt meestal afgekort tot "De bewakers". De gevangen Shifters worden meegenomen naar een onbekende locatie in de Kingdom en worden nooit meer gezien.</td>
+<td>Bewaker van de Mensheid</td>
+	</tr>
+	<tr>
+<td align="right">22</td>
+<td>Shifter (Lycan)</td>
+<td>Mourgent/Thessalia</td>
+<td>Impulsief, agressief en arrogant</td>
+<td>- Leather Armor (niv. 1)
+- Toughness (niv. 4)
+- Evade (niv. 2)
+- Strenght (niv. 3)
+
+Shifter (Lycan) (niv. 2):
+- Tough skin: Je hebt DR 1 op “Through” effect dankzij een stevigere huid. (actief te gebruiken).
+- Lycanthropic regeneration: Je regenereert ieder uur 1 HP. (enkel te gebruiken in je monsterlijke vorm)</td>
+<td align="right">5</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Wapen</td>
+<td>Vieze kleding en ziet eruit als een wolf.</td>
+<td>Mourgent/Thessalia heeft al geruime tijd de mogelijkheid tot het aannemen van de monsterlijke vorm en geniet hier enorm van. Vooral de kracht die het oplevert en het feit dat een Lycan-vorm je enorm goede mogelijkheden geeft om een gevecht te overleven, bevallen prima. Dit heeft hem/haar echter wat onvoorzichtiger gemaakt en op een iets te onbewaakt moment is hij/zij gezien door Gaius (de Bewaker van de Mensheid uit Aurum) en deze is hem/haar al een langere tijd op het spoor. Als hij ontdekt wordt, zal hij/zij grommen om de spelers op afstand te houden. Als de spelers te dichtbij komen zal hij ze aanvallen.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">28</td>
+<td>Sluagh</td>
+<td>Apotamkin</td>
+<td>Onderdanig, maar sluw en speelt graag met emoties.</td>
+<td>- Voedsel rot weg het moment dat het je handen raakt.
+- Wispering Shadow: Een Sluagh kan alleen maar fluisteren/zacht praten (het liefste met een gemene slis in het uitspraak).
+- Gelovige Seductress (niv. 4)
+- Priesthood Seductress (niv. 4)
+- Toughness (niv. 1) (enkel indien je in een fysieke vorm hebt aangenomen)
+
+Servitarvaardigheden:
+- Divine Undeath: Seductress servitars zijn in de basis niet-stoffelijke manifestaties van emoties. Ze kunnen stoffelijk dingen vastpakken, dragen geen pantser en kunnen in die vorm ook geen schade oplopen van wapens die niet magisch of gezegend zijn. In deze vorm kunnen ze geen extra levenspunten verkrijgen die een fysieke aard hebben.
+- Solid Body: De servitar is in staat om een solide stoffelijke vorm aan te nemen en fysieke interactie aan te gaan met de materiële wereld.
+- Inspire Emotion: De servitar kan, 1x/encounter, één specifieke emotie opleggen bij een slachtoffer. Keuze uit: jaloezie, afwijzing, afstandelijkheid, schaamte, frustratie, verveling, verdriet en ongeduld.
+- Enhance Emotion: bovenstaande emoties kan je ook 1x per encounter versterken (zie Enhance emotion gebed).
+- Spiritual Possession: De servitar kan zonder problemen een lichaam overnemen, waarvan de ziel toebehoort aan de Seductress. Vrije zielen kosten enige moeite en zielen die vergeven zijn aan andere Goden zijn standaard niet beschikbaar.</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">20</td>
+<td>eetbare insecten
+speciaal artefact die de emoties opvangt(physrep?)</td>
+<td>Lang donker vettig haar, Bleek gezicht, Donkere ogen
+wallen, emo make-up, zwart vocht uit zijn mond en zwarte/geen tanden
+Kleding bestaat uit: lompen, gescheurd en vies</td>
+<td>Hoe meer hulp Enzio van hem vraagt, hoe meer emotie hij af moet staan aan de Sluagh. Dit zijn om te beginnen kleine emoties. Alle emoties worden afgestaan in de vorm van samen eten of drinken. Maar in de handen van de Sluagh rot alles voordat hij het eet.</td>
+<td>Servitar van Seductress</td>
+	</tr>
+	<tr>
+<td align="right">50</td>
+<td>Human</td>
+<td>Houthakker</td>
+<td>Ruige personen die best tegen een stootje kunnen en niet snel voor een zware klus zullen weg deinzen. Mits er voldoende betaald wordt en het binnen het normale takenpakket valt.</td>
+<td>- Strength (niv. 2)
+- Ambacht (Lumberjack) (niv. 1-4) (zie omschrijving)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Houthakkersuitrusting</td>
+<td>Ambacht Lumberjack: 
+Niv. 1 - Je kan 1 eenheid hout hakker per 15 min. De verkoopwaarde van deze eenheid aan hout is 25 dukaten.(Dit kan je ook in 30 min aan iemand leren om diegene te laten helpen met hout hakken. De persoon die dit heeft geleerd, kan dat dagdeel 1x deze vaardigheid gebruiken.
+Niv. 2 - Je kan in een boom klimmen en je verstoppen. (OC: je mag naast de boom gaan staan en vinger omhoog steken. Je hoeft niet fysiek de boom in.)
+Niv. 3 - Je weet bijna alles van houthakken en je kan een boom 1 bepaalde kant op laten vallen. Je inkomsten bij houthakken zijn verdubbeld.
+Niv. 4 - Je hebt technieken aangeleerd waardoor je geluidloos hout kan hakken.</td>
+<td>generieke werknemer van Zwartschild Inc.</td>
+	</tr>
+	<tr>
+<td align="right">51</td>
+<td>Fae</td>
+<td>Redcap</td>
+<td>Redcaps zijn erg neutraal en in het prille begin van ontmoeting afstandelijk en reageren zij koeltjes. Maar wanneer men vriendschap weet te sluiten met hen, zijn zij trouwe bondgenoten. Redcaps onderling zijn veel opener naar elkaar en zullen vaak met elkaar kunnen lachen en samen eten. Door hun religieuze insteek is de richting op hun moreel kompas soms wat moeilijk te duiden.</td>
+<td>- Reading, Writing, Speaking (niv. 1) (Common + 1 taal)
+- 1 wapenvaardigheid (niv. 1)
+- 1 pantservaardigheid (m.u.v. Heavy Metal Armor) (niv. 1)
+- Evade of Disarm (niv. 1)
+- Bush Ranger (niv. 2)
+
+Redcap-vaardigheden:
+- Eat ‘all’: Redcaps kunnen alles eten en houden nergens problemen in hun spijsvertering aan over, zolang het niet vergiftigd of magisch is.
+- Bite: Een Redcap kan alles tussen zijn kaken vermalen, als hij daar moeite voor doet. Soms duurt het wat langer (metaal, hout) dan normaal voedsel. Je kan niet-magische voorwerpen vernietigen door ze op te eten. Bovendien kan je 1x per encounter een "Bite" aanval maken (niet fysiek iemand bijten) en 1 "Through" schade doen (m.u.v. bescherming door magie of adamantium)
+- Dream Walker: Je kan 1x per dag, met maximaal 1 ander persoon erbij, de keuze maken tussen fysiek betreden van de Droomwereld of enkel een bewuste mentale connectie maken met de droomwereld.</td>
+<td align="right">&nbsp;</td>
+<td align="right">1</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">1</td>
+<td>&nbsp;</td>
+<td>Redcaps zijn mensachtig van voorkomen. Zij zijn vaak gehuld in leer en maliën onder hun duurzame reistenues. Hun sterke kenmerken zijn hun vaalbleke huidskleur, de donkergrijs/zwarte oogkassen, hun lange oren en de rode hoofdkap.Deze karakteristieke rode hoofdkap is de hoofdreden waarom dit ras “Redcap” genoemd wordt.</td>
+<td>Een Redcap is een magisch wezen. Zij worden ook wel droomlopers genoemd. Onderzoek op Redcaps heeft aangetoond, dat deze bestaan uit twee helften; een Droom-zijde en een menselijke/sterfelijke zijde. De Droom-zijde is een magisch element van hun wezen en kan, door hun werken voor de Droomheer of Queen of the fae worden vergroot of verkleind. Redcaps inspireren emoties van personen, wat hun wijze is om invloed van hun Meester en Meesteres te vergroten.
+Hoe meer hun magische deel overneemt, des te groter is hun invloed op elkaar en de connectie tot hun Meester en Meesteres.
+
+Namen
+De namen van Redcaps variëren sterk. Wel heeft hun naam altijd een diepere betekenis die bij hun gedrag en overtuigingen past.
+
+Avonturiers van dit ras 
+De hoeveelheid elementaire mana en Divinity die een Redcap heeft, is zijn hoeveelheid “glamour”. Redcaps zullen deze term gebruiken voor wat anderen mana en Divinity bedoelen. Hoe meer “glamour”, des te sterker de Droom-zijde van een Redcap is.</td>
+<td>Dienaar van de Queen of the Fae</td>
+	</tr>
+	<tr>
+<td align="right">52</td>
+<td>Human</td>
+<td>Dark Druid</td>
+<td>Specfieke persoonlijkheden variëren, maar allen zijn in ieder geval gericht op het helpen van de slechter bedeelden en hulpeloze personen in het leven. Dit alles om er maar voor te zorgen, dat de missies van de cirkel wordt behaald.</td>
+<td>- Reading, Writing, Speaking (niv. 2) (Common + 2 andere talen, bijv. Elven of Dwarven)
+- Adeptschap Natuur (niv. 2)
+- Small Weapons (niv. 2)
+- Staff Weapons (niv. 2)
+- Extra mana (niv. 2)
+
+Spreuken:
+- Natuur: Return to Circle (N1), Shocking Grasp (N1), Create Food (N1), Speak with Animals (N1), Ensnare (N2)</td>
+<td align="right">4</td>
+<td align="right">10</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Druïde met nadruk op meer donkere/zwarte accenten. Sommige met tribal symbolen in zwart</td>
+<td>De missie van de Dark Druids omvat met name het doel om Kederan opnieuw te laten creëren. Ze geloven namelijk dat Kederan bestaat uit de essentie van Almoeder, welke in 9 delen is versplinterd. Deze 9 delen bestaan uit de 8 Goden en als negende deel de rest van Creatie.
+Echter zorgt dit er voor, dat hiervoor alle delen van deze essentie weer beschikbaar moeten komen. Als gevolg hiervan, moet dus effectief alles worden vernietigd. Dit ambitieuze plan om de realiteit zelf te willen vernietigen, is al enkele eeuwen oud inmiddels en vindt een oorsprong bij een extermistische tak van de Dark Druid, genaamd de Shadow Druids, op de Emerald Dream (een belangrijke gauntlet van Natuur).</td>
+<td>acoliet</td>
+	</tr>
+	<tr>
+<td align="right">53</td>
+<td>Nyaad</td>
+<td>Aram</td>
+<td>Hopeloos, erg lief, poept overal als hij enthousiast/bang is.</td>
+<td>- Toughness (niv. 2)
+- Small Weapons (hoeven) (niv. 1)
+- Reading, Writing, Speaking (niv. 2) (Common,Elven,Gnome,Draconic,Halfling)</td>
+<td align="right">7</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Eenhoornkostuum. Heeft het hoofd van een paard met één witte hoorn.</td>
+<td>De Witte Nyaad, Aram, is zijn vrouwtje kwijt. Hij roept de krachten van de Rumeliaan in, om voor hem zijn vrouwtje te redden, daar ze in de droomwereld zit en hij er niet bij kan. Hij is op K31 langs geweest om dit stukje te introduceren.</td>
+<td>de witte</td>
+	</tr>
+	<tr>
+<td align="right">54</td>
+<td>Servitar</td>
+<td>Queen of the Fae</td>
+<td>Zeer intelligent en uiterst manipulatief.</td>
+<td>&nbsp;</td>
+<td align="right">999</td>
+<td align="right">999</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">999</td>
+<td>&nbsp;</td>
+<td>Wit en statig, maar met welke vorm van versiering ze dat moment dan ook maar interesse in heeft.</td>
+<td>De Queen heeft grootse plannen. Groter zelfs nog dan zij zelf volledig kan bevatten. Ze is één van eerste en hoogste servitars die de Seductress ooit onder haar commando heeft gehad. Ze wordt zelf vereerd onder allerlei namen, waaronder de "Droomkoningin", de "Vrouwe van de nacht/droom" of simpelweg de "Moeder".
+Ongeveer 230 jaar geleden heeft ze, dankzij een groepje spelers, de mogelijkheid gehad om veel kracht te vergaren. Hierdoor heeft zij een directe link met een Natuur, Geest, Wit en Zwart gauntlet, waar ze energie vandaan haalt.
+Deze energie gebruikt ze o.a. om zich tegen de Goden, met name de Seductress, te verzetten. Om haar te proberen te stoppen, hebben de Goden hun dienaren aangespoord om de Nephilim te maken.
+Ze probeert nu op allerlei manieren om haar invloed verder te vergroten op Kederan en haar plan(nen) te verwezenlijken. 
+In haar eigen wereld, de Droomwereld, is de Queen of the Fae vol continue bewust van alles wat haar interesse zou kunnen wekken op dat moment. 
+Bovendien kan zij hier ad-hoc effecten creëren die haar uitkomen. Dit zijn veelal effecten die sterk gerelateerd zijn aan Geestmagie en haar vorige Godin, de Seductress.
+Op dit moment is de Queen niet in staat om zich buiten haar eigen wereld te begeven, zonder direct het doelwit te zijn van de aandacht van vrijwel alle Goden en Servitars (met name die van Seductress en Huntress).</td>
+<td>(rebelse Primaire Servitar van Seductress)</td>
+	</tr>
+	<tr>
+<td align="right">41</td>
+<td>Plantwezen</td>
+<td>Sapling</td>
+<td>Verminderd intelligente, pasgeboren plantscheuten die onder controle staan van Natuurmagie.</td>
+<td>- Small Weapons of One Handed Weapons (niv. 2)
+- Fire Vulnerablity (Vuurschade telt dubbel)
+- Resist Element (Natuur) (DR 1 tegen Natuurschade)
+- Spreken de taal van de woudelven (gebrekkig, 1-3 woorden per zin).
+
+Spreuken:
+- Algemeen: Elemental Projectile (Natuur) (N1)
+- Natuur: Speak with Animals (N1), Ensnare (N2)</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Als kleine plantjes. Eventueel met bladeermotief op gezicht/handen.</td>
+<td>Deze saplings zijn gecreëerd door de woudelven om de ongenodigde gasten uit het bos te houden, samen met een aantal treants.
+Het zijn jonge boompjes, de jonge versies van de enorme bosplanten (treants) die in oude bossen leven. Hoewel ze veel zwakker zijn dan hun volgroeide tegenhangers, kunnen ze nog steeds een gevaar vormen voor kleine groepen. Bovendien kunnen ze er voor zorgen dat de bomen rondom hen tegenstanders aanvallen (Elemental Projectile (Natuur). Hoewel de bomen enigszins zwak zijn, zijn ze een groot gevaar in groepen.
+Tijdens het gevecht zullen ze in meerdere golven aanvallen (respawn bij de betrokken spelleider).</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">42</td>
+<td>Plantwezen</td>
+<td>Bloemmonster</td>
+<td>Aggressief en semi-intelligent</td>
+<td>- Magic draining leafs (Bloem aanraken is -1 MP en -1 MP per 30 seconden. Deze komen er bij het bloemmonster bij)
+- Near-Magic Invulnerablity (Enkel spreuken van Luchtmagie, en Luchtschade, hebben vat op het bloemmonster. Er zijn een paar uitzonderingen.)
+- Nature's blessing (Geneest van Natuurschade + 1 HP voor iedere Natuurspreuk die er op wordt gecast.
+- Fire Vulnerablity (Vuurschade telt dubbel)
+- Fear Aura (3x per encounter kan het bloemmonster een "Mass Close Fear" effect creëeren).
+- Darkvision (je ziet uitstekend in het donker)
+- Schade van het bloemmonster is altijd "Natuur"-schade.
+
+Spreuken:
+- Algemeen: Elemental Projectile (Natuur) (N1)</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>- als een plant met veel bloemen.</td>
+<td>Gecreëerd door de Queen of the Fae om het 'inner sanctum' van het Mystic Forest te verdedigen en sindsdien een beetje te veel de vrije hand gegeven in de groei.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">43</td>
+<td>Gnome</td>
+<td>Karakk Dhurr</td>
+<td>Gnome Tinkerer met wat minder nette en sadistische hobbies. Schuwt niet weg van aggressie.</td>
+<td>- (Gnome) Tinkerer (Je wilt graag weten hoe dingen uit elkaar gaan. Hierdoor kun je magische voorwerpen uit elkaar halen en deze omzetten in componenten, dit duurt 15 minuten en je ontvangt hierdoor 4 schade.  Voor elk evenement dat het voorwerp nog geldig is, ontvang je 1 rare component en 1 common component. Deze vaardigheid werkt niet op artefacten.)
+- Refiner (niv. 3)
+- Reading, Writing, Speaking (niv. 1) (Common, Gnome)
+- Hunter (niv. 2)
+- Wealth (niv. 1)
+- Analyze Object (niv. 2)</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>- "The Tinker's Bell" (lantaarn/bel)
+- allerlei gadgets</td>
+<td>- Beetje warrig
+- allerlei 'gadgets' en andere objecten die niet specifiek een nut hebben, maar voor Karakk wel. Ooit. Zou kunnen.</td>
+<td>Heeft enorme pech gehad met een experiment in het verleden. Hierdoor is hij/zij vervloekt. Dit zorgt er voor, dat Karakk permanent 1 max. HP mist (totdat hij/zij langer dan een maand geen Fae heeft gejaagd.
+Is opgegroeid in het Mystic Forest als enig kind tussen de handelaren en anderen die handig waren met spullen maken en verkopen. Na een lange reis op zee, weer blij om op vast land te kunnen bewegen, maar wel goede ideeën opgedaan tijdens de tocht. Deze ideeën zijn niet allemaal even koosjer sindsdien werkt hij/zij met steeds componenten waar (semi-) intelligente wezen voor moeten lijden of zelf sterven. Je bent erg gehecht aan de lantaarn "The Tinker's Bell" aangezien het een cadeau was van één van je weinige vrienden aan boord van het schip.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">55</td>
+<td>Human</td>
+<td>Nathaniel Sayer</td>
+<td>Nieuwsgierig en doortastend, maar niet per se de meeste charismatische persoon.
+Geintresseerd in mensen en hun wapentuig. Vrij stil, wegens oncomfortabele situatie dat hij onderzoeker speelt. Als er een gevecht uitbreekt hij zich verdedigen en wegrennen.</td>
+<td>- Reading, Writing, Speaking (Common + Draconic)
+- Analyse Object (niv. 1)
+- Divination (niv. 1)
+- Medic (niv. 1)
+- Small Weapons (niv. 1)
+- One Handed Weapons (niv. 10</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Schrijfgerei
+dolk/kortzwaard</td>
+<td>donkere nette kleding
+als mogelijk leer pantser er onder verwerkt</td>
+<td>Nathaniel groeide op in de Dark Dannings onder het strenge toezicht van zijn moeder. Deze probeerde hoger in het aanzien van de huizen te komen en dacht er goed aan te doen om haar zoon hierin ook mee te nemen. Hierdoor kreeg hij allerlei simpele klusjes te doen, zoals het bestuderen van allerlei 'nutteloze' onderwerpen. 
+Echter heeft dit er wel voor gezorgd, dat Nathaniel tegenwoordig daadwerkelijk hoger in aanzien staat (net als zijn moeder) en nu als belangrijke spion op pad wordt gestuurd om het land van de nodige informatie te voorzien.
+Is één van de helpende handjes van Bertram Julianus en is licht intrusief op mensen hun eigendommen (steelt niet), zal onderzoek voeren en opletten op het aanwezige arsenaal.</td>
+<td>Assisnent onderzoeker/ verkenner voor de Dark Dannings.</td>
+	</tr>
+	<tr>
+<td align="right">68</td>
+<td>Human</td>
+<td>Isa(ac/belle) Erasinus</td>
+<td>verdrietig en te neer geslagen. Je bent blij de andere 2 te hebben.</td>
+<td>&nbsp;</td>
+<td align="right">2</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>slordig/onverzorgd</td>
+<td>Isa(ac/belle) is opgegroeid in de grote stad van Aurum (Goldcourt) en had de pech dat hij/zij van lage komaf was en beide ouders daardoor veel moesten werken. Hierdoor werd er niet veel omgekeken naar het gezin van 5 kinderen. Isa(ac/belle) heeft de zorg voor de jongere broers en zusters op zich genomen. Net toen het leek dat er betere tijden zouden gaan aanbreken, nadat ze waren verhuisd naar een vissersdorp, werd een van de belangrijke figuren in het dorp ernstig ziek onder verdachte omstandigheden. Toen Isa(ac/belle) die aankaarten bij de autoriteiten werd al snel duidelijk, dat hier meer achter heeft gezeten en dat het gezin nu dus te veel wist. Hun leven niet meer zeker zijn ze toen vertrokken en onderweg overvallen door orcs (als je orcs ziet, wordt je dus ook behoorlijk bang). Isa is de enigste die het overleefd heeft en draagt daar tot op de dag van vandaag nog de mentale schade van. Het schuldgevoel is dusdanig sterk, dat hij/zij regelmatig gillend wakker wordt van nare dromen en al vaker heeft moeten rennen voor diens leven nadat hij/zij op deze manier gesnapt werd op de zolder/in de hooischuur/etc. van de overnachtingsplaats van die nacht. Ook de relatie met anderen, met name gezocht onder de mensen, verloopt al een ruime tijd erg stroef. Menig een die misbruik van de mentaal verzwakte Isa heeft genomen. Bijv. door tijdelijke baantjes aan te bieden, waar uiteindelijk amper of niet voor werd betaald ("Het werk was niet naar behoren.", "Noem je dat een schoon bed!?", "Je was fijn om mijn bed warm te houden, maar nu oprotten!"). De andere twee personen zijn eigenlijk de enige die je inmiddels een beetje vertrouwd. Jij en Leen(dert) hebben het laatste deel van de reis samen gereisd vanuit Aurum.</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">69</td>
+<td>Human</td>
+<td>Keya Imra</td>
+<td>Een keiharde vrouw die het beste voor heeft met haar land. Ze is gestructureerd en ordelijk.</td>
+<td>Erg krachtig persoon. Wat je nodig hebt aan vaardigheden, kan je gebruiken. Mocht je dit niet bij een dame van stand vinden horen, heeft een onderdaan van je het wel. Dit kan eventueel met een vertraging worden geregeld, de persoon moet wellicht eerst worden opgeroepen.
+Bovendien kan Keya Imra niet zomaar worden gedood. Zodra haar levenspunten naar 0 worden gebracht, treden oude rituelen in werking, die haar de mogelijkheid geven om weg te vliegen in de vorm van een wolk mist of als vleermuis.
+
+Verandert in een vleermuis of een wolk mist zodra deze op 0 HP</td>
+<td align="right">10</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Gotisch, chique</td>
+<td>Een keiharde vrouw die het beste voor heeft met haar land. Ze is gestructureerd en ordelijk. Haar tweede is dan ook een bewaker. Genezing en voortplanting is haar specialiteit. Keya Imra is ook de persoon die bepaald naar welk huis de nieuwelingen mogen. Door haar doordringende vragen komt ze achter je specialiteiten en wensen en die wensen vergelijkt ze dan met de huizen.
+Voor het runnen van het huis iets dat ze al meer dan 150 jaar doet heeft iedere Keya-Imra huislid een taak die ze doen. De oudste leden heb je zelf veranderd door de rituelen, maar de jongste kunnen best wel eens door andere gedaan zijn.
+Het ritueel om tot huis Keya-imra toe te treden bestaat uit:
+Als vrouw moet je ten minste één keer bevallen en het overleven. Natuurlijk moet je bevallen van een door huis Keya-Imra gekozen partner.
+Voor mannen is het anders; je zaad moet sterk zijn en Keya Imra zal je meenemen naar bed. Als je die test doorstaat zal ze van je bloed drinken en je zaad veranderen. Degene die ze bijt, krijgt de kracht tot het verleiden van het andere geslacht.
+Ze is te vergelijken met Morticia Adams van de Adams family films/serie.</td>
+<td>Hoofd van huis Keya-Imra</td>
+	</tr>
+	<tr>
+<td align="right">70</td>
+<td>Human</td>
+<td>Heera Louisean-Gradely</td>
+<td>Gewiekst, pienter en erg achterdochtig. Zeer geordend en goed in haar werk. Ze is behoorlijk ijdel en zelfingenomen naar de buitenwereld, maar een beetje zenuwachtig vanbinnen.</td>
+<td>- Small weapons (niv. 1)
+- Fixer (niv. 4)
+- Analyse Object (niv. 2)
+- Reading, Writing, Speaking (niv. 4) (alle talen)
+- Magical Reading, Writing, Speaking (niv. 4)
+    * Basic magic
+    * Scolar Magic (Geestmagie)
+    * Ancient magic
+- Adeptschap Geest (niv. 2)
+- Extra mana (niv. 4)
+
+Spreuken: 
+- Geest: Mind blank (N1), See memory (N1), Mislead (N1), Mental Link (N2), Charm (N2)</td>
+<td align="right">4</td>
+<td align="right">12</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">0</td>
+<td>Notitieboekje + schrijfgerei</td>
+<td>Goed bedekt (monddoek en handschoenen zijn erg belangrijk), mooi aangekleed. Indien overdag ingezet: parasol en/of zonnebril met gekleurde glazen.</td>
+<td>Heera is een gedreven lid van huis Louisean-Gradely en heeft, net als velen in het huis, veel training gehad in het goed onderhandelen en weten at de waarde is van de goederen die ze onder ogen krijgt. Bovendien is er bij haar erg op aangedrongen om de afspraken correct te noteren. Deze nauwkeurigheid is nog steeds een aandachtspunt zo nu en dan. Ze wil niet falen in haar taken, zeker aangezien dit één van de eerste toewijzingen voor een opdracht is, dit ze op zelfstandige basis mag uitvoeren.
+Ze heeft veel karakteristieke aspecten van het huis haar eigen gemaakt. Zo is ze behoorlijk ijdel en heeft een lichte vorm van smetvrees tegenwoordig. Hierdoor zal ze dus niet in de buurt van komen van vieze dingen en ten alle tijden handschoenen en een doek voor haar mond dragen.
+
+Achtergrond huis Louisean-Gradely
+Het bemiddelaars huis. uiterlijk: gekleurde zonnebrillen op en ze spelen met emoties om zo een goed gesprek met mensen te kunnen hebben. Ze zijn erg mooi gekleed.
+Van hun vampier afkomst hebben ze het spelen met emoties overgenomen. Ze komen erg rustig over, maar kunnen alle kanten doorslaan. Ze zijn schuw voor zonlicht omdat zonlicht hun mooie blanke huid verkleurd. Ze kunnen wel tegen de zon, maar kiezen ervoor om in de schaduw te blijven daarom dragen ze ook parasols bij zich.
+Binnen de Children of Old Age-gemeenschap bemiddelen ze tussen handelaren. Er mag dan ook niet gehandeld worden binnen de Dark Dannings zonder dat een Louisean-Gradely huis afgevaardigde aanwezig is. Deze bewaren de handelsovereenkomsten. Handelsgeschillen worden door huize Louisean-Gradely opgelost. Zo zorgen ze ook voor dat handelaren hun spullen kunnen verkopen en dat de spullen tegen een eerlijke prijs verkocht worden. Dit huis jaagt dan ook op dieven, smokkelaars en zij die gestolen spullen helen.
+Louisean Gradely is de huismeester van het Louisean-Gradely huis. Deze huismeester heeft altijd in ieder geval 1 van de leden van zijn adviesraad bij zich. Deze raad bestaat uit een aantal gehersenspoelde personen waarin Louisean Gradely zijn agenda en afgesproken notities in bewaard. Hij kan deze adviseur om elk artikel vragen dat de laatste 25 jaar opgeslagen is. Natuurlijk past dat niet allemaal in 1 persoon en sommige personen worden gearchiveerd en neemt hij alleen mee als erom gevraagd wordt.</td>
+<td>Assistant van huize Louisean-Gradely</td>
+	</tr>
+	<tr>
+<td align="right">77</td>
+<td>Fae</td>
+<td>Pookah</td>
+<td>Pookah gaan erg goed om met anderen en zijn altijd vriendelijk naar iedereen, tenzij een ander laat zien dat deze niet vriendelijk naar Pookah is. Ze zijn in eerste instantie gemakkelijk te intimideren, maar komen ook gemakkelijk terug. Ze zullen in conflict met anderen primair weg willen uit het conflict, tenzij het om hun vrienden gaat.
+
+Pookah zijn loyale vrienden en ontzettend moedig in de strijd. Als een van hun grappen iemand echt pijn doet, spijt het ze ook echt oprecht. Alles wat ze doen is niet om anderen pijn te doen of kwaad te berokkenen; vergelijk ze met puppy’s die per ongeluk te hard bijten bij het ravotten.</td>
+<td>- Divination (niv. 1): door middel van astrologie.
+- Shapeshifting:
+Het personage kan 1x per dag van vorm veranderen, het veranderingsproces neemt ongeveer een halve minuut in beslag. Het personage kan altijd terug veranderen naar zijn/haar eigen vorm en voor maximaal een dagdeelin zijn/haar dierenvorm blijven.Een Pookah-speler begint het spel met 1 shapeshiftvorm.
+
+Dit is de primaire diervorm die je Pookah karakter in zijn/haar hart heeft gesloten. Deze vorm kan uitsluitend een niet-magisch dier zijn. In deze vorm kun je uitsluitend spreken in de taal der dieren (waarin je niet kan liegen) en geen magie gebruiken. Overleg even met spelleiding welke alternatieve vorm je wilt nemen.Je houdt al je eigen stats in deze vorm. De speler moet zelf voor de Phys Rep van de alternatieve vorm zorgen.Het moet duidelijk zijn door de Phys Rep watvoor vorm je aangenomen hebt. Afhankelijk van het dier zou je primitieve wapens kunnen gebruiken: zoals een aap met een stok, maar een muis kan dus geen wapen gebruiken. Verder kan je enkel vaardigheden gebruiken, die je in deze dierenvorm ook zou kunnen uitoefenen.
+Op hogere niveau's neem je meerdere vormen aan.</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Let op dat alles wat je als kostuum aantrekt onderdeel is van jezelf en je kan niet weg zonder dat onderdeel.</td>
+<td>Pookah zijn in hun eerste, prille bestaan zachte lieve, onschuldige maar kleine (zowel fysiek als mentaal) wezens. Het lijken engelachtige kindvormen. Alsof er een zachte gloed om hen heen hangt, wat hen een zachte onaardse gloed lijkt te geven.</td>
+<td>Pookah zijn een van de schattigste, vrolijkste en sympathiekste wezens van Kederan. Ze staan bekend altijd uit goede intentie te handelen. Liegen doen ze niet uit kwade wil, maar alleen om verhalen nóg interessanter te maken. Pookah zijn enthousiast; prettig gestoord en daardoor echte clowns. Ze kunnen dingen maar met moeite serieus nemen en als het te serieus wordt, zullen ze er een grapje over maken om de sfeer luchtiger te maken. Het zijn emotioneel primair reagerende schattige wezens die erg nauw verweven zijn met een natuurthema. Door hun sterke binding met de natuur, kunnen zij haast intuïtief de entree naar de Emerald Dream vinden.Pookah kunnen soms verhalen lezen in de sterren. Verhalen die zijn geweest, die spelen en soms ook die komen gaan.
+Zie het regelsysteemboek voor meer informatie, indien nodig.
+
+Taal: Pookah spreken primair de taal der dieren. Ze zijn ook bekend met “common”, maar hierin is hun woordenschat slechts beperkt en spreken zij dit hakkelig; bijna kinderlijk.
+Namen: Pookah namen zijn kort en speels. Ze hebben vaak referenties naar bloemen. 
+Voorbeelden van namen zijn: Pip, Fleur, Lila, Hop, Lily, Evi. 
+Religie: Pookah zijn, vanuit hun dierlijke aard, geneigd om veel steun en herkenning te vinden bij de Huntress. Hiernaast ondervinden ze sterke aantrekkingskracht tot de sterren en zullen ze zich tijdens heldere nachten erg rustig en sereen voelen.</td>
+<td>Generiek</td>
+	</tr>
+	<tr>
+<td align="right">29</td>
+<td>Mens</td>
+<td>Annelotte</td>
+<td>Jong meisje die ontzettend ziek is
+Na genezing vol leven en zeer dankbaar</td>
+<td>&nbsp;</td>
+<td align="right">1</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>- Jurkje</td>
+<td>Jong meisje is erg ziek, moeder gelooft dat alleen een echte heks haar kan helpen.
+
+Annelotte heeft alle stadia al voor doorstaan en heeft vooral nog last van een pijnlijk tong en spierkrampen. Haar moeder (Madelijn) vond het allemaal wel erg vreemd en is met haar bijgeloof op zoek gegaan naar een echte heks.
+
+De ziekte waar Annelotte aan lijdt is "Roze Onvruchtbaarheid"
+Mogelijke symptomen:
+- een zere tong
+- uitslag
+- zwak voelen
+- gewichtstoename (niet in alle gevallen)
+- spierkrampen (soms)
+
+Wat te verwachten: een zere tong en uitslag kunnen binnen enkele dagen optreden, maar er kan slechts één symptoom worden waargenomen. Na het eerste begin, verdwijnt de pijnlijke tong in het algemeen, om later terug te komen. Rond deze tijd wordt het gevoel van zwakte ervaren door de overgrote meerderheid van de mensen die aan deze ziekte lijden.
+De ervaring van een zwak gevoel heeft vaak een versterkend effect op de ervaring van uitslag.
+Na enkele dagen wordt gewichtstoename door ongeveer 25% van de mensen ervaren en is het meest ervaren na het drinken.
+Gedurende de loop van de ziekte kunnen spierkrampen worden ervaren, maar slechts in zeldzame gevallen en kunnen worden ervaren op extreme niveaus.
+Oorzaak: Te veel stress en een verzwakt immuunsysteem.
+Verergerd door: het stimuleren van inspanning
+Behandeling (heks): de aanwezige uitslag met speeksel van een Woudelf insmeren, vermengd met wat Henbane. Vervolgens de patiënt op de rug leggen en zorgen dat zowel armen als benen ten minste een hoek van 30 graden maken met elkaar. Dit voor een uurtje laten inwerken en vervolgens de patiënt laten slapen onder voldoende warmte, zodat deze goed gaat zweten, voor minstens 4 uur.
+Zeldzaamheid: 1 op de 12 jonge kinderen heeft "Roze Onvruchtbaarheid".</td>
+<td>Ziek meisje</td>
+	</tr>
+	<tr>
+<td align="right">79</td>
+<td>Willing</td>
+<td>Amaguq Nanoek</td>
+<td>Hij is toegewijd, gevoelig, populair en misschien een beetje te arrogant. Maar er is meer dan dit aan iemand met zijn positie.</td>
+<td>- Reading, Writing, Speaking (niv. 1) (Common + Willing Dialect)
+- Adeptschap Natuur (niv. 2)
+- Extra mana (niv. 2)
+- Magical Reading, Writing, Speaking (niv. 1) (Basic + Druidic glyphs/Natuur)
+- Divination (niv. 3) (d.m.v. botten/veren/ingewanden van dieren te bestuderen)
+- Botanist (niv. 2)
+- Potion Brewer (niv. 2)
+
+Spreuken: 
+- Natuur: Badger’s Anger (N1), Create Food (N1), Speak with Animals (N1), Animal Companion (N2), Create Herb (N2)</td>
+<td align="right">4</td>
+<td align="right">10</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Sjamanistische spulletjes en kleding</td>
+<td>Vader Wolf, of Amaguq zoals hij in het lokale dialect eigenlijk heet, leefde vrij van problemen tot hij ongeveer 14 jaar oud was, maar op dat moment begon het leven te veranderen. Hij is één van de sjamanen van de stam. Eigen WAS hij één van de sjamanen van de stam, want hij en zijn twee reisgenoten zijn al een lange tijd op pad om Vinny/Atiqtalaaq te zoeken. Hij houdt de groep bijeen door te blijven praten over de legende van Atiqtalaaq. Hij die al enkele eeuwen inmiddels over de wereld zou rondreizen, omdat niemand, zelf de dood, hem niet kon stoppen.
+
+Willings: Op de Lost Plains leven de wezens die zichzelf “Willings” noemen. Deze wezens gedragen zich over het algemeen wat dierlijker dan hun vergelijkbare voorouderen. De onherbergzame koude vlakte zorgt ervoor dat overleven belangrijker is dan etiquette, politiek of geld. Toch zijn er gewoontes, feestdagen en rituelen die het volk kenmerkt. Sommige Willings hebben wit haar, waardoor ze beter gecamoufleerd zijn, ze worden soms ook gezien als puurder en meer beest dan andere Willings.
+
+Herkomst: De term “Willing” is afkomstig van “Willing to mate with Beastmen”. Deze wezens hebben namelijk een rijke geschiedenis van voortplanting met Beastling. Hierdoor hebben deze mensen meer trekjes van Beastling dan andere volkeren; waardoor ze bijvoorbeeld beter bestand zijn tegen kou door extra beharing. Door de eeuwen heen kan een Willing verschillende Beastling-voorouders hebben, maar de meest recente Beastling-voorouder bepaalt vaak de dierlijke trekjes en het uiterlijk.
+
+Stammen: De Willings hebben zich gegroepeerd in stammen. Elk met zijn eigen specialiteiten, manieren van overleven en gebruiken. Deze stammen hebben elk een andere Beastling voorouder.
+
+Nanoek: Willings uit deze stam hebben vaak een dikkere vacht en worden gezien als goede vissers. Hun handen lijken meer op klauwen en ze hebben een dikkere huid en wijdverspreide haargroei, waardoor ze goed in koud water kunnen zwemmen. De leider van deze stam is een Ijsbeerling, Ammagaruqnik Nanoek, in navolging van de legende van Atiqlaaq.</td>
+<td>Vader wolf, sjamaan</td>
+	</tr>
+	<tr>
+<td align="right">80</td>
+<td>Willing</td>
+<td>Kunwaktok Nanoek</td>
+<td>Een goedlachse, vandaar de naam, jager met altijd een goede grap of sterk verhaal te vertellen.</td>
+<td>- Reading, Writing, Speaking (Common + Willing dialect)
+- Hunter (niv. 4)
+- Nature Worker (niv. 3)
+- Medic (niv. 2)
+- Small Weapons (niv. 2)
+- One-Handed Weapons (niv. 3)
+- Archery (niv. 2)
+- Ambidex (niv. 3)
+- Throwing Weapons (niv. 1)
+- Toughness (niv. 2)
+- Leather Armor (niv. 1)</td>
+<td align="right">7</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Jagersuitrusting en ijsbeertrekjes</td>
+<td>Kunwaktok jaagt op alles wat los en vast zit. Op de Lost Plains is dat niet zo'n probleem, want er is toch niet heel veel en wat er zit, is goed verstopt, dus er overleefd in verhouding nog best veel zijn vallen en vaardigheden met pijl en boog of steekwapen. Daarnaast jaagt hij op mensen, maar dan meer voor goede gesprekken en interessante nachten, dan voor voedsel. In gesprekken is het zelden erg saai met Kunwaktok, want hij/zij heeft altijd wel iets te vertellen, al zijn het merendeel sterke verhalen over de grote reis die ze met de groep al hebben gemaakt.
+
+Willings: Op de Lost Plains leven de wezens die zichzelf “Willings” noemen. Deze wezens gedragen zich over het algemeen wat dierlijker dan hun vergelijkbare voorouderen. De onherbergzame koude vlakte zorgt ervoor dat overleven belangrijker is dan etiquette, politiek of geld. Toch zijn er gewoontes, feestdagen en rituelen die het volk kenmerkt. Sommige Willings hebben wit haar, waardoor ze beter gecamoufleerd zijn, ze worden soms ook gezien als puurder en meer beest dan andere Willings.
+
+Herkomst: De term “Willing” is afkomstig van “Willing to mate with Beastmen”. Deze wezens hebben namelijk een rijke geschiedenis van voortplanting met Beastling. Hierdoor hebben deze mensen meer trekjes van Beastling dan andere volkeren; waardoor ze bijvoorbeeld beter bestand zijn tegen kou door extra beharing. Door de eeuwen heen kan een Willing verschillende Beastling-voorouders hebben, maar de meest recente Beastling-voorouder bepaalt vaak de dierlijke trekjes en het uiterlijk.
+
+Stammen: De Willings hebben zich gegroepeerd in stammen. Elk met zijn eigen specialiteiten, manieren van overleven en gebruiken. Deze stammen hebben elk een andere Beastling voorouder.
+
+Nanoek: Willings uit deze stam hebben vaak een dikkere vacht en worden gezien als goede vissers. Hun handen lijken meer op klauwen en ze hebben een dikkere huid en wijdverspreide haargroei, waardoor ze goed in koud water kunnen zwemmen. De leider van deze stam is een Ijsbeerling, Ammagaruqnik Nanoek, in navolging van de legende van Atiqlaaq.</td>
+<td>Lach, jager</td>
+	</tr>
+	<tr>
+<td align="right">81</td>
+<td>Willing</td>
+<td>Aglakti Nanoek</td>
+<td>liefhebbend en ruimgeestig. Vrijwel altijd vrolijk en opgewekt.</td>
+<td>- Gelovige Zorax (niv. 2)
+- Reading, Writing, Speaking (niv. 3) (Common, Elven, Dwarven, Gnome, Taal der dieren , Draconic, Halfling, Orcish)
+- Lock Picker (niv. 2)
+- Pickpocket (niv. 2)
+- Extra Divinity (niv. 4)
+
+Gebeden (bidden doe je naar de "Vrouwe van de warme nachten" en wordt waar mogelijk gedaan i.c.m. zang/muziek/verhalen):
+- Zorax: Caring Aura (N1), Enhance &lt;emotion&gt; (N1), Fascinate Person (N2), Inspire Love (N2), Song of Healing (N3)</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">15</td>
+<td>Muziekinstrument (bijv. een trommel als die er is)
+Lockpicking set</td>
+<td>&nbsp;</td>
+<td>Afkomstig uit een groot gezin (7 kinderen) was Aglakti de op één na oudste. Dus alle verantwoording als oudste kroost viel op de schouders van haar zus en de leukere taken, zoals het later ook bezighouden van haar jongere broers en zusters, viel op de schouders van Aglakti. Hierdoor heeft ze al op jonge leeftijd geleerd om verhalen te vertellen en zichzelf daarbij te begeleiden met muziek. Het gezin had het niet heel breed, dus werden haar zang- en vertelkunsten ook nog wel eens ingezet op de jaarlijkse markten en reizen naar het warmere zuiden als de ijsvlakten bevroren genoeg zijn om naar de andere landen te reizen. Dit heeft haar dan ook veel talen geleerd te spreken, lezen en schrijven. Bovendien leerde ze hier ook 'makkelijkere' manieren om aan geld te komen, zoals het openen/roven van buidels. Al dan niet na een knusse nacht tussen de lakens. 
+
+Naast haar inzet als minstreel is ze teven gelovig in de leer van de "Vrouwe van de warme nachten". Een term die ze zelf heeft verzonnen om Zorax een naam te geven voor zichzelf. Ze voelt zich erg aangetrokken tot het brengen van de blijdschap en de liefde. Dit laatste moedigt ze dan ook zeker aan en probeert Kunwaktok (Lach) te vertuigen om misschien toch eens iets meer voor de liefde te zoeken naar een partner voor de avond, dat pure lust. Al is daar uiteraard niet per se wat mis mee. Zelf maakt het haar niet zoveel uit, mens, elf, beastling. Ook eender welk geslacht hoeft niet in de weg te staan van een fijn gezelschap.
+
+Vader Wolf wordt door Aglakti ook daadwerkelijk als een soort vader gezien. Haar eigen vader zag ze nauwelijks, dus heeft ze veel gesprekken gehad met hem, om het dorp en de manier van leven beter te leren. De woorden van deze wijze man zijn bijna nog heiliger dan die van de "Vrouwe".
+
+Willings: Op de Lost Plains leven de wezens die zichzelf “Willings” noemen. Deze wezens gedragen zich over het algemeen wat dierlijker dan hun vergelijkbare voorouderen. De onherbergzame koude vlakte zorgt ervoor dat overleven belangrijker is dan etiquette, politiek of geld. Toch zijn er gewoontes, feestdagen en rituelen die het volk kenmerkt. Sommige Willings hebben wit haar, waardoor ze beter gecamoufleerd zijn, ze worden soms ook gezien als puurder en meer beest dan andere Willings.
+
+Herkomst: De term “Willing” is afkomstig van “Willing to mate with Beastmen”. Deze wezens hebben namelijk een rijke geschiedenis van voortplanting met Beastling. Hierdoor hebben deze mensen meer trekjes van Beastling dan andere volkeren; waardoor ze bijvoorbeeld beter bestand zijn tegen kou door extra beharing. Door de eeuwen heen kan een Willing verschillende Beastling-voorouders hebben, maar de meest recente Beastling-voorouder bepaalt vaak de dierlijke trekjes en het uiterlijk.
+
+Stammen: De Willings hebben zich gegroepeerd in stammen. Elk met zijn eigen specialiteiten, manieren van overleven en gebruiken. Deze stammen hebben elk een andere Beastling voorouder.
+
+Nanoek: Willings uit deze stam hebben vaak een dikkere vacht en worden gezien als goede vissers. Hun handen lijken meer op klauwen en ze hebben een dikkere huid en wijdverspreide haargroei, waardoor ze goed in koud water kunnen zwemmen. De leider van deze stam is een Ijsbeerling, Ammagaruqnik Nanoek, in navolging van de legende van Atiqlaaq.</td>
+<td>Liedjesmaker, minstreel/bard</td>
+	</tr>
+	<tr>
+<td align="right">73</td>
+<td>Human/vampier</td>
+<td>Louisean Gradely</td>
+<td>Een wijs persoon met een goed gevoel voor diplomatie. Kan echter daardoor wat arrogant zijn als het hem te gemakkelijk afgaat. Dan is er niet genoeg uitdaging. Bovendien erg manipulatief en speelt graag met de emoties van anderen.</td>
+<td>Speelt graag met emoties en kan dit kracht bijzetten, door dit te forceren met "Inspire &lt;emotie&gt;" en "Enhance &lt;emotie&gt;" te gebruiken wanneer het hem uitkomt. Deze effecten zijn in principe onbeperkt bruikbaar, maar houd het leuk en speelbaar voor de personen om je heen.
+Het gebruik er van gaat altijd gepaard met een vaste kleine handbeweging en vervolgens het effect noemen.
+Bovendien kan je alle spreuken van het element Geest\.
+Als je informatie nodig hebt die je niet weet, roep je altijd je assistent er bij. Hierin zit zeer veel informatie opgeslagen. Ook kan je veel informatie 'gewoon' vragen bij een spelleider.</td>
+<td align="right">10</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>gekleurde zonnebril op zeer netjes gekleed. Indien overdag ook met een parasol. Deze wordt veelal vastgehouden door je assistent.</td>
+<td>Louisean Gradely is de huismeester van het Louisean-Gradely huis. Deze huismeester heeft altijd in ieder geval 1 van de leden van zijn adviesraad bij zich. Deze raad bestaat uit een aantal gehersenspoelde personen waarin Louisean Gradely zijn agenda en afgesproken notities in bewaard. Hij kan deze adviseur om elk artikel vragen dat de laatste 25 jaar opgeslagen is. Natuurlijk past dat niet allemaal in 1 persoon en sommige personen worden gearchiveerd en neemt hij alleen mee als erom gevraagd wordt.</td>
+<td>Hoofd van huis Louisean-Gradely</td>
+	</tr>
+	<tr>
+<td align="right">74</td>
+<td>High elf</td>
+<td>Boenos(ia) Keya-Imra</td>
+<td>Redelijk kalm en doordacht. Vriendelijk, maar op zijn/haar hoede.</td>
+<td>- Reading, Writing, Speaking (niv. 4) (alle talen)
+- Divination (niv. 3)
+- Adeptschap Wit (niv. 2)
+- Extra Mana (niv. 4)
+
+Spreuken: 
+- Wit: Protection from Poison / Disease (N1), Analyze (N1), Stabilize (N1), Cure Poison / Disease (N2), Minor Healing (N2), Heal Body (N3), Total Heal (N4)</td>
+<td align="right">4</td>
+<td align="right">25</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>verzorgd gekleed</td>
+<td>N.B. Voorkeur voor een vrouwelijke figurant, gezien de overvloed aan vrouwen die hoge posities bekleden in dit huis!
+Keya-Imra is het huis van genezing en voortplanting. Dit is het huis dat bepaald wie met wie het huwelijksverbond aangaat en kinderen mag maken. Via dit huis worden de afgelopen 25 jaar de beste bloedlijnen met elkaar verbonden. Dit huis werkt dan ook nou samen met de Dannyd-Droth om afstammingen te maken met het meest pure bloed van de Children of Old Age.
+Ook buitenstaanders die toe willen treden tot de Children of Old Age moeten bij dit huis een test der puurheid afleggen en daarna wordt je bij een huis ingedeeld. Vervolgens leg je de ‘Awakening trial’ af. Deze is voor buitenstaander en eigen kinderen van de Children hetzelfde. Deze trials zijn door de Keya-Imra bedacht om opener te zijn naar de buitenwereld. Het is alleen zo jammer dat de buitenwereld niet openstaat voor de cultuur der Children of Old Age. 
+De vrouwen binnen dit huis houden zich vooral bezig met het onderzoeken van bloedlijnen en de daadwerkelijke voortplanting zelf. 
+Mannen worden veelal als bewakers gebruikt. Indien die niet kunnen vechten, worden ze als genezers opgeleid.
+
+Het ritueel om tot huis Keya-imra toe te treden bestaat uit:
+Als vrouw moet je ten minste één keer bevallen en het overleven. Natuurlijk moet je bevallen van een door huis Keya-Imra gekozen partner.
+Voor mannen is het anders; je zaad moet sterk zijn en Keya Imra zal je meenemen naar bed. Als je die test doorstaat zal ze van je bloed drinken en je zaad veranderen. Degene die ze bijt, krijgt de kracht tot het verleiden van het andere geslacht.</td>
+<td>hoog geplaatste adviseur in huis Keya-Imra</td>
+	</tr>
+	<tr>
+<td align="right">75</td>
+<td>allerlei</td>
+<td>Servitar</td>
+<td>Geen eigen wil meer. Hooguit nog een sprankeltje over van de oude idealen. Deze worden echter ver weggedrukt door het "Dominate" effect van het Duo.</td>
+<td>- Alle niveau 1 gebeden van de Godheid
+- Spreuk: Elemental Projectile van het element van je Godheid
+- Small Weapons (niv. 1)
+- One-Handed Weapons (niv. 2)
+
+Extra vaardiheden, afhankelijk van Godheid
+- Two-Handed/Large Weapons (niv. 2) (Mohr)
+- Small/Large Shield (niv. 2) (Mishka)
+- Archery (niv. 2) (Huntress)
+- Spreuken Geestmagie (niv. 2) (Seductress)
+- (Heavy) Metal Armor (niv. 2) (Tarkyss)
+- Spreuken Luchtmagie (niv. 2) (Zorax) 
+- Evade (niv. 2) (Rach'tsor)
+- Disarm (niv. 2) (Erasu)</td>
+<td align="right">7</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Verschillend per servitar</td>
+<td>De servitars staan allemaal onder invloed van sterke Geestmagie, welke dusdanig is versterkt met Goddelijke energie (verkregen door het mengen met servitar Ectoplasma) dat dit zelfs door de immuniteiten van sommige servitarsoorten is heengedrongen. Werk dus vooral ook goed samen, verdeel je krachten en overleg als groep wat je taak gaat zijn. Rach'tsor's Chaos-geesten zullen bijv. goed kunnen genezen, de demonen van Mohr en de aarde-engelen van Tarkyss zijn prima strijders, terwijl de Sylph van Mishka de rest kan beschermen.  Hieronder vind je de lijst met welke servitars waar bij horen en welke elementen ze kunnen gebruiken.
+
+Godheid: Dienaren (Element)
+---------------------------
+Mishka: Sylphs (Water)
+Mohr: Demonen (Vuur)
+Huntress: Totemdieren (Natuur)
+Neora: Schaduwen (Geest)
+Erasu: Gouden engelen (Zwart)
+Rach’tsor: Chaos-geesten (Wit)
+Zorax: Djinn en Musen (Lucht)
+Tarkyss: Aarde-engelen (Aarde)</td>
+<td>onder de grip van het Duo</td>
+	</tr>
+	<tr>
+<td align="right">76</td>
+<td>Draak</td>
+<td>Ruby</td>
+<td>Vurig, impulsief en uit op dood en vernietig. Wil vooral haar vleugels weer eens spreiden na zo'n lange tijd in het zwaard van Kyna te hebben gezeten.</td>
+<td>- Elemental breath (Vuur): Je kunt om de ong. 10 seconden 1 elementaire schade doen aan max. 3 personen binnen 3 meter. Deze vaardigheid gebruik je door de call “1 Fire” te gebruiken en dan maximaal 3 personen, 1 voor 1, aan te wijzen. 
+- Elemental Immunity (Vuur): Vuurschade heeft geen effect op je. Hierdoor negeer je ook eventuele neveneffecten van Vuurspreuken.
+- Elemental Absorption (Vuur): Per effect dat het element "Vuur" gebruikt, genees je 1 HP (ongeacht het niveau van dit effect)
+- Small Weapons (niv. 2) (in de vorm van klauwen)
+- Toughness (niv. 4) (in de vorm van schubben)
+- Adeptschap Vuur (niv. 3)
+- Extra Mana (niv. 3)
+
+Spreuken (alle niv. 1 + 2 Vuurspreuken): 
+- Vuur: Shape Fire (N1), Fiery Touch (N1), Create Light (N1), Cremation (N1), Inner Fire (N1), Fire Blast (N2), Burning Hands (N2), Shatter (N2), Red Fire Rune (N2)</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>&nbsp;</td>
+<td>Rode drakenkop (opslag) + rode en zwarte doeken.
+De elemental vorm wordt 1 wezen, door 5 personen gedragen</td>
+<td>&nbsp;</td>
+<td>in tijd verschoven 'jonge' draak/elemental vorm</td>
+	</tr>
+	<tr>
+<td align="right">71</td>
+<td>Beastling - katling</td>
+<td>Kasabaran Aegir-Bas</td>
+<td>Een aardige leergierige Aegis-bas lid. Ze is een leraar, die je met een warme hand wil helpen waar je mee zit.</td>
+<td>- Gelovige van alle 8: Als lid van huis Aegir-Bas, verandert je geloof gedurende de dag. Hierdoor eer je alle goden evenveel. Zie het overzicht onder deze tabel.
+- Fast Stride: Je kunt sneller lopen dan een gemiddeld persoon. 1x per encounter kan je een heel erg kort super snel sprintje trekken van 7m. OC: loop met je hand omhoog naar de plek waar je tevoorschijn komt. Dit werkt vergelijkbaar met de spreuk “Dimension Door”
+
+Gebeden*:
+- Algemeen: Bless Water (N1), Bless Weapon (N2)
+- Tarkyss: Learn Craft (N1)
+- Zorax: Touch of Mercy (N1)
+- Rach'tsor: Rejuvenation (N1)
+- Erasu: Comprehend Languages (N1)
+- Mohr: Courage (N1)
+- Mishka: Protection from element (N1)
+- Huntress: Enhance sense (N1)
+- Seductress: Know Curse (N1)
+* Afhankelijk van het moment van de dag mag je gebeden gebruiken en water/wapens zegenen in naam van de God die in dat tijdslot wordt vereerd.
+De verdeling is als volgt: 
+10:00-12:00 Huntress 
+12:00-14:00 Mohr
+16:00-18:00 Rach'tsor
+18:00-20:00 Erasu
+20:00-22:00 Seductress
+22:00-00:00 Mishka
+00:00-02:00 Zorax
+02:00-10:00 tijd voor zichzelf en bezinning</td>
+<td align="right">5</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">10</td>
+<td>Klokje/tijdmeetinstrument
+Iets om aan te geven welke Godheid je op dat moment vereerd (bijv. gekleurde lintjes)</td>
+<td>Gewaad met bijv. lintjes in de kleuren van de Goden.</td>
+<td>Het huis van Aegir-Bas houdt zich bezig met het tevreden houden van alle Goden. Zo hebben ze de dagen van het jaar gedeeld door 8 maanden, 1 voor iedere Godheid, om alle Goden te eren. Ze controleren de huizen erop dat de Goden goed vereerd worden. Hier zijn ook priesters die wisselen van God. De power van deze Children is dat ze niet door Goden en of servitars gezien worden. Hierdoor is het mogelijk om meerdere Goden aan te hangen en vooral om van alle Goden de gebeden te kunnen gebruiken.</td>
+<td>Priesteres van de 8</td>
+	</tr>
+	<tr>
+<td align="right">72</td>
+<td>Human</td>
+<td>Thiryon Aegir-Bas</td>
+<td>Niemand is natuurlijk perfect en Thiryon heeft ook veel minder gunstige eigenschappen. Zijn narcistische kant en wreedheid jegens orcs brengen hem zo nu en dan nog wel eens in de problemen en verbloemen zijn prettige gemoedstoestanden, tot ergernis van anderen. Gelukkig is zijn aanpassingsvermogen meestal in staat om de situatie te verzachten.</td>
+<td>- Reading, Writing, Speaking (niv. 2) (Common, Taal der dieren, Goblin, Halfling, Orcish)
+- Priesthood (alle 8) (niv. 4)
+- High Priest (niv. 1)
+- Ceremony Master (niv. 4)
+- Gelovige van alle 8 (niv. 4): Als lid van huis Aegir-Bas, verandert je geloof gedurende de dag. Hierdoor eer je alle goden evenveel. Zie het overzicht onder deze tabel.
+
+Gebeden*: Alle niveau 1 en 2 gebeden.
+* Afhankelijk van het moment van de dag mag je gebeden gebruiken en water/wapens zegenen in naam van de God die in dat tijdslot wordt vereerd.
+De verdeling is als volgt: 
+10:00-12:00 Huntress 
+12:00-14:00 Mohr
+16:00-18:00 Rach'tsor
+18:00-20:00 Erasu
+20:00-22:00 Seductress
+22:00-00:00 Mishka
+00:00-02:00 Zorax
+02:00-10:00 tijd voor zichzelf en bezinning</td>
+<td align="right">4</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">20</td>
+<td>&nbsp;</td>
+<td>Netjes eventueel met symbolen die van toepassing zijn op de Goden die potentieel was toepassing zijn in de periode dat hij aanwezig is in het spel.</td>
+<td>Thiryon's verwekking vond plaats op het exacte moment dat het omslagpunt was van de tijd voor Mishka naar de tijd voor Zorax (00:00 exact dus). Dit markeerde hem op een bovennatuurlijke manier voor grootste zaken, of zo verkondigen de ouders van Thiryon tot op de dag van vandaag. Tijdens zijn leven heeft Thiryon van deze illusie dankbaar gebruik gemaakt en, samen met een charismatische uitstraling, zo uitgegroeid tot één van de hogepriesters binnen de Dark Dannings.</td>
+<td>Hogepriester van de 8</td>
+	</tr>
+	<tr>
+<td align="right">78</td>
+<td>Human</td>
+<td>Ruud Oostenbiggel</td>
+<td>Vriendelijke man die erg hard werkt en een grote creativiteit heeft als het aankomt op oplossingen vinden door middel van voorwerpen een handeling laten uitvoeren of taak laten vervullen.</td>
+<td>- Reading, Writing, Speaking (niv. 2) (Common, Elven, Goblin, Draconic, Halfling)
+- Fixer (niv. 2)
+- Trader (niv. 2)
+- Refiner (niv. 4)
+- Analyse Object (niv. 4)
+- Forgery (niv. 2)</td>
+<td align="right">3</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td align="right">&nbsp;</td>
+<td>Allerlei spullen die hij eventueel nog zou kunnen verhandelen/gebruiken. Bij voorkeur in iets van een mand of tas.</td>
+<td>Lange jas en veel losse spulletje die allemaal eventueel wel een doel zou kunnen gaan dienen.</td>
+<td>Ruud Oostenbiggel is 'uitvinder extraordinaire' en probeert voor iedereens probleem een oplossing te vinden in de vorm van een voorwerp links of rechts dat bij een taak helpt, of een handeling uitvoert zodat je dat bijv. niet meer zelf hoeft te doen. Tevens is hij aangesloten bij het uitvindingsinstituut in Goldcourt, Aurum, alwaar vandaan hij regelmatig workshops verzorgd voor personen die bij het instituut interesse hebben zich aan te melden.
+Bovendien verdient hij de afgelopen tijd veel geld met een prototype van de "Fantastische Anti-Inbraak Lamp". Deze lamp zou je moeten waarschuwen op het moment dat een voorwerp dat je niet wil dat geopend wordt, alsnog wordt geopend. In de basis is dit een kwestie van een manier vinden om te detecteren waarom het object geopend wordt en dan dus bepalen of dat is toegestaan. Zoniet, dan moet de lamp aangaan. Deze is in te stellen op allerlei kleuren en lichtsterktes. Helaas willen deze 'instellingen' nog wel eens anders afgesteld komen te staan, zodat de eigenaar veel te weinig of juist héél veel licht te zien krijgt. Ach... het is ook nog maar een prototype.</td>
+<td>Magisch uitvinder</td>
+	</tr>
+</tbody></table><!-- SQL:
+select NPC_ID NPC_ID, NPC_RACE NPC_RACE, NPC_NAME NPC_NAME, NPC_PERSONALITY NPC_PERSONALITY, NPC_SKILLS NPC_SKILLS, NPC_HITPOINTS NPC_HITPOINTS, NPC_MANA NPC_MANA, NPC_ARC_MANA NPC_ARC_MANA, NPC_CHAOS_MANA NPC_CHAOS_MANA, NPC_DIVINITY NPC_DIVINITY, NPC_ITEMS NPC_ITEMS, NPC_DRESSCODE NPC_DRESSCODE, NPC_DESC NPC_DESC, NPC_SHORT_DESC NPC_SHORT_DESC from (select * from "SH1BLUE21"."KDR_NPCS")--></body></html>

@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='Cp1252'>
+  
+  <title>Responsive Table</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Georgia, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(0):before { content: "PLOT_ID"; }
+td:nth-of-type(1):before { content: "EVENT_ID"; }
+td:nth-of-type(2):before { content: "PLOT_TITLE"; }
+td:nth-of-type(3):before { content: "PLOT_CATEGORY"; }
+td:nth-of-type(4):before { content: "PLOT_SIZE"; }
+td:nth-of-type(5):before { content: "PLOT_GROUP_TYPE"; }
+td:nth-of-type(6):before { content: "PLOT_TIMING"; }
+td:nth-of-type(7):before { content: "PLOT_PROPPS"; }
+td:nth-of-type(8):before { content: "PLOT_LOCATION"; }
+td:nth-of-type(9):before { content: "PLOT_GOAL"; }
+td:nth-of-type(10):before { content: "PLOT_TARGET"; }
+td:nth-of-type(11):before { content: "PLOT_GAMEMASTER"; }
+td:nth-of-type(12):before { content: "PLOT_AUTHOR"; }
+td:nth-of-type(13):before { content: "PLOT_DESCRIPTION"; }
+td:nth-of-type(14):before { content: "PLOT_NPCS"; }
+td:nth-of-type(15):before { content: "PLOT_SEQ"; }
+td:nth-of-type(16):before { content: "PLOT_CHECKED"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+lsearch = function(){
+  //this.term = document.getElementById('S').value.toUpperCase();
+  var s = document.getElementById('search').value.toLowerCase();
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if (s =="" ){
+      rows[i].style.display ='';
+    } else if ( rows[i].innerText.toLowerCase().indexOf(s) != -1 ) {
+      rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+  this.time = false;
+}
+
+</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="lsearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>PLOT_ID</th>
+	<th>EVENT_ID</th>
+	<th>PLOT_TITLE</th>
+	<th>PLOT_CATEGORY</th>
+	<th>PLOT_SIZE</th>
+	<th>PLOT_GROUP_TYPE</th>
+	<th>PLOT_TIMING</th>
+	<th>PLOT_PROPPS</th>
+	<th>PLOT_LOCATION</th>
+	<th>PLOT_GOAL</th>
+	<th>PLOT_TARGET</th>
+	<th>PLOT_GAMEMASTER</th>
+	<th>PLOT_AUTHOR</th>
+	<th>PLOT_DESCRIPTION</th>
+	<th>PLOT_NPCS</th>
+	<th>PLOT_SEQ</th>
+	<th>PLOT_CHECKED</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td align="right">84</td>
+<td align="right">1</td>
+<td>Did you Sleep well?</td>
+<td>GENERAL</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>3 dobbelstenen (D6) of kaartensets (aas t/m 6) voor de 3 spelleiders</td>
+<td>overal</td>
+<td>Slapen een IC ding maken in Kederan.</td>
+<td>Iedereen</td>
+<td>Rodney, Jennifer en Bram</td>
+<td>Mass</td>
+<td>Iedereen heeft in-game geslapen. Voor iedereen is er wel iets gebeurd. 
+De spelleiders zullen na het ontbijt iedereen langs gaan en het gehele IC-gebied verdelen. Stem dit onderling af, bijv. o.b.v. van locatie of type spelers (Magie, Goden en Ambachten).
+
+Vertel goedendag ik ben uw nachtrust. Graag wil ik dat u mij verteld waar u geslapen heeft en daarna 1x vandaag deze dobbelsteen rolt. (leg de nadruk op de 1x zodat als een andere SL dezelfde speler vraagt diegene direct antwoord met ik heb al gerold. Laat iedere speler met de dobbelsteen rollen/ een kaart trekken (Aas t/m 6). Verminderde/verhoogde MP/Divinity/mana telt voor alle vormen die op het persoon van toepassing zijn. Als een personage alle drie de soorten heeft, gaat het effect af op alle drie de vormen.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Voor elke persoon die in de herberg heeft geslapen:
+1-2. Je bent erg uitgerust. Je geneest +1 HP en begint vandaag met -1 MP/Divinity/mana.
+3-4. Je voelt je niet zo goed. Je begint de dag met 2 Non lethal damage en -1 MP/Divinity/mana.
+5-6. Je hebt best oké geslapen, maar je hoorde een vreemd zoemend geluid vanuit de eetzaal vannacht. Deze dag begin je met -1 MP/mana.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Personen die in een tent hebben geslapen:
+1. Echt wat een goede nacht was dit! Wauw! Je begint de dag met +1 tijdelijke HP.
+2. Een Redcap heeft je dromen bezocht vannacht. Je hebt vandaag +1 MP/Divinity/mana. 
+3-5 Je hebt best oké geslapen vannacht. Echter hoorde je geluiden van wezens in de nacht.
+6. Je hoorde een spannend gesprek tussen twee personen "vanavond als ze het niet hebben zullen we ze pakken".
+(slaat op het drugs plotje)
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Personen die buiten hebben geslapen:
+1. Je hebt het te koud gehad om te slapen. Je begint de dag met 3 Non lethal damage.
+2. Een rat heeft aan je been gegeten. Je begint de dag met -1 HP.
+3. Je hebt een schat gevonden vannacht. Trek 1x uit het lootdeck.
+4. Er is niks vreemds gebeurd, maar je buiten slapen was wellicht niet het beste idee. Je begint de dag met 1 Non Lethal.
+5. Je plekje was uitzonderlijk fijn. Je geneest +1 HP.
+6. Je heb bezoek gekregen vannacht van een beschermengel. Je hebt vandaag +2 MP/Divinity/mana.</td>
+<td>&nbsp;</td>
+<td align="right">0</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">93</td>
+<td align="right">1</td>
+<td>Assessing this mental situation</td>
+<td>GENERAL</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Schrijfmateriaal
+- Officiële onderzoekspapieren
+- Magische scrollcase map</td>
+<td>Herberg</td>
+<td>De oude spelers meer betrekken bij de nieuwe wereld, door ze ook meer over hun verleden te kunnen laten vertellen.</td>
+<td>De oude spelers</td>
+<td>Ambachtenspelleiders</td>
+<td>Mels</td>
+<td>Er zullen 3 onderzoekers naar de locatie van de spelers komen dit evenement om ze te onderzoeken op hun mentale staat en hun kennis/gebruik van magie en religie.Orde van de Geest
+Deze onderzoekers (Melichior, Bithisarea en Gaspar) zijn afkomstig uit het Koninkrijk Aurum en zijn gestuurd om op hun specifieke expertise te onderzoeken.
+
+Voor het onderzoek naar de mentale gesteldheid van de spelers wordt Gaspar. De intentie is om de spelers te bevragen over wat zijn hebben meegemaakt, zowel op de oude wereld, als in de tijd die zij hebben doorgebracht in de tussenliggende eeuwen. 
+
+Voorbeelden van vragen:
+* Wat was je werk?
+* Waarom koos je voor je dagbesteding?
+* Hoe was de relatie met je naaste(n)?
+
+Dit alles zal in een soort van dossier worden bijgehouden. Hoewel medewerking in principe vrijwillig, zullen alle belemmeringen in het onderzoek ook worden genoteerd. Het dossier wordt geschreven in Common, maar zal worden bewaard in een map/scroll case die magisch beschermd is.</td>
+<td>- Gaspar Sarimarcus (psycholoog van Orde van de Geest uit Aurum)</td>
+<td align="right">101</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">94</td>
+<td align="right">1</td>
+<td>Cult-ural research</td>
+<td>DIVINE</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Schrijfmateriaal
+- Officiële onderzoekspapieren
+- Magische scrollcase map</td>
+<td>Herberg</td>
+<td>De oude spelers meer bij de nieuwe wereld betrekken, door ze een theologische discussie te laten houden over religie. Met name het verschil tussen de oude en nieuwe setting</td>
+<td>Oude spelers met connecties met de Goden</td>
+<td>Godenspelleiders</td>
+<td>Mels</td>
+<td>Er zullen 3 onderzoekers naar de locatie van de spelers komen dit evenement om ze te onderzoeken op hun mentale staat en hun kennis/gebruik van magie en religie.
+Deze onderzoekers (Melichior, Bithisarea en Gaspar) zijn afkomstig uit het Koninkrijk Aurum en zijn gestuurd om op hun specifieke expertise te onderzoeken.
+
+Voor het onderzoek naar de religieuze kant van de spelers wordt Melichior. De intentie is om de spelers te bevragen over hoe zij religie zien en vooral te beoordelen of deze personen een gevaar kunnen zijn voor de samenleving, zeker op religieus vlak.</td>
+<td>Melichior Frumentius (Theoloog uit Aurum)</td>
+<td align="right">102</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">95</td>
+<td align="right">1</td>
+<td>Spellbound scrutiny</td>
+<td>MAGIC</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Schrijfmateriaal
+- Officiële onderzoekspapieren
+- Magische scrollcase map</td>
+<td>Herberg</td>
+<td>Oude spelers onderwijzen en onderzoeken op het gebied van de magie</td>
+<td>Oude spelers die elementaire magie gebruiken</td>
+<td>Magiespelleiders</td>
+<td>Mels</td>
+<td>Er zullen 3 onderzoekers naar de locatie van de spelers komen dit evenement om ze te onderzoeken op hun mentale staat en hun kennis/gebruik van magie en religie. Orde van de geest
+Deze onderzoekers (Melichior, Bithisarea en Gaspar) zijn afkomstig uit het Koninkrijk Aurum en zijn gestuurd om op hun specifieke expertise te onderzoeken.
+
+Voor het onderzoek naar de magische capaciteiten van de spelers wordt Bithisarea gestuurd. De intentie is om de spelers te bevragen over hun gebruik van magie en vooral te beoordelen of deze personen een gevaar zouden kunnen (gaan) betekenen voor de samenleving in (de buurt van) Aurum.
+
+Voorbeelden van vragen:
+* Welke vormen van magie gebruikt u?
+* Wat is uw beweegreden om een adeptschap aan te gaan voor deze stroming(en)?
+* Wat wenst u te bereiken door het gebruik van de magie?
+
+Dit alles zal in een soort van dossier worden bijgehouden. Hoewel medewerking in principe vrijwillig, zullen alle belemmeringen in het onderzoek ook worden genoteerd. Het dossier wordt geschreven in Common, maar zal worden bewaard in een map/scroll case die magisch beschermd is.</td>
+<td>Bithisarea Trimalchio (professor in elementaire magie, Aurum)</td>
+<td align="right">103</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">96</td>
+<td align="right">1</td>
+<td>Remedial teachings</td>
+<td>DIVINE</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>Luciën (Casper Levels), en andere Mishka-priesters/gelovigen, laten merken wat het effect is van de oude Mishka gebeden die tegenwoordig bij Rach'tsor horen. Als voorbeeld Cure Fatal</td>
+<td>Mishka gelovigen en priesters</td>
+<td>Godenspelleiders</td>
+<td>Mels</td>
+<td>In de nieuwe setting wordt een groot deel van de genezing vanuit de Goden niet langer door Mishka, maar wederom door Rach'tsor gedaan. Dit heeft als gevolg dat met name de hogere niveau gebeden op de achtergrond worden afgehandeld door de servitars van Rach'tsor, ondanks dat Mishka wordt aangeroepen. Dit is een afspraak tussen de Goden en op zichzelf geen probleem.
+
+Echter zullen de spelers worden geconfronteerd door dit verschil op het moment dat er bijv. een Cure Fatal moet worden gebruikt. Hiervoor zal een plot worden voorzien (&lt;naam van plot&gt;). Hier zal dit gebed nodig zijn en zal een oude speler merken dat dit anders aanvoelt e.d. 
+
+Met dit plot wordt een eventuele uitleg voorzien, zodat de spelers aan dit idee gaan kunnen wennen. Dit plot kan eventueel met een npc (of 2) worden uitgespeeld, al is het wellicht handiger dit door de Godenspelleiders te laten doen. Dit zullen we op het evenement moeten bekijken.</td>
+<td>&nbsp;</td>
+<td align="right">200</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">82</td>
+<td align="right">1</td>
+<td>Aram needs Mara</td>
+<td>MAGIC</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>1 potje regenboog klei als poep.</td>
+<td>Rondom de kampplaats van de Rumeliana</td>
+<td>Uitleg van wat er gebeurd is aan de rest van de nieuwe Rumeliana binnen het arabieren groepje en hen een keuze laten maken tussen de Queen of the Fae, of de Dark Druids</td>
+<td>Rumeliana groep</td>
+<td>Jennifer of Rik</td>
+<td>Mass</td>
+<td>De gehele groep heeft een vreemde droom gehad in downtime. Dit omdat ze aan het einde van het evenement de droomwereld ingestapt zijn om een Nyaad te redden. De personen die in de droomwereld zijn geweest, hebben de volgende uitleg ervan gekregen: 
+---------------------------------------------------------------------------------------------------------
+De takken sluiten om je heen als de poort achter je dicht sluit. Terwijl je met daglicht naar binnen bent gestapt, zie je dat het hier schemerig is. De hoge bomen lijken niet het licht te blokkeren, maar er is iets anders wat het licht hier veranderd. De geuren, het geluid, en eigenlijk al je zintuigen nu je erover nadenkt, lijken hier gedempt. De kleuren zijn mooier en feller, en als je ergens net niet naar kijkt worden de kleuren dof en vaal. Je hoort de stem van de zwarte Nyaad van uit de verte. "Witte? Ben jij dit? Ik mis je! Het is hier zo duister, gemeen en alleen. De wezens hier pesten mij. Ben jij hier, Witte? Ik voel dat je dichtbij bent?"
+
+De zwarte Nyaad komt om een boom heen gewandeld ze ziet jullie en ze schrikt. 
+
+(Jonneke): Ik buig voor haar en terwijl ik buig zeg ik: Mara alstublieft schrik niet. Wij willen je geen pijn doen. Mijn naam is Muna, prinses van Rumeliana. Ik ben hier samen met mijn heer gekomen in naam van Aram de Witte, om u te komen redden.
+(Laura): Ik kniel ook. Ik spreek mijn naam en functie uit en second jonneke intenties.
+(Jelmer): Ik kniel ook met mijn hoofd naar de grond zeg ik: "Ik ben een van de wachters van prinses Muna".
+
+Mara de Zwarte Nyaad wil wegspringen, maar de woorden die jullie spreken doen haar afwachtend kijken. 
+"Is het echt waar? Heeft mijn man Aram iemand gestuurd om mij te redden?"
+Ze wandelt rustig en voorzichtig op jullie af. Duwt haar neus tegen Prinses Muna aan. Je voelt haar gladde neus warm tegen je voorhoofd aan drukken, alsof ze test of je echt bent. Vanuit ieders ooghoek vervormd haar zwarte huid zich tot een donkerblauwe kleur, maar als je je hoofd weer omhoog doet verdwijnt elk licht in de kleur van haar zwarte huid. Als je heel diep kijkt zie je dat haar vacht in de verte bestaat uit kleine zilveren plekjes. Alsof Mara, de zwarte Nyaad, een verre sterrenhemel op haar huid heeft. Zo dichtbij een Zwarte Nyaad zijn, is voor velen slechts een droom. En nu? Nu niet meer voor jullie, haar aanwezigheid verbant het duistere gevoel dat jullie kregen toen je door de poort stapte uit jullie. Ze briest. "Jullie.... Jullie zijn echt!!" Heel even zien jullie een gouden aura om haar heen. Alsof ze nu even echt wakker is en haar kracht meer straalt dan toen jullie haar in de verte zagen. toen zag ze er verslagen uit, Hopeloos en alleen. Nu, hier voelen jullie de warmte, haar geluk en haar liefde.
+
+---------------------------------------------------------------------------------------------------------
+Einde down time stukje.
+
+Nu de groep nieuwe aanwas heeft is het natuurlijk belangrijk dat ze op de hoogte worden gebracht en dat de groep een beslissing neemt wie ze gaan helpen om de Nyaad te gaan helpen. 
+In het downtime stukje zijn de Dark Druids langs geweest en heeft de Queen of the Fea een voorstel gedaan (zweer trouw aan mij en ik zal Mara teruggeven). 
+de Witte Nyaad maakt het niet uit. Hij wil zijn vrouwtje terug. Hoe dan ook. 
+Tijdens deze "vergadering" blijft de Nyaad neutraal, zolang het doel  maar wordt behaald. 
+
+Indien de spelersgroep er voor kiest om naar de Queen te gaan, zullen ze een audiëntie moeten aanvragen. Dit zal waarschijnlijk later op de avond/nacht zijn, wanneer Sandra tijd heeft. Zie ook plot "Negotiating for a Nyaad".</td>
+<td>1. de witte Nyaad
+De Witte Nyaad is zijn vrouwtje kwijt. Hij roept de krachten van de Rumeliaan in om voor hem zijn vrouwtje te redden daar ze in de droomwereld zit en hij er niet bij kan. hij is op K31 langs geweest om dit stukje te introduceren.
+Gevoelens: hopeloos, lief, poept overal als hij enthousiast/bang is.</td>
+<td align="right">25</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">83</td>
+<td align="right">1</td>
+<td>Sleep well</td>
+<td>GENERAL:PUZZLE</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- Blacklight tekening</td>
+<td>Herberg the Lofty Chalise</td>
+<td>Slapen ook een larp dingetje maken bij Kederan</td>
+<td>Alle spelers</td>
+<td>Jennifer of Rik</td>
+<td>Mass</td>
+<td>De herbergin heeft hele mooie nieuwe schilderijen aangekocht. Deze heeft ze vanmiddag binnen gekregen en overal opgehangen. 
+Het is allemaal zo mooi. De hele avond zal ze zoveel mogelijk personen erop wijzen. Op de achterkant van één schilderij staat in onzichtbare inkt een symbool.
+Dit symbool veroorzaakt, dat er 's nachts (in down-time) een man het schilderij komt stappen, die personen gaat vervloeken.
+
+Als iemand naar de schilderijen vraagt kijk dan in het vervolgplotje op de zaterdag-ochtend: "Did you Sleep well?"</td>
+<td>- Carola als herbergin</td>
+<td align="right">250</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">85</td>
+<td align="right">1</td>
+<td>To deal or not to deal?</td>
+<td>GENERAL</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- een pakketje met 20 papieren zakjes met melkpoeder. op elk zakje staat het hoofd getekend van de goblin koning leafbrain. 
+- Cloche/deksel om het pakketje onder te verstoppen
+- Recept uitgewerkt voor de drugs (Fixam + Kattenkruid + Drakenglas)
+- Buidel met 1000 dukaten.</td>
+<td>Herberg</td>
+<td>Spannend weekend plot</td>
+<td>de speler die het pakketje opent</td>
+<td>Galadriel of Rodney.</td>
+<td>Mass</td>
+<td>Bij Tijd-In ligt er een pakketje op de pingpong tafel, verstopt onder bijv. een cloche/deksel. 
+Dit pakketje lijkt van niemand te zijn en bevat drugs. Welgeteld 20 dosis Leafdust, een zeer opwekkende substantie die wordt gemaakt door de Bloodblade clan uit Kortoga. Deze clan is van koning Leafbrain. Om deze reden heeft de koning het goedje "Leafdust" genoemd. 
+
+Na een uur komt de woudelf Anniolis het pakketje zoeken en stelen. 
+Anniolis had afgesproken met Drall (. Drall is nergens te bekennen maar zijn pakketje het pakketje voor mij is hier. mits je gepakt wordt. of als iemand er om vraagt.</td>
+<td>- Anniolis (woud elf dief)</td>
+<td align="right">1</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">87</td>
+<td align="right">1</td>
+<td>Trap the hell out of the trade.</td>
+<td>BUTS</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>- IC kaartjes (lammies) met omschrijvingen van vallen/gevaarlijke situaties.</td>
+<td>De weg tussen de herberg en Mystic Forest</td>
+<td>De wegen gevaarlijk maken tussen de IC zones.</td>
+<td>iedereen op de weg</td>
+<td>Iedereen</td>
+<td>Iedereen</td>
+<td>Op de weg tussen de herberg het Mystic Forest zullen een aantal lammies liggen met op de bovenzijde het in licht contrast het Kederan-logo, met daar overheen de tekst: "DRAAI DIT OM ALS JE DIT LEEST!". 
+Deze worden met enige regelmaat worden voorzien van losse dukaten. Deze vallen zijn gezet door de woudelven om ongenodigde lieden uit het bos te weren.
+Aan de andere kant zullen een aantal vallen en positieve lootcards vermeld staan (zie lammies).
+Alle kaartjes krijgen bovendien de tekst: "Inleveren bij spelleiding na 'gebruik'".</td>
+<td>&nbsp;</td>
+<td align="right">1</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">88</td>
+<td align="right">1</td>
+<td>He who is trapped will be free - Part I</td>
+<td>POLITICS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>&nbsp;</td>
+<td>Herberg + ambachtengebied in Kortoga</td>
+<td>De goodwill van de Queeen of the Fae laten tonen + introductie nieuwe spelers bij Zwartschild Inc.</td>
+<td>Zwart schild Inc.</td>
+<td>Rodney</td>
+<td>Mass/Mels</td>
+<td>Achtergrond:
+Er is een houthakker van Zwartschild Inc. gevangen genomen door de woudelven. Deze houthakker zal, samen met eventuele nieuwe spelers die in de deze buurt het spel in komen, gevangen gehouden worden in een kampement van de woudelven in het Mystic Forest.
+
+1 van de ambachtslieden is ontsnapt en komt hulp halen bij de spelers van Zwartschild Inc. (locatie nader te bepalen....) en zal hen proberen over te halen om met spoed de anderen ook te gaan redden.
+Tijdens dat deze spelers worden benaderd, zullen er 1 à 2 Redcaps (zie ook plot "Sweet Red Amulet") uit de schaduwen verschijnen en aangeven best te willen helpen. De wederdienst jegens hun Queen kunnen ze later wel bespreken. "Beter snel te gaan, anders kan er wat ergs gebeuren."</td>
+<td>- 1 ambachtslid van Zwartschild Inc.
+- 1-2 Redcaps</td>
+<td align="right">10</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">120</td>
+<td align="right">1</td>
+<td>Aurum Quest: Kind Kortoga</td>
+<td>GENERAL:POLITICS</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>&nbsp;</td>
+<td>Kortoga</td>
+<td>Kortoga's kant in de mogelijk komende oorlog bepalen</td>
+<td>Spelers die een Aurum missie willen doen</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>Lucius Vindex wil met Lucas Monster praten om erachter te komen aan welke kant Kortoga staat in de oorlog die mogelijk zal uitbreken tussen Aurum en Dark Dannings. De spelers worden gevraagd om onderdeel van dit gesprek te zijn. De spelers kunnen helpen Kortoga te overtuigen om aan de kant van Aurum te staan of om anderen hulp te bieden. 
+
+Kortoga wil eigenlijk niets te maken hebben met de oorlog maar Monster ziet dit als een mooie mogelijkheid om hier een voordeel uit te halen. Hij zal proberen een speciale deal te sluiten met het dorp, hier is de kampleider van Aurum (Lucius) op tegen, aangezien het zijn invloed op het dorp zal ondermijnen. 
+
+De spelers moeten ervoor zorgen dat er een compromis wordt gesloten. 
+Als dank voor de hulp zal Lucius de spelers een beloning geven.
+
+Deze beloning zal in overeenstemming met de spelers eerst worden besproken. Het voorstel zal vooral zijn om de spelers een wederdienst aan te bieden. Als de spelers daar bijv. niet mee akkoord gaan kunnen er eventueel wat componenten/geld worden geboden. 
+Indien de spelers erg efficiënt zijn, kan Lucius hier eventueel nog wat bovenop doen als vorm van goodwill.</td>
+<td>- Lucius Vindex (Kampleider)
+- Lucas "</td>
+<td align="right">45</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">79</td>
+<td align="right">1</td>
+<td>Power to the people</td>
+<td>DIVINE:MAGIC</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>De spelers uitleggen wat het verschil is tussen mana en Divinity in zowel de oude en de nieuwe situatie</td>
+<td>Iedereen die (elementaire) mana en/of Divinity heeft, danwel hier wat over wil leren</td>
+<td>Mels</td>
+<td>Mels</td>
+<td>Een onderzoeker komt langs om e.e.a. uit te leggen over het verschil tussen oude mana waar iedereen alles mee deed, en de manier waarop dit tegenwoordig gebeurt met elementaire mana voor de elementaire spreuken en de Divinity die men nodig heeft om Goddelijke gebeden te kunnen gebruiken.
+
+De onderzoeker zal bij de spelers vragen of er interesse is in lessen rondom "Innerlijke Bovennatuurlijke Kracht" en aanbieden om de geïnteresseerden te onderwijzen in het gebruik van dergelijke krachten. Hiervoor is uiteraard wel een ruimte nodig om dit rustig te kunnen bespreken. Als de spelers geen optie bieden, zal hij aan de herbergier vragen om een 'ruimte' te kunnen huren.
+
+Allereerst zal worden nagegaan welke spelers welke vorm reeds beheersen.
+Daarna volgt wat uitleg over dat vroeger men eenvoudigere manieren aanleerden om deze innerlijke kracht te gebruiken, maar dat die manier van de krachten aanroepen met de komst van de meest recente Nivelering (iedere 200 jaar, de laatste was ongeveer 40 jaar geleden) niet langer mogelijk lijkt voor de personen die op dat moment en sindsdien leven. 
+
+De reden dat mensen uit andere tijden deze krachten nog wel kunnen gebruiken met de oude manier is vooral te danken aan het feit, dat zij dit anders hebben aangeleerd en een andere vorm van innerlijke kracht bezitten. Voor de voor hen bekende spreuken en gebeden zijn ze dan ook in staat om dit nog te gebruiken. Echter sluit de onderzoeker niet uit, dat dit in de loop der tijd eventueel ook niet meer mogelijk zal zijn. De nieuwe tijd en de werking van de elementen en energie om hen heen is sterk veranderd en naar alle waarschijnlijkheid een extra belasting gaan worden om te blijven gebruiken.
+
+Hij stelt dan ook voor om vooral de nieuwe manieren te gaan leren en zal een soort van meditatielesje uitvoeren om alle aanwezigen voor 1 dagdeel (4 uur) 1 elementaire mana en Divinity te geven (zie Leren en levelen in het regelsysteem).
+
+N.B. Dit plot leunt zwaar op kennis en inlevingsvermogen over de metafysica van Kederan.</td>
+<td>- 1 onderzoeker</td>
+<td align="right">0</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">121</td>
+<td align="right">1</td>
+<td>Aurum Quest: Menacing Magic</td>
+<td>GENERAL:MAGIC</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZO-OC</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>Invloed van Dark Dannings verwijderen</td>
+<td>Spelers die een Aurum missie willen doen</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>De kampleider heeft gemerkt dat er duistere magie in omgeving van herberg is. Hij geeft de spelers de opdracht om dit uit te zoeken en te verwijderen. De kampleider zal ze richting de invloed sturen en hier zullen de spelers meerdere magische cirkels tegenkomen. Om deze te verwijderen zullen de spelers magische/religieuze rituelen uitvoeren. Terwijl ze dit doen zullen ondoden opstaan om te cirkel te beschermen. Als de spelers de cirkels hebben verwijderd, kunnen ze terug naar het kamp gaan om hun beloning te innen.
+Deze beloning zal in overeenstemming met de spelers eerst worden besproken. Het voorstel zal vooral zijn om de spelers een wederdienst aan te bieden. Als de spelers daar bijv. niet mee akkoord gaan kunnen er eventueel wat componenten/geld worden geboden. 
+Indien de spelers erg efficiënt zijn, kan Lucius hier eventueel nog wat bovenop doen als vorm van goodwill.</td>
+<td>- Lucius Vindex (Kampleider)
+- 3-5 ondoden per cirkel</td>
+<td align="right">890</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">86</td>
+<td align="right">1</td>
+<td>Not to deal anymore</td>
+<td>GENERAL</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- Harry de dode met IC kleding aan en een briefje erbij.
+- Stof om de abraham aan te kleden. 
+- nep bloed om over het lijk te schrijven
+- briefje bij het lijk met "waarschuw SL als je dit leest"
+- kleine beetjes melk poeder aan de voorkant van het lijk.</td>
+<td>Op de weg naar de Lofty chalise. aan de rand</td>
+<td>Personen het lichaam laten vinden van Dral de drugsdealer.</td>
+<td>&nbsp;</td>
+<td>Rik</td>
+<td>Mass</td>
+<td>Drall was een drugsdealer die het pakketje in het dorp heeft neergezet (zie plot "To deal or not to deal?"). 
+Hij is daarna door een dark druid meegenomen en op de weg afgemaakt om een boodschap over te brengen. 
+"Wij dulden geen drugs. Geen drugs in de nieuwe wereld!"
+
+Drall's ziel is vernietigd door Dark Druids. Zij zijn namelijk tegen dit soort drugs. 
+Zijn ziel is terug naar de cirkel des levens (d.m.v. een "Return to Circle" spreuk) en hij kan dus niet meer ondervraagd of herrezen worden. Hij ligt hier als waarschuwing voor anderen. Leafdust (zie algemene calls vooraan in het plotboek) geeft een zeer sterk effect en niet is wenselijk voor de dark druids. Zij willen iets goeds doen door in hun gebied rondom de herberg en geen drugsverkoop toelaten.
+Drall heeft de drugs over de dark druids heen gegooid, dus de teksten die zij hebben achtergelaten op Drall zijn lijk, zijn niet het helderste van allemaal..
+
+Met zijn bloed zijn teksten geschreven als:
+"Gij zult zich niet afsluiten van de natuur."
+"Geen middel is sterker dan de wortels om u heen." 
+"Voel de wraak van de Natuur."
+
+Het draait bij dit plot om onderzoeken wat er gebeurd is. Als er iemand geïnteresseerd is en meer dan 5 minuten op deze locatie blijft, zal diegene een hoeveelheid Leafdust inademen en hier langzaam aan last van krijgen. Dit uit zich in eerste instantie in een gevoel van duizeligheid en een licht gevoel in het hoofd. Als de persoon meer dan 10 minuten in de nabijheid van deze locatie verblijft, zal deze het volledige effect van een dosis Leafdust meemaken (en dus 1 encounter/15 een trip hebben).</td>
+<td>&nbsp;</td>
+<td align="right">15</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">91</td>
+<td align="right">1</td>
+<td>Anti-theft</td>
+<td>GENERAL</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- lint met 'dief' erop/slavenband uit opslag
+- Grote doos
+- Iets kleinere doos
+- Geldbeloning (200 dukaten)
+- Brief vanuit Sannaheim</td>
+<td>Herberg</td>
+<td>Mensen een idee geven van de anti-diefstal acties van het boodschappersgilde en verwarring brengen voor een later plotje met pakketjes.</td>
+<td>Iedereen</td>
+<td>Jennifer</td>
+<td>Jennifer</td>
+<td>Er komt een boodschapper de herberg binnen met een pakketje voor meneer Oostenbiggel. Deze man is echter niet aanwezig. Vervolgens vraagt de boodschapper twijfelachtig of er iemand in deze ruimte is die meneer Oostenbiggel kent en het pakje wellicht door kan geven. Anders geeft hij hem aan de barvrouw.
+De barvrouw mag het pakketje ergens zichtbaar neerzetten bij de bar.
+
+In het pakketje: Het pakketje is beveiligd met een vraag die alleen meneer Oostenbiggel kan beantwoorden: "Wij in Sannaheim danken u voor uw levering van het prototype van het automagische huidhoudproduct." Als het pakketje geforceerd wordt geopend zonder codewoord, schiet er magie uit, zodat de persoon die het pakket opent een teken van een dief krijgt. Dit teken is in de form van een lint met 'dief' erop.
+Op de kleinere doos die dan tevoorschijn komt, staat “Vergeef ons voor de nodige beveiligingsmaatregelen. Bent u niet zeker van hoe u het pakket opent? Informeer bij uw plaatselijke boodschapper. Wilt u het nogmaals proberen?”.
+
+Het pakket kan ook geopend worden door de magie te verwijderen van de doos of met een boodschapperszegel van een overseer van een boodschapkantoor.
+(Het boodschappersgilde heeft verschillende beveiliging opties voor hun pakketjes)
+
+In het pakket zit een beloning in de vorm van geld en een brief.
+
+Brief:
+Beste meneer Oostenbiggel,
+
+Als dank voor uw levering van uw prototype van de "Fantastische Anti-Inbraak Lamp", giften wij u graag de benodigde financiën voor uw volgende project. Uw winst van de productie is zoals afgesproken 15% van het totaal en wij verwachten dat het product enorm populair zal zijn. We hopen u snel weer te zien op onze jaarlijkse uitvindingsexpositie in Sannaheim.
+
+Met vriendelijke groet namens het uitvindingsinstituut,
+Tom Taknarin</td>
+<td>Postbode van boodschappersgilde (DPC Max)</td>
+<td align="right">70</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">98</td>
+<td align="right">1</td>
+<td>Proving gone wrong - Sudden Silence</td>
+<td>DIVINE</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Nepbloed
+- Lammies met Servitar Ectoplasma</td>
+<td>&nbsp;</td>
+<td>De spelers laten beseffen dat er een potentiële kwade en gevaarlijke kracht op de loer licht</td>
+<td>Spelers die afgelopen evenement zijn bezig geweest met het mysterie rondom de slachting bij de Proving op te lossen.</td>
+<td>Godenspelleiders</td>
+<td>Mels</td>
+<td>De spelers hebben de afgelopen keer kennis gemaakt met een ritueel dat gedaan is om de Proving bij Clan kaliza.
+
+Hierbij is een duo bezig geweest om krachten van de Goden te verzamelen, met name dit van Mishka. Hun plan is om Mishka te doden en diens kracht zelf te gaan gebruiken. Voor het eerste deel van het duo is dat, omdat Mishka niet de kracht gaf om de geliefde van deze persoon te genezen en voor de ander omdat er te veel stappen tussen zouden zitten en je die kracht beter zelf kunt gebruiken. Om dit doel te verwezenlijken hebben ze o.a. creaturen van ijs gecreëerd waarbij de lichamen van allerlei bosdieren zijn gecombineerd en vreemd aan elkaar zijn geplakt. 
+De spelers hebben afgelopen evenement een visoen gezien waarbij het duo een lichtbol heeft kunnen bemachtigen. Op de barvond/special Wonderful Weddings is tevens een dode Sylph uit de Mistwereld gegooid.
+
+Deze lichtbol is een sterk geconcentreerde essentie van de Mishka servitars. 
+
+Deze keer gaan de spelers hier nog meer van merken. Er zal duidelijk worden gemaakt, dat het duo de essentie van een Sylph gebruikt om 'veilig' door de Mistwereld te reizen en hiermee Servitars te bevechten en hun essentie te stelen.
+---
+Tijdens 1 van de gebeden van spelers waarin een servitar met hen praat, zal deze plotseling zwijgen (halverwege een zin bijv.). Vervolgens zal er een kleine opening naar de Mistwereld zichtbaar zijn voor de speler(s) die aan het praten waren. Uit deze opening komen een paar druppels met een vreemde substantie (Servitar Ectoplasma). Dit goedje is wat ectoplasma dat uit de zojuist vermoorde servitar is komen sijpelen. Door de opening is tevens kort een hevig gevecht te horen en een felle lichtflits.
+De opening sluit zich weer nadat een lijk uit de opening wordt gegooid (korte "Time Freeze"). De servitar mag lekker bloederig worden aangekleed en geschminkt. 
+
+Dit kan desgewenst meerdere keren worden herhaald bij meerdere rituelen/gebeden om het punt duidelijk te maken.</td>
+<td>1 Servitar die dood gaat</td>
+<td align="right">60</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">99</td>
+<td align="right">1</td>
+<td>We All Live Here</td>
+<td>GENERAL</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-NA</td>
+<td>Notuleerboek (1 per assistent) + schrijfwaar</td>
+<td>Herberg</td>
+<td>Dark Dannings wint informatie in over stationering van Aurumtroepen en spelersgroep door een apart onderzoek</td>
+<td>Alle spelers</td>
+<td>Rik</td>
+<td>Rik + Jennifer</td>
+<td>Achtergrond:
+De Dark Dannings hebben tijdens K31 bij de spelers het lichtelijk verknald door ondoden te gebruiken. Het lijkt er nu op dat er een oorlog gaat komen. Om te weten hoe de gevechtslijnen getrokken moet worden, stuurt de Dark Dannings verkenners er op uit om erachter te komen wat de sterkte is van de troepen gestationeerd bij The Lofty Chalice. 
+
+Plot:
+De “Assistenten” zijn eigenlijk verkenners. Ze willen weten hoeveel troepen er gestationeerd zijn bij The Lofty Chalice en hoe sterk zij zijn. Daarentegen door te roepen dat zij verkenners, of aandacht te trekken door werk te verrichten zijn, leek ze niet zo slim. Daarom hebben twee soldaten zich geïnfiltreerd bij Bertram Julianus, die een onderzoek wil plegen. 
+
+Het onderzoek heet als volgt: De effecten van vooruitstrevende technologie in het dagelijkse leven op de populatie.
+Hierbij is de Hoofdvraag: Op welke manier helpt technologie in het dagelijkse leven?
+Dit heeft de volgende vragen die beantwoord moeten worden:
+-	Wat wordt gezien als vooruitstrevend?
+-	Wat is de meest gebruikelijke technologie?
+-       Wanneer wordt een technologie als helpend beschouwd?
+-	Op welke manier maakt deze technologie het leven makkelijker?
+-	Zijn er minder mensen nodig voor dezelfde taak dankzij technologie?
+-	Hoe zit het met de dichtheid van de populatie door gebruik van de technologie?
+-       Hoe zijn deze technologieën tot stand gekomen?
+-       Is het een natuurkundige technologie of een magische?
+Gebruik AUB ook je eigen ideen en vragen! Het is een praatplot!
+
+Bertram zal zich voornamelijk met het onderzoek bezig houden en de troepen voornamelijk negeren, tenzij hij ze gaat ondervragen.
+De verkenners zullen notuleren wat er besproken wordt en zich bezig houden met het verkrijgen van technologie. Voornamelijk zullen zij afgeleid zijn door de hoeveelheid mensen/andere rassen en hoeveel daarvan strijdklaar zijn. Bovendien zullen ze vooral happig zijn op "oorlogtechnologieën".
+
+Wanneer zij genoeg verschillende antwoorden hebben op de vragen en een redelijke lijn in het onderzoek kunnen beginnen zullen ze zich terugtrekken. Of als de spelers denken dat deze Dark Dannings mensen niet zo lief zijn.</td>
+<td>Dark Dannings Verkenners "Assistenten"
+Onderzoeker Bertram Julianus</td>
+<td align="right">200</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">128</td>
+<td align="right">1</td>
+<td>Balm to the less fortunate</td>
+<td>GENERAL</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>* Ten minste 1 pamflet van de Dark Druids
+* Een paar dukaten (net niet genoeg om een drankje te kopen)</td>
+<td>Herberg</td>
+<td>Bij de spelers bekend maken, dat er een meeting is van de lokale donkere druïdecirkel</td>
+<td>Iedereen</td>
+<td>Iedereen</td>
+<td>Mels</td>
+<td>Twee van de 3 armoedige personen (Isa en Leen) zullen duidelijk vermoeid en gesloopt een tijdje (ong. 15 minuten) eerder het spel in gaan om zich in de Lofty Chalice te begeven en korting te bedingen/bedelen bij de uitbaatster. Ze zijn zich er van bewust, dat ze niet eens genoeg hebben voor 1 drankje met 2 personen. Echter hebben ze een lange reis gemaakt, hebben enorme dorst, zullen niet in zicht van de andere klanten gaan zitten, etc. (doe maar een lekker zielig verhaal ophangen als je wilt). Jullie hadden afgesproken met een vriend(in) van jullie (de 3e persoon, Jacob(a) ) en willen toch heel graag hier wel blijven wachten, want hij/zij zou goed nieuws komen brengen.
+
+Een tijdje later komt de derde persoon aan, eveneens niet heel rijkelijk gekleed, maar met een opperbest humeur. Deze persoon heeft het pamflet van de Dark Druids bij zich en zal bij de andere 2 aandringen om vanavond ook naar de verzameling te komen. Deze zal worden gehouden in het bos (zie plot "The dark side of the tree"). De druïdes bieden een beter vooruitzicht voor de wereld, aangezien zij zich sterk maken voor een wedergeboorte van de wereld, om op dit manier de natuurlijke wegen hun gang te laten gaan. Op die manier heeft iedereen weer een eerlijke kans om een goed leven te krijgen.
+
+Isa(ac/belle) is opgegroeid in de grote stad van Aurum (Goldcourt) en had de pech dat hij/zij van lage komaf was en beide ouders daardoor veel moesten werken. Hierdoor werd er niet veel omgekeken naar het gezin van 5 kinderen. Isa(ac/belle) heeft de zorg voor de jongere broers en zusters op zich genomen. Net toen het leek dat er betere tijden zouden gaan aanbreken, nadat ze waren verhuisd naar een vissersdorp, werd een van de belangrijke figuren in het dorp ernstig ziek onder verdachte omstandigheden. Toen Isa(ac/belle) die aankaarten bij de autoriteiten werd al snel duidelijk, dat hier meer achter heeft gezeten en dat het gezin nu dus te veel wist. Hun leven niet meer zeker zijn ze toen vertrokken en onderweg overvallen door orcs (als je orcs ziet, wordt je dus ook behoorlijk bang). Isa is de enigste die het overleefd heeft en draagt daar tot op de dag van vandaag nog de mentale schade van. Het schuldgevoel is dusdanig sterk, dat hij/zij regelmatig gillend wakker wordt van nare dromen en al vaker heeft moeten rennen voor diens leven nadat hij/zij op deze manier gesnapt werd op de zolder/in de hooischuur/etc. van de overnachtingsplaats van die nacht. Ook de relatie met anderen, met name gezocht onder de mensen, verloopt al een ruime tijd erg stroef. Menig een die misbruik van de mentaal verzwakte Isa heeft genomen. Bijv. door tijdelijke baantjes aan te bieden, waar uiteindelijk amper of niet voor werd betaald ("Het werk was niet naar behoren.", "Noem je dat een schoon bed!?", "Je was fijn om mijn bed warm te houden, maar nu oprotten!"). De andere twee personen zijn eigenlijk de enige die je inmiddels een beetje vertrouwd. Jij en Leen(dert) hebben het laatste deel van de reis samen gereisd vanuit Aurum.
+
+Leen(dert) is fel, stil en ongeduldig. Maar wat verwachtte je van iemand met zijn onrustige verleden? Hij/zij werd geboren en groeide op in een arm gezin in een belangrijke gemeenschap in het Aurum, hij leefde zonder zorgen totdat hij ongeveer zeven jaar oud was. Op dat moment veranderde het leven drastisch. Hij/zij verloor de beste vriend in een vreselijke brand van de herberg waarin die verbleef en werd gearresteerd op verdenking van de brandstichting. Leen heeft dit niet daadwerkelijk gedaan, maar de ondervragingen van de paladijnen van Erasu hebben een blijvende indruk achtergelaten in het geheugen van Leen(dert). Met een loyale vriend (Isa) moest Leen overleven in een sombere wereld. Dit heeft hem/haar veranderd in de persoon die het nu is. Nog steeds geplaagd door het verleden, werkt hij nu aan vervolmaking van vaardigheden en talenten. Door dit te doen, hoopt hij te worden bevrijd van de beklijvende herinneringen en eindelijk een doel te vinden voor het leven d</td>
+<td>3 armoedig uitziende personen:
+* Jacob(a) (halfling)
+* Isa(ac/belle) (Human) 
+* Leen(dert) (Human)</td>
+<td align="right">120</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">136</td>
+<td align="right">1</td>
+<td>Proving gone wrong - Into the Mist</td>
+<td>DIVINE</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>* max. 5 'lijken' van servitars (kleding met wat opvulmateriaal is voldoende)
+* 5x lammie met component "Servitar Ectoplasma"</td>
+<td>Mistwereld</td>
+<td>De spelers kennis laten maken met de (gevaren van de) Mistwereld</td>
+<td>Spelers die bezig gaan met onderzoeken naar de servitars die dood neervallen en/of het duo dat de slachting heeft uitgevoerd en religieuze artefacten probeert te stelen</td>
+<td>Godenspelleiders</td>
+<td>Mels</td>
+<td>Zeer waarschijnlijk gaan de spelers op den duur merken, dat er e.e.a. gaande is in de Mistwereld en zullen deze willen betreden. 
+Helaas voor hen is één van de weinigen die dit tot een paar evenementen geleden redelijk eenvoudig kon inmiddels geen servitar meer (Gnar) en zijn alle voorwerpen die dit eventueel konden, als het goed is vergaan of krachteloos.
+
+De spelers zullen dus creatief moeten gaan worden met hoe ze hier gaan komen en hoe ze zich denken te beschermen tegen de invloeden aldaar.
+Hiervoor zullen ze waarschijnlijk een ritueel (elementair) of ceremonie (Divine) willen uitvoeren. 
+
+Let er op, dat bij dergelijke rituelen en/of ceremonies eventuele Godenartefacten een doelwit zijn voor het Duo om de kracht (en waar mogelijk het voorwerp zelf) te stelen.
+
+!! Eventuele figuranten alhier zullen vooral dode servitars spelen en dus puur als lijk fungeren. Dit kan eventueel ook worden opgelost met kleding die wordt volgestopt met ander materiaal o.i.d.</td>
+<td>&nbsp;</td>
+<td align="right">500</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">157</td>
+<td align="right">1</td>
+<td>ALGEMENE INFORMATIE VOOR CALLS</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>&nbsp;</td>
+<td>N.v.t.</td>
+<td>Eenvoudig overzicht voor alle spelleiders over diverse calls die op het terrein voor kunnen komen.</td>
+<td>Alle spelleiders</td>
+<td>Iedereen</td>
+<td>Mels</td>
+<td>Kenmerken van de kristallen van Al:
+•	Ladingen
+    o	2 type ladingen mogelijk; Light en Dark
+    o	12 ladingen totaal per kristal (som van Light en Dark samen)
+    o	Per event vervalt 1 lading
+    o	De eerste lading die erop zit, verdwijnt dus na elk event.
+•	Opladen
+    o	Wordt gedaan door “kristal mana” te maken
+    o	Deze geeft een type lading, afhankelijk van de manier waarop deze wordt gecreërd.
+        ?	De Dark Druids gebruiken Dark ladingen, gemaakt door middel van combinatie van religie (van de Almoeder) en elementaire Natuurmagie
+        ?	De Queen of the Fae en haar volgelingen zullen vooral Light ladingen maken, door met name Geestmagie en emoties.
+    o	Per kristal mana moet ongeveer 10 elementaire mana/Divinity worden geleverd.
+    o	Het is mogelijk om meerdere ladingen tegelijk te plaatsen, maar er moet op worden gelet, dat dit potentieel erg veel energie is dat rond gaat door het ritueel/de ceremonie. Dus de ritueelleider/ceremoniemeester moet dit wel goed in de gaten houden.
+•	Volledig opgeladen geeft een kristal een permanent effect
+    o	Type lading waar de meeste van aanwezig zijn, geeft het effect.
+    o	Als deze in balans zijn, doet het amulet niets.
+    o	De effecten staan in de tabel hieronder.
+=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Leafdust
+---------------------------
+Sluit je af van de wereld en brengt je ziel naar een andere plane of existence (Gauntlet van Natuur). Je lichaam is nog aanwezig op de plaats waar je het inneemt, maar je ondergaat een soort van out-of-body experience. Dit zorgt voor de volgende effecten:
+- Speltechnisch wordt je een ondood wezen
+- Veel magie heeft tijdelijk geen grip meer heeft op je.
+- Genezing van je lichaam is niet mogelijk (enkel repareren van de wonden, bijv. met Repair Undead en vergelijkbare effecten)
+- Effecten die direct verband houden met je ziel, hebben geen effect.
+=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Gekleurde touwen in het bos
+---------------------------
+Net als bij vorig evenement hebben we gekleurd touw opgehangen dat voor verschillende effecten zorgt. De effecten zijn als volgt:
+•	Rood: 1 HP/minuut dat je met de met de boom in contact bent. (aanraking)
+•	Blauw: Tree Transport (naar andere ‘blauwe’ boom binnen zicht) (aanraking)
+•	Groen: 1 HP Poison niv 1 (als je de boom ziet) (Mass/Mels legt dit uit bij Tijd-In praatje)
+•	Geel: Genees 1 mind affecting effect (aanraking)
+•	Roze: Portaal naar de Droomwereld (Realm of the Fae) (aanraking)
+
+Tevens bevindt zich in het bos 1 boom met zwart touw. Dit is een boom die ooit het teleportatie-effect van een blauw touw heeft gehad. Indien iemand deze aanraakt (of willekeurig als een blauwe wordt aangeraakt en de speler(s) in kwestie een uitdaging willen/nodig hebben), wordt de persoon de boom ingetrokken en verschijnt als uitstulping aan de buitenkant (in de bast) van de boom.</td>
+<td>&nbsp;</td>
+<td align="right">0</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">102</td>
+<td align="right">1</td>
+<td>Markt's Happening</td>
+<td>GENERAL:MAGIC</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Handelswaar hieronder benoemd</td>
+<td>Herberg</td>
+<td>Magische voorwerpen verkopen</td>
+<td>Alle spelers</td>
+<td>Rik</td>
+<td>Rik</td>
+<td>De handelaar Aien Eilkas heeft net een lucratief rondje gelopen in Kortoga en handel gedreven met Skeeters en wil zien of hij het ondertussen in een rondje naar Aurum kan slijten. Omdat de wegen niet het beste zijn op huidig moment heeft hij twee bewakers ingehuurd om hem veilig te houden tijdens zijn reis.
+
+Hij heeft de volgende voorwerpen
+Magisch/Goddelijk (zie ook lammies):
+- Ring of Resurrection
+- Magisch wapen
+- Ring of minor toughness
+- Ring of minor extra Divinity
+- Ring of minor extra mana
+- Generic Component Emulator (G.C.E.)
+- Divine Undetectablity
+- Rune weapons (1 per element)
+- Thunderbus
+- Vervloekte Talisman -&gt; "Talisman of health"
+  Is een Talisman die je er niet meer af krijgt, en "detecteert magie". Zodra deze meer dan 2x is gebruikt om te genezen, gaat dit bij de volgende charges of gebruik van elementaire mana of Divinity van de persoon, intense pijn geven aan de drager ervan.
+- Vervloekte strijdknots -&gt; "Peacebringer". Er is door de maker van deze knots vertelt aan de handelaar, dat je deze met waardigheid moet behandelen. Hiertoe heeft de handelaar deze altijd in een doek vervoert en zal deze NOOIT zelf vastpakken. Dit komt vooral omdat de handelaar zelf volgeling is van Tarkyss en hij/zij gelooft dat een wapen van een andere God hanteren slecht is voor de zaken.
+Zodra deze strijdknots wordt gebruikt in gevecht, slaat de gebruiker enkel nog "Non Lethal" en kan enkel worden getrokken om iemand te verdedigen, nimmer om de aanval te openen.
+
+Normale voorwerpen:
+- Ruwe grondstoffen
+- Handboeken van ambachten in vele talen</td>
+<td>- Aien Eilkas (Handelaar)
+- 1-2 bewakers</td>
+<td align="right">47</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">100</td>
+<td align="right">1</td>
+<td>Fair Flowers</td>
+<td>BUTS:MAGIC:PUZZLE</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- BLOEMEN!
+- 20x lammie ("1 HP Poison 2")</td>
+<td>Herberg</td>
+<td>Spelers puzzel/ buts geven. introductie hint over elven die voorbereiden op oorlog</td>
+<td>Spelers Algemeen</td>
+<td>Rik</td>
+<td>Rik\Jenn</td>
+<td>Achtergrond:
+Een Fea Queen wou het bos beschermen en heeft om dit te realiseren een bloem in een (machtig en groot) ritueel gebruikt. Dit ritueel heeft ervoor gezorgd dat de bloem snel ging stekken en verspreiden. Als nadeel heeft dit opgeleverd, dat de bloemen kortstondig leven (max. 4 dagen).
+
+Gebeurtenissen:
+Vanuit het Mystic Forest beginnen overal bloemen te groeien. Nadat het een halfuur met rust is gelaten zullen de grote groep bloemen; "Mass Close Poison 2" uiten
+Als er na een uur nog niets aan gedaan is dan komt er een bloemmonster het veld op.
+
+Omschrijving van bloemen:
+Sinds het ritueel niets met de bloemen zelf heeft gedaan, zijn ze te plukken als gewone bloemen. Ze zijn daarentegen geladen met Natuurmagie. Dit komt doordat ze niet meer op water leven, maar op de magie. De magie trekken ze uit de omgeving en houden ze bij zich totdat ze niet meer kunnen voortplanten op de plek waar ze zijn (het veld is te vol). Wanneer ze op dit punt zitten, geeft dit een "Mass Close -1 MP" effect. Deze MP wordt toegevoegd aan die van het bloemmonster.
+
+Het bloemmonster heeft een aantal speciale vaardigheden:
+- Magic draining leafs (Bloem aanraken is -1 MP en -1 MP per 30 seconden. Deze komen er bij het bloemmonster bij)
+- Near-Magic Invulnerablity (Enkel spreuken van Luchtmagie, en Luchtschade, hebben vat op het bloemmonster. Er zijn een paar uitzonderingen.)
+- Nature's blessing (Geneest van Natuurschade + 1 HP voor iedere Natuurspreuk die er op wordt gecast.
+- Fire Vulnerablity (Vuurschade telt dubbel)
+- Fear Aura (3x per encounter kan het bloemmonster een "Mass Close Fear" effect creëeren).
+- Darkvision (je ziet uitstekend in het donker)
+- Schade van het bloemmonster is altijd "Natuur"-schade.
+Spreuken: - Algemeen: Elemental Projectile (Natuur) (N1)
+-----------------------------------------------------------
+Bestrijding van bloemen:
+- Wieden of wegbranden
+- natuurmagie uit de planten halen
+- overige creatieve oplossing van de spelers
+
+Niet werkende oplossingen: platstampen, Magie geven (m.u.v. Luchtmagie)</td>
+<td>- 1 Bloemmonster
+- 2-6 saplings</td>
+<td align="right">65</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">109</td>
+<td align="right">1</td>
+<td>More wings</td>
+<td>CRAFT:DIVINE:MAGIC</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Lantaarn/Bel genaamd "The Tinkers Bell" (3 charges aanwezig)
+- 2-4 Kleine fea pixies handpoppen
+- Pixie Dust (niv. 2 D/H component)</td>
+<td>Herberg</td>
+<td>Vangen Pixies</td>
+<td>Spelers met een 'twijfelachtig' moreel kompas</td>
+<td>Iedereen</td>
+<td>Roger</td>
+<td>Dit plot kan tegelijkertijd met "Markt's Happing" worden gestart.
+
+Karakk Dhurr zoekt lieden om in the Mystic Forest opzoek te gaan naar Pixies en ze te vangen. Rond de herberg zal hij opzoek gaan naar spelers die wel in zijn voor faes te moorden. Let wel dat de spelers later last kunnen krijgen met de Fae Queen. Bad dream/curse/stat penalty (dit is aan de betrokken spelleiding en afhankelijk van de manier van werken van de spelers)
+
+"The Tinker's Bell" geeft bij gebruik een aura om de gebruiker heen "Mass Far Detect &lt;ras&gt;". Dit item is ook gecreëerd met Pixie Dust en zorgt er voor, dat de gebruiker er bepaalde soorten wezens mee kan opsporen.
+
+Als de groep de Pixies encounteren zal er één (proberen te) ontsnappen. Die zal de hulp inroepen van een andere spelersgroep die in de Mystic Forest is of komt. Pixie Dust kan gebruikt worden om "Detectie" effecten mee te versterken, bijv. voor een "Locate" spreuk/ritueel.</td>
+<td>- Karakk Dhurr (Gnome Tinkerer)</td>
+<td align="right">300</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">131</td>
+<td align="right">1</td>
+<td>Vinny the Invincible</td>
+<td>GENERAL</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>Mooi verhaal vertellen en persoonlijk plot</td>
+<td>iedereen</td>
+<td>Jennifer</td>
+<td>Jennifer</td>
+<td>In het hoge noorden wordt er gepraat over de legende van Vinchenso the invincible. De onverslagen reizende witte beer, hij die voor eeuwig reist. Vinny kon door niemand verslagen worden, dus toen hij plots verdween, ging men ervan uit dat hij weer had besloten te reizen. Dat was imemrs de enige logische verklaring, want Vinny liet zich door niemand tegenhouden.
+´
+Shamaan Amaguq (Vader Wolf in zijn eigen taal/dialect) en zijn trouwe volgelingen, Kunwaktok (Lach) en Aglakti (Liedjesmaker), zijn reizigers in naam van Atiqtalaaq, in normaal Common beter bekend als Vinchenso "the invincible". 
+
+Alle drie zijn het leden van de Nanoek stam. Willings uit deze stam hebben vaak een dikkere vacht en worden gezien als goede vissers. Hun handen lijken meer op klauwen en ze hebben een dikkere huid en wijdverspreide haargroei, waardoor ze goed in koud water kunnen zwemmen. De leider van deze stam is een Ijsbeerling, Ammagaruqnik Nanoek, in navolging van de legende van Atiqlaaq.
+
+Zij voelen de onsterfelijkheid van de witte beer door zich heen vloeien en reizen zo onvermoeibaar door wind en weer, altijd op zoek naar Atiqtalaaq. Als Vinnie zolang kan blijven reizen, dan kunnen zij dat ook en ooit zullen ze elkaar vinden, opdat Vinny/Atiqtalaaq weer terug kan keren.
+In de tussentijd leert het groepje alles waarvan ze aannemen dat Vinny/Atiqtalaaq het ook ooit leerde: andere culturen, nieuwe technologie, ander eten, andere temperatuur...
+
+Het groepje zoekt overnachting om morgenvroeg weer verder te gaan op hun reis naar verlichting. Ondertussen kunnen ze hun verhaal vertellen en af en toe vragen of iemand een witte beer die nu al ruim 2 eeuwen zou moeten rondreizen heeft gezien?
+
+Achtergrond:
+Vinny is een personage van Ivan Matejczyk, oud (hoofd-)spelleider bij Kederan, die vanwege aanstaande vaderschap dit evenement niet aanwezig. De essentie van Vinny is opgenomen in het personage Liz, het droomwezen dat wordt gespeeld door Merel van der Bel. Zij is vanwege dezelfde aanstaande ouderschap niet aanwezig dit evenement. Dit plot dient als eerbetoon aan dit personage.</td>
+<td>- Amaguq Nanoek (Vader Wolf) (Shamaan)
+- Kunwaktok Nanoek (Lach) (Jager)
+- Aglakti Nanoek (Liedjesmaker) (Minstreel)</td>
+<td align="right">20</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">111</td>
+<td align="right">1</td>
+<td>Mystery Package</td>
+<td>PUZZLE</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>Pakketje met een puzzeldoos</td>
+<td>Kerk</td>
+<td>Puzzel</td>
+<td>Spelers Algemeen</td>
+<td>Rik</td>
+<td>Rik</td>
+<td>Omschrijving
+In het verleden heeft in de kerk een necromantiër gewoond die vond dat alleen de slimste mensen een ontmoeting met hem verdienden. Omdat hij ook nog spullen had verzameld voor een opvolging van zijn plan, moest hij deze ergens bewaren en dat deed hij in een doos, die hij versleutelde met drie raadsels. 
+Zijn redenatie was immers dat de slimste mensen hem mogen ontmoeten, dus mogen ze ook dan pas de artefacten hebben als ze slim genoeg zijn.
+
+De puzzeldoos heeft 3 puzzels er op zitten:
+- Aan de voorkant; 
+   een aantal draaiknoppen waar letters op staan, waarmee het kistje geopend wordt
+   De draaiknoppen moeten "openme" laten zien waarna dit puzzeltje opgelost is
+- Aan de rechterkant; 
+   "Wie het maakt, die zegt het niet. Wie het krijgt, die weet het niet.  Wie weet wat het is, die wil het niet. "
+   Antwoord: Vals geld.
+- Aan de linkerkant; 
+Piratendemocratie
+
+Vijf piraten hebben een buit van 100 Dukaten die ze met elkaar moeten verdelen. Dat doen ze op de volgende manier:
+Ze gaan een voorstel maken om de buit te verdelen. De agressiefste piraat mag eerst, daarna de op-één-na meest agressieve enzovort.
+De eerste piraat doet een voorstel voor het verdelen van de buit. Ze gaan vervolgens allemaal stemmen. Iedereen moet VOOR of TEGEN stemmen. Als 50% of meer VOOR het voorstel stemt wordt de buit als in het voorstel verdeeld en is het hele verhaal afgelopen.
+Is er minder dan 50% VOOR het voorstel, dan wordt de voorstellende piraat gekielhaald. Vervolgens is het dan de beurt aan de volgende om een voorstel te doen om de buit over de resterende piraten te verdelen. Dezelfde procedure wordt gehanteerd tot de buit verdeeld is.
+Van piraten is het volgende bekend:
+   Ze zijn oneindig slim, en weten dat ook van elkaar
+   Ze willen op de eerste plaats zoveel mogelijk geld.
+   Ze willen niet gekielhaald worden. 
+   Ze vinden het wél leuk anderen overboord te gooien (maar niet als hen dat geld kost!).
+Met welk voorstel word de onderhandeling zo snel mogelijk afgerond?
+
+Antwoord: voorstel om 98 munten voor de voorstellende partij 1 voor 2 anderen.</td>
+<td>&nbsp;</td>
+<td align="right">30</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">129</td>
+<td align="right">1</td>
+<td>Goodbye cruel world - Part II</td>
+<td>GENERAL</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>* Een touw met strop</td>
+<td>Mystic Forest</td>
+<td>Een donkere en oneerlijke kant van de samenleving laten zien + sympathie wekken voor de plannen van de dark druids</td>
+<td>Iedereen</td>
+<td>Iedereen/Ambachtenspelleiders</td>
+<td>Mels</td>
+<td>In te zetten enige tijd na "Goodye Cruel World - Part I".
+
+Bij een willekeurige wandeling door of naar het bos, komen de spelers een persoon tegen die bezig is (geweest) met een touw en strop te maken om zich daarmee te verhangen.
+Deze persoon, Shankar Kashikar, was tot voor kort bemanningslid op een Kortegaans handelsschip, dat is gekapseisd doordat er zware lading niet goed vast zat. Deze fout is door zijn/haar toedoen. Deze fout heeft er voor gezorgd, dat veel andere bemanningsleden van het schip, waaronder hun zeer geliefde kapitein, kassiewijle zijn.
+Met deze schuld zwaar drukkend op het geweten van Shankar, ziet hij/zij het niet meer zitten in het leven en zoekt nu een uitweg.
+
+Indien er spelers zijn die zich hebben bezig gehouden het pamflet van de dark druids, zou dit eventueel een andere uitweg zijn. Verder is dit vooral emoplot.</td>
+<td>- Shankar Kashikar (suïcidale zeeman/-vrouw)</td>
+<td align="right">150</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">130</td>
+<td align="right">1</td>
+<td>VVV kantoor</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>Pamfletten over elke god, elk element (horoscopestijl?), elk land en zijn omgeving, dark druids. De kranten, etc.</td>
+<td>Herberg</td>
+<td>Informatie brengen naar spelers over goden, magie, de omgeving, bijeenkomsten en meer.</td>
+<td>Iedereen</td>
+<td>3MS</td>
+<td>Jennifer</td>
+<td>In de taveerne staat een rekje met pamfletjes en kranten. Carola mag dit promoten aan haar klanten.</td>
+<td>Carola</td>
+<td align="right">50</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">107</td>
+<td align="right">1</td>
+<td>The dark side of the tree</td>
+<td>GENERAL:DIVINE</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>- altaar van de almoeder
+- kristal amulet Serpentine (1 van de 12 kristallen van Al)
+- een giftig drankje</td>
+<td>Mystic Forest</td>
+<td>Bondgenoten zoeken voor de Dark Druids + tonen/bekrachtigen van een amulet</td>
+<td>De spelers doe interesse hebben om de Dark Druids te helpen.</td>
+<td>Mass/Mels + Magie-/Godenspelleider</td>
+<td>Mels</td>
+<td>N.B. Bij dit plot mogen eventueel ook nog anderen aansluiten als hulpbehoevende omwonenden of pelgrims.
+
+De dark druid bijeenkomst zal plaatsvinden na het avondeten op zaterdag. 
+Vorige keer hebben de dark druids ook een bijeenkomst gehouden om mensen kennis te laten maken met hun denkbeelden. Vanavond is er weer een kans om zieltjes te winnen voor hun doel. Bovendien willen ze graag stappen gaan zetten om de kristallen amuletten te verkrijgen. 
+
+Radius zal aangeven, dat ze als groepering nu 4 van de 12 amuletten in bezit hebben en dat ze met 12 van die amuletten de wereld kunnen herscheppen. Om te voorkomen dat andere groeperingen deze zomaar zouden stelen, wordt de aanwezigen op het hart gedrukt, dat deze veilig zijn in het hoofdkwartier van de orde, een tempel in één van de moerassigere gebieden van het Mystic Forest. 
+(Dit kan potentieel een locatie zijn waar groepen spelers naartoe willen om de amuletten te stelen of met de druïdes te praten. Bovendien is in het verleden het idee geweest om hier eventueel een dungeon van te maken).
+
+Ze zijn dus op de goede weg, maar zijn dus nog erg op zoek naar de anderen. Alle informatie en hulp die de aanwezigen kunnen leveren is welkom. Deze hulp kan bestaan uit een belofte om te helpen met zoeken, informatie doorgeven of het bijdragen aan de rituelen en ceremonies om de locaties van deze andere 8 artefacten te vinden.
+(voor de oplettende spelers die "More Wings" bijvoorbeeld hebben meegekregen, zouden ze kunnen gaan zoeken naar Pixie Dust.
+
+Radius zal desgewenst uitleggen dat de kristallen amuletten kunnen worden bekrachtigd. Dit gebeurt met Light energie en met Dark energie. Dit zijn vormen van elementaire krachten die erg lijken op Natuurmagie, maar met additionele componenten toegevoegd aan de rituelen om deze amuletten te bekrachtigen. De amuletten hebben een naam en bieden allen een effect. Afhankelijk van de hoeveelheid Light en Dark ladingen (max. 12 totaal, verdeeld over beide soorten), zal een kristal kunnen worden gebruikt voor verscheidene doeleinden.
+Als een kristallen volledig is opgeladen, dus 12 ladingen bevat, zal het kristal het effect afgeven van het type energie waarmee het meest is geladen. De effecten zijn in principe permanent voor de drager van het amulet. Echter hebben de Dark Druids nog geen manier gevonden om de ladingen ook daadwerkelijk permanent vast te houden in de amuletten. Hierdoor sijpelt er na verloop van tijd weer energie uit. Hiermee vervalt dan ook het effect.
+Om dit tegen te gaan, doen de druïdes regelmatig de benodigde rituelen om dit weer op te laden.
+
+Als afsluiter van de bijeenkomst zal Radius tonen dat ze die middag één van de amuletten hebben gevonden en deze graag met hun hulp willen bekrachtigen.
+Deze bekrachtiging zal een combinatie zijn van een elementaire ritueel en een ceremonie in naam van de Almoeder en zal het kristal "SERPENTINE" bekrachtigen.
+Dit geeft de drager Immuniteit voor giffen + 1x/encounter Create Poison (N2 Natuurspreuk) als het met merendeel Dark ladingen is opgeladen. Op het moment van dit ritueel bezit dit amulet 4 Light en 5 Dark ladingen (dus 9 totaal).
+Voor meer informatie over hoe deze kristallen werken, zie de algemene calls voorin in het plotboek.
+
+Indien het lukt om het kristal helemaal op te laden, zal Radius voorstellen om het te testen. Hij zal uitleggen wat het doet en een vrijwilliger vragen. Als deze niet onder de spelers wordt gevonden, zal ofwel één van de andere aanwezigen voorstellen om het te proberen, of zal één van de druïdes dit proberen.
+Als één van de spelers als proefpersoon heeft gediend, en Radius deze persoon in ieder geval een beetje vertrouwd, zal hij aangeven dat deze persoon het amulet wellicht dan ook maar in bewaring moet houden. Uiteraard zullen de druïdes het uiteindelijk wel terug willen hebben om het te gebruiken in het uiteindelijke ritueel. Maar voor nu kan het leven er wellicht iets dragelijker mee worden gemaakt.</td>
+<td>* Armeus Blakemore – Recruiter lokale Dark Druid circle
+* Thelonius Shynzomi – Penningmeester lokale Dark Druid circle
+* Radius Marcallas – Leider van lokale Dark Druids circle</td>
+<td align="right">100</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">133</td>
+<td align="right">1</td>
+<td>The leaf has fallen</td>
+<td>CRAFT:BUTS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>- 4x 'Vuurstenen' 
+- 1x schedel</td>
+<td>Herberg</td>
+<td>Controleren of de drankjesbrouwers hun werk hebben gedaan.</td>
+<td>Personages met "Botanist" en "Potion Brewer"</td>
+<td>Mass</td>
+<td>Mass/Mels</td>
+<td>Lucas Monster komt met zijn knokploeg langs om te controleren of de personen die zij de dag ervoor hebben geïntimideerd in het werken voor hen, hun beloofde werk hebben gedaan.
+Indien de drankjesbrouwers en botanisten niet hun werk hebben gedaan (niet genoeg drankjes/componenten), zullen ze een pak rammel krijgen van de knokploeg. Dit begint met een keer "Non Lethal" als bijv. niet wordt geloofd, dat de spullen zijn gemaakt, tot daadwerkelijke echt schade als de brouwer of botanist tegenwerkt.
+Lucas en zijn knokploeg hebben ieder een voorwerp waarmee elementaire schade (knokploeg en evt. Lucas) of gebroken botten (Lucas)kunnen worden toegebracht om zich mee te verdedigen of verder te intimideren.
+
+Lammies:
+- 4x Blasting Firestone: 3 charges - Stelt de gebruiker in staat om de spreuk "Fire Blast" te gebruiken. Call: "Double Fire Through"
+- 1x Skull of Broken Bones: 3 charges - Stelt de gebruiker in staat om de spreuk "Break Bone" te gebruiken. Call: "Break Limb - [Arm/Leg]"</td>
+<td>- 2-4 leden van filibuster knokploeg
+- Bootsman Lucas "de Dab" Monster</td>
+<td align="right">400</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">134</td>
+<td align="right">1</td>
+<td>Feel the love of the mother</td>
+<td>DIVINE</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>Bondgenoten verzamelen voor de Queen of the Fae.</td>
+<td>Iedereen</td>
+<td>Magiespelleiding (+Mass/Mels)</td>
+<td>Mass/Mels</td>
+<td>De Queen is het wachten zat. Ze wil weten wie er voor haar is en wie tegen haar is. 
+Haar propagandagroep van pookah's en andere droomwezens (excl. red caps) gaat eropuit om nu eens te kijken of deze groep, die haar heeft geholpen 200 jaar geleden, ook daadwerkelijk voor haar is. 
+
+* Iedereen die voor de Queen is zal een buff krijgen: "Blessing of the Fae": +1 max HP, +1 max MP & +1 max Divinity 
+* Iedereen die tegen de Queen is zal een curse krijgen: "Curse of many indifferences": -1 max HP, -1 max MP & -1 max Divinity totdat je een Dark Druid hebt gedood.</td>
+<td>- een aantal (1-3) pookah`s en andere droomwezens (geen red caps)</td>
+<td align="right">110</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">103</td>
+<td align="right">1</td>
+<td>Ruby lost its shimmer</td>
+<td>GENERAL:BUTS:MAGIC</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- De rode drakenkop uit de opslag 
+- zwart/rood doek voor de aankleding van de rest van de draak.
+- evt. zakjes met speciale kleureffecten in het vuur (Mels)</td>
+<td>Daar waar Kyna is/vuurplaats</td>
+<td>De draak uit haar zwaard laten verdwijnen en zorgen voor avond gevecht.</td>
+<td>Joke/Kyna McKee</td>
+<td>Jennifer + Rik</td>
+<td>Mass</td>
+<td>Oeroeboeros heeft Ruby in een zwaard gestopt om Ruby te beschermen tegen Xalliance (de zwarte draak die is verslagen op Kederan XX). Ruby vindt dat ze inmiddels wel lang genoeg opgesloten heeft gezeten en wil graag weer vrij zijn. 
+Terwijl Ruby uitbreekt, zorgt ze voor afleiding met behulp van een (vurige) spirit draak. Deze verschijning vormt zich uit het vuur van de vuurplaats en is een soort van representatie van de macht die Ruby bezit en is in de basis een draakvormige vuurelementaal die alles aanvalt. 
+Omdat Kyna zo goed heeft gezorgd voor Ruby, zal de 'draak' in principe Kyna niet aanvallen om schade te doen. Als Kyna in de weg staat, zal ze hooguit met een warme stroom lucht, een "Strike" effect, opzij worden geblazen. Indien Kyna actief de 'draak' aanvalt, zal ze ook terug worden aangevallen, maar andere doelwitten zullen de voorkeur hebben.
+Bovendien zal Kyna voelen dat Ruby niet meer in het zwaard zit en zal dus krachten die ze hier uit haalde niet meer kunnen gebruiken. 
+
+Ruby kan later nog terugkomen. Ze wordt gevangen genomen door de Queen of the Fae. Zie hiervoor het plot "Kyna, my little child."</td>
+<td>Ruby, ze voelt zich veel groter dan dat ze is. (5 NPC's worden samen de draak Mass legt de vorm uit)</td>
+<td align="right">100</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">104</td>
+<td align="right">1</td>
+<td>Join the dark side, we ve got trees.</td>
+<td>GENERAL</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- Simpel voedsel, zoals wat fruit of vers brood en schoon water
+- pampletten</td>
+<td>Herberg</td>
+<td>aanduiden dat de amuletten ter wereld zijn gekomen</td>
+<td>iedereen die tegen de queen is en voor het behoud van het bos.</td>
+<td>Jennifer of Rik</td>
+<td>Mass</td>
+<td>De dark druids komen alvast een praatje maken met de aanwezigen en hen vertellen over de mogelijkheden tot alliantie en lidmaatschap van hun organisatie. 
+Tevens vertellen ze over het kunnen bijwonen van een bijeenkomst de volgende (zaterdag)avond. 
+Zorg dat de spelers een idee krijgen van de positieve 'vibe' die de druïdes hebben. Ze willen namelijk de wereld op een eerlijke manier laten herscheppen en daarmee alle problemen in de wereld oplossen. Leg vooral de nadruk op de positieve kanten van dit proces en niet op het feit dat effectief daarvoor heel de wereld zal moeten vergaan. 
+
+Bovendien kan je de spelers alvast uitleggen, dat er geld en spullen worden ingezameld om het Mystic Forest te onderhouden. Dit gaat onder andere op aan het afkopen van de Woud Elven met ruilhandel en het inzamelen van spullen om de invloed van de Queen of the Fae uit het hart van het Mystic Forest te krijgen. Natuurlijk weten de druïdes dat dit een klus is, die tijd gaat kosten. Als spelers aangeven, dat ze dit wel willen oplossen, mogen ze dat proberen om zelf te doen. Echter zegt Radius (jullie cirkelleider) dat dit beter een inspanning is voor een grote groep, zoals jullie druïdecirkel.
+De Woudelven zijn op zichzelf ook een probleem en als de spelers aangeven problemen met hen te hebben willen de druïdes daar best bij helpen. Daar staat dan wel steun aan de missie van de orde tegenover en pas als er voldoende vertrouwen is, dat dit probleem de missie niet in gevaar brengt. Voor wat, hoort wat.</td>
+<td>- een aantal (2-4) dark druids</td>
+<td align="right">80</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">105</td>
+<td align="right">1</td>
+<td>Postbode</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>- Enkele zendingstenen</td>
+<td>Herberg</td>
+<td>De postbode en het postsysteem duidelijk maken.</td>
+<td>Mensen die post wil versturen</td>
+<td>Mass</td>
+<td>Mass, Galadriel & Mels</td>
+<td>Voor het verzenden heeft de postbode een aantal mogelijkheden, zowel magisch als manueel. In de basis worden de brieven verstuurd en bezorgd door de bezorger zelf. Indien het een langere-afstandszending betreft, kan dit evt. worden doorgegeven aan de bezorger van de betreffende regio. 
+Indien het kostbare brieven/pakketjes betreft en hiervoor beveiliging moet worden geregeld, mag dit door de verzendende partij worden geregeld (dan telt enkel het gevarengeld) of kan dit door het gilde worden geregeld (dan betaald men ook voor de ingehuurde bewaking, wat standaard een behoorlijk hoog bedrag is). Hoewel het gilde een naam heeft hoog te houden wat betrouwbaarheid betreft, wordt er duidelijk vermeld, dat men niet verantwoordelijk kan worden gehouden voor verlies van post in geval van een overval e.d. (tenzij hiervoor dus extra gevarengeld wordt betaald).
+De bezorger zal in principe altijd zijn best doen om de afspraken zo goed mogelijk na te komen, maar er kunnen altijd onvoorziene omstandigheden gebeuren ;).
+De kosten zijn bewust een beetje complex opgesteld, zodat er een ruimte is voor marge om extra te vragen.
+
+De kosten en mogelijkheden staan hieronder opgesomd:
+--------------------------------
+* Basisbedrag (kleine brief of envelop met lichte inhoud): 2 dukaten
+* Afstand (meerprijs): 5 dukaten per kilometer
+* Persoonlijke bezorging (meerprijs indien magische verzending): 20 dukaten
+* Gevarengeld (meerprijs):
+    - 10 dukaten per verwachte gereisde dag (naar inzicht van de bezorger) 
+    - 25-100 dukaten indien die magisch gebeurd en de bezorger zich zorgen maakt om de veiligheid.
+* In te huren bewaking:
+    - Simpele wachter: 50 dukaten per dag (dit betreft een vechter met 1 wapenvaardigheid, lichte bepantsering en een schildvaardigheid op niv. 1)
+    - Ervaren wachter: 150 dukaten per dag (dit betreft een vechter met ten minste 2 wapenvaardigheden, middelzware bepantsering en een schildvaardigheid, allen op t.m. niv. 2)
+    - Gewenste speciale vaardigheden: 5 dukaten per xp die dit zou kosten om de vaardigheid aan te kopen 
+      (hogere niveau's kosten 1 xp meer dan het niveau eronder)
+* Tijd (meerprijs)
+    - Niet genoemd (wordt bezorgd wanneer de bezorger daar tijd voor heeft): 0 dukaten
+    - Binnen een dag (12 uur): 5 dukaten
+    - Binnen een dagdeel (4 uur): 15 dukaten
+    - Binnen het uur: 25 dukaten
+    - Direct (bezorger zal direct vertrekken): 40 dukaten
+* Wachten op antwoord (meerprijs): 10 per half uur.</td>
+<td>Anthonio "Tony" Velucci (postbode van boodschappersgilde) (DPC Max)</td>
+<td align="right">100</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">108</td>
+<td align="right">1</td>
+<td>Proving gone wrong - Putifull Prayers</td>
+<td>DIVINE</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>&nbsp;</td>
+<td>Overal/Mistwereld</td>
+<td>De gelovigen een kans geven om door te krijgen, dat er een potentieel groot probleem is in de Mistwereld</td>
+<td>Gelovigen en priesters</td>
+<td>Godenspelleiders</td>
+<td>Mels</td>
+<td>De spelers hebben de afgelopen keer kennis gemaakt met een ritueel dat gedaan is om de Proving bij Clan kaliza.
+
+Hierbij is een duo bezig geweest om krachten van de Goden te verzamelen, met name dit van Mishka. Hun plan is om Mishka te doden en diens kracht zelf te gaan gebruiken. Voor het eerste deel van het duo is dat, omdat Mishka niet de kracht gaf om de geliefde van deze persoon te genezen en voor de ander omdat er te veel stappen tussen zouden zitten en je die kracht beter zelf kunt gebruiken. Om dit doel te verwezenlijken hebben ze o.a. creaturen van ijs gecreëerd waarbij de lichamen van allerlei bosdieren zijn gecombineerd en vreemd aan elkaar zijn geplakt. 
+De spelers hebben afgelopen evenement een visoen gezien waarbij het duo een lichtbol heeft kunnen bemachtigen. Op de barvond/special Wonderful Weddings is tevens een dode Sylph uit de Mistwereld gegooid.
+
+Deze lichtbol is van origine een sterk geconcentreerde essentie van de Mishka servitars, maar is inmiddels bekrachtigd met krachten van meerdere soorten servitars.
+
+Deze keer gaan de spelers hier nog meer van merken. Er zal duidelijk worden gemaakt, dat het duo de essentie van een Sylph gebruikt om 'veilig' door de Mistwereld te reizen en hiermee Servitars te bevechten en hun essentie te stelen.
+Omdat de gebeden worden bekrachtigd door de Goden via hun servitars, moeten deze servitars wel levend zijn om dit te kunnen uitvoeren. Het duo is bezig om hier een stokje voor te steken.
+---
+Tijdens bijv. een gevecht zullen van willekeurige gelovigen her en der een aantal gebeden geen effect gaan hebben. Dit zullen in eerste instantie de lagere niveau's gebeden (beginnend bij niveau 1) zijn en niet erg frequent (zie verdeling hieronder). Echter zal dit naar mate het evenement vordert, steeds vaker gebeuren en ook met steeds heftigere gebeden (de servitars die de hogere niveau's kunnen kanaliseren gaan immers minder snel dood).
+Dit effect geldt voor *alle* gebeden, ongeacht de Godheid. De lichtbol zelf is hiervoor niet per se nodig, deze wordt namelijk in de Mistwereld gebruikt, waardoor de servitar die de gelovige zou assisteren komt te overlijden.
+
+De verdeling van de spelleiders die de calls hiervoor gaan maken, wordt verhoogd naar mate de spelers er langer over gaan doen om dit op te lossen. De cumulatieve verdeling is als volgt:
+* Vrijdagavond: Bram en Jop (+ Mels in de nacht)
+* Zaterdagochtend/-middag: Jennifer en Rik
+* Zaterdagavond/-nacht: Galadriel + Rodney
+* Zaterdagavond/-nacht: Magiel (+ rest van evt. aanwezige spelleiders)</td>
+<td>&nbsp;</td>
+<td align="right">90</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">90</td>
+<td align="right">1</td>
+<td>Kyna, my little child</td>
+<td>DIVINE:POLITICS</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>- Evt. de rode drakenkop uit de opslag</td>
+<td>Hof van de Queen of the Fae (Droomwereld)</td>
+<td>Kyna overhalen om bij de Queen of the Fae te komen.</td>
+<td>Joke/Kyna McKee</td>
+<td>Bram (+ evt. Mels/Jannis)</td>
+<td>Mass/Mels</td>
+<td>De Queen of the Fae zal Kyna uitnodigen om weer eens op gesprek te komen. Het is al weer zo'n tijd geleden dat ze elkaar hebben gesproken en ze (de Queen) mist die gezellige gesprekken toch wel. Bovendien heeft ze deze keer een bijzondere gast, die vooral Kyna waarschijnlijk zeer goed kent. Dit is namelijk Ruby, de draak die een lange tijd opgesloten/opgeborgen heeft gezeten in het zwaard aan de zijde van Kyna en de avond ervoor is losgebroken.
+Ruby is in haar vlucht naar vrijheid wat impulsief geweest (op zichzelf niet heel vreemd voor een redelijk jonge, rode, draak) en hierdoor gevangen genomen door een aantal van de volgelingen van de Queen. Zij hadden namelijk gedacht dat een draak aan de zijde van hun Queen een goede toevoeging zou zijn.
+De Queen heeft bovendien in de dromen van Kyna gezien dat dit Ruby is en gedacht dat dit een goede onderhandeling zou kunnen zijn om Kyna aan haar zijde te krijgen.
+Ze is bereid om Ruby terug te geven/vrij te laten op voorwaarde dat Kyna af en toe wat klusjes doet voor de Queen én dat ze zich een beetje gedeisd houdt met haar fanatieke geloof in Mohr. Ze hoeft hem niet af te zweren, maar vooral niet gebruiken om de Queen tegen te werken.
+Eventueel kan Ruby als visage worden opgeroepen om te getuigen van het feit dat a) Ruby inderdaad daar wordt gehouden en b) dat ze op zich goed behandelt wordt, op de gevangenschap na en c) ze vooral erg baalt van haar impulsieve actie en eigenlijk woedend is op de Queen.</td>
+<td>- Queen of the Fae (Sandra Vos)
+- Evt. Ruby (als masker) (Mels/Jannis)
+- evt. 1 à 2 Redcaps/Pookahs</td>
+<td align="right">900</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">101</td>
+<td align="right">1</td>
+<td>I've never been Nero!</td>
+<td>GENERAL:MAGIC</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>Oplettendheid van spelers testen</td>
+<td>Magiespelleiding</td>
+<td>Rik</td>
+<td>Rik</td>
+<td>Sinds de liefde van Nero op K31 is afgenomen door een select aantal spelers, zal hij weer opnieuw beginnen.
+Hij zal dus het dorp rond gaan en vrouwen(!) gaan complimenteren op specifieke lichaamsdelen, dit mag Dokter Nero zelf invullen wie hij complimenteert en waarop. 
+DOE HIERBIJ GEEN #METOO ACTIE. BLIJF CIVIEL!
+
+Als spelers Dokter Nero herkennen, zal hij koste wat kost ontkennen dat hij "die ene necromantier is" of "lijken aan elkaar naait" of ondoden vaker heeft gezien.
+Hij voelt zichzelf niet snel geïntimideerd, maar zal wel problemen uit de weg gaan. Als hij zich heel hostiel bekeken voelt, zal hij uit zichzelf weg gaan.</td>
+<td>- Dokter Nero</td>
+<td align="right">3</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">112</td>
+<td align="right">1</td>
+<td>Aurum Quest: Bloody bandits</td>
+<td>GENERAL:POLITICS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>&nbsp;</td>
+<td>Kortoga</td>
+<td>Handelaar beschermen/Aurum Helpen</td>
+<td>Spelers die een Aurum missie willen doen</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>Een handelaar van Aurum moet naar Kortoga gaan voor handel. De weg naar Kortoga wordt geteisterd door bandieten die weerbare handelaren overvallen. De spelers wordt gevraagd om de handelaar te beschermen op zijn weg naar Kortoga. De groep zal worden aangevallen door een groep bandieten (ligt aan de grootte van de spelersgroep). Als de groep bij Kortoga is aangekomen, zal de handelaar de spelers belonen voor hun bescherming en kunnen de spelers terug naar de herberg gaan.</td>
+<td>- Lucius Vindex (Kampleider)
+- Hostus Arrius (handelaar)
+- 5 bandieten (waarvan 1 leider)</td>
+<td align="right">20</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">113</td>
+<td align="right">1</td>
+<td>Aurum Quest: Silent shifters</td>
+<td>GENERAL:BUTS</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>VR-NA</td>
+<td>- Memory Stick: Voorwerp dat dienst doet voor de "Mass Close Forget" en "Create Memory"</td>
+<td>Herberg en bos</td>
+<td>Shifter arresteren</td>
+<td>Spelers die een Aurum missie willen doen</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>De spelers krijgen een missie van het Aurum kamp om een Bewaker van de mensheid (Men in Black) te helpen met het opsporen van een 'crimineel'. Deze 'crimineel' is eigenlijk een shifter. De spelers zullen sporen volgen, totdat de sporen plotseling van mensenvoeten naar sporen van een beest veranderen. Als de spelers dit spoor volgen, komen ze in het bos 2 shifters vinden. Deze shifters zijn in beestvorm en zullen proberen zichzelf te verdedigen tegen de spelers. Ze zullen proberen de Bewaker aan te vallen, omdat ze op de vlucht waren voor hem. De spelers moeten dit voorkomen. Als de spelers de shifters hebben verslagen, veranderen deze terug naar hun mensvorm. De bewaker zal een "Mass close Forget" effect gebruiken uit een voorwerp en hierna een "Create Memory" spreuk. Hierin zal hij praten over hoe de spelers de criminelen hebben verslagen. De spelers zullen met de Bewaker de lijken terugbrengen naar het kamp en de spelers zullen hun beloning krijgen.</td>
+<td>- Lucius Vindex (Kampleider)
+- 1x Bewaker van de mensheid (Men in Black)
+- 2x Shifter (beestvorm) (lamia en een lycan)</td>
+<td align="right">100</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">115</td>
+<td align="right">3</td>
+<td>Back in Black</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>Shifter spelers op hun hoede zetten</td>
+<td>Shifter spelers</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>Komt na het plot 'Silent shifters'.
+
+Tijdens het plot 'Silent shifters' heeft de Bewaker het verhoeden gekregen dat er shifters in het dorp zijn. Hij/zij zal proberen deze op te sporen en proberen zijn vermoede te bevestigen. Hij kan dit doen door met mensen te praten of een speciale vaardigheid/spreuk te gebruiken om shifters op te zoeken.
+
+Als de Bewaker de shifters in het dorp heeft gevonden zal deze proberen de shifter spelers over te halen om met The Kingdom of Aurum samen te werken. Normaliter proberen de Bewakers van de mensheid shifter te ontvoeren maar ze weten dat het in deze situatie alleen erger zou maken. Ze willen dat de shifters niet met Dark Dannings gaan samenwerken en met de Kingdom gaan samenwerken. Als de Bewaker de spelers heeft overtuigt zal hij/zij weer weggaan en in komende evenementen samenwerken. Als de spelers weigeren zal de Bewaker weggaan en in komende evenementen ze lastigvallen.</td>
+<td>Bewaker van de mensheid (Men in Black) (Het liefst gespeeld door iemand die goed is in mensen overhalen)</td>
+<td align="right">999</td>
+<td>N</td>
+	</tr>
+	<tr>
+<td align="right">119</td>
+<td align="right">1</td>
+<td>Aurum Quest: Materials Made</td>
+<td>CRAFT:BUTS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>- 2x emmers met aarde
+- 8x lammies van ijzererts (4 per emmer)
+- 500 dukaten</td>
+<td>Mystic Forest</td>
+<td>Dungeoneering ter bevordering van het Koninkrijk Aurum</td>
+<td>Vechters en ambachtslieden</td>
+<td>Rik</td>
+<td>Rik</td>
+<td>Het kampement van Aurum dat gestationeerd is bij The Lofty Chalice zit nu een geruime tijd stil en maakt zich gereed voor een verlengde zit. Bevoorradingsofficier Pertinax heeft tot dusver alle dagelijkse benodigdheden kunnen regelen, als het aankomt in het kampement. Het enige probleem waar hij/zij mee kampt, is, als het leger voor langere tijd strijdvaardig moet blijven, er metalen nodig zijn. Vanuit eerdere verkenningsacties weten ze dat er een kilometer verder een mijn ligt in de Mystic Forest. Als er een detachement van Aurum heen wordt gestuurd, is het mogelijk dat de strijd sneller los barst dan gewenst/het kamp erdoor te zwak achtergelaten wordt. Om dit probleem op te lossen, kwam de oplossing om het te vragen aan de avonturiers die bij de Lofty Chalice verblijven.
+
+De bevoorradingsofficier zal mensen vragen of ze bereid zijn om naar de mijn te gaan tegen betaling of tegen ruil van materialen. Er zal niet vermeld worden dat het in het Mystic Forest ligt, alleen dat het "die" richting op is (overduidelijk richting van Mystic Forest). Hierbij kunnen de spelers onderhandelen over de betaling en of ze alleen de mijn hoeven te ontdoen van troepen of ook meteen te mijnen (ze weet wel nog wat van haar eigen mensen die de materialen eruit kunnen halen, maar kijk of de spelers dit kunnen doen).
+
+Als opvolging hiervan kunnen de spelers vragen of ze het erts ook meteen moeten omsmelten zoniet moeten vervaardigen tot bruikbaar materiaal (wapens, pantser, schilden). De Pertinax mag het ook opbrengen.
+
+De Mijn:
+De mijn ziet er "verlaten uit" wegens het overgroeide stuk bos dat er omheen staat. Daarentegen zijn er wel duidelijk sporen te zien van recente mijnwerkersactiviteit.
+
+Op het moment zijn een aantal bandieten uit Kortoga aanwezig. Dit zijn 'wildmijners', die op een kans hebben gewacht om "veilig" materialen te halen uit de mijn, om hiermee geld te verdienen. Sinds het werk wat zij verrichten uitermate competitief is, zullen ze vrijwel meteen overgaan op de aanval.
+
+Als de spelers bij de locatie komen, vinden ze al 3 bandieten buiten de mijn.
+In de mijn zullen ze dan nog 5 tot 7 bandieten vinden (dit zullen waarschijnlijk dezelfde npc's zijn, maar dan opnieuw ingezet met des noods een wijziging in uitrusting van wapens e.d.) en op het einde van de mijn een groter gevecht van 2-4 golven van dezelfde groep.
+
+Er liggen een aantal emmers met ertsen in het diepste van de mijn. Dit zijn ertsen die de spelers mee kunnen nemen.
+
+Quest Einde:
+Spelers zijn terug bij bevoorradingsoffice Laurentius/Laurana Pertinax en zeggen de mijn veiliggesteld te hebben (60 dukaten per speler, standaard idee, onderhandelbaar)
+OF Spelers hebben ook gemijnd en dit gebracht naar de officier (handelsprijs min beetje per grondstof)
+OF Spelers hebben dit ook verwerkt tot baren materiaal (handelsprijs min een beetje per baar)
+En dan nog eens verwerkt tot wapentuig (+10 per baar materiaal dat gebruikt is)
+
+De waarde van de beloning kan ook in handelswaar gegeven worden:
+Leer
+Magische Ringen
+Kruiden
+
+Als de spelers alleen gezegd hebben dat ze de mijn hebben verkend, maar hebben veiliggesteld en/of deze hebben leeggehaald, komt de officier op een later moment er op terug om verhaal te halen.</td>
+<td>- Bevoorradingsofficier Laurentius/Laurana Pertinax
+- 3-5 bandieten/wilmijners uit Kortoga</td>
+<td align="right">32</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">117</td>
+<td align="right">1</td>
+<td>Aurum Quest: Inquisitive Intel</td>
+<td>GENERAL:POLITICS</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>- Dark Dannings oorlogsplannen (documenten) (Jop)</td>
+<td>Langs een weg</td>
+<td>Intel over Dark Dannings verkrijgen</td>
+<td>Spelers die een Aurum missie willen doen</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>De spelers krijgen de missie om informatie over de Dark Dannings te vergaren voor The Kingdom of Aurum. Ze worden naar de Dark Dannings gestuurd om een koets te overvallen. In de koets zit een legerofficier van de Dark Dannings. 
+De spelers moeten deze ontvoeren en ondervragen voor informatie over het leger van Dark Dannings. Tijdens de overval zal de officier 3-5 ondoden summonen die de spelers moeten verslaan. Als de klaar zijn met de ondervragen, moeten ze de officier vermoorden. Als de spelers terug zijn van het kamp zullen ze de informatie delen met de kamp leider en hun beloning krijgen.
+
+Als het vredesgesprek met de Kingdom niet goed zal aflopen hebben de huizen van Dark Dannings een oorlogsplan. 
+
+Deze beloning zal in overeenstemming met de spelers eerst worden besproken. Het voorstel zal vooral zijn om de spelers een wederdienst aan te bieden. Als de spelers daar bijv. niet mee akkoord gaan kunnen er eventueel wat componenten/geld worden geboden. 
+Indien de spelers erg efficiënt zijn, kan Lucius hier eventueel nog wat bovenop doen als vorm van goodwill. 
+
+De oorlogsplannen zijn:
+
+De necromancers zullen een groot leger van ondoden creëren. Als deze stap gedaan is zullen ze dit leger in twee delen opsplitsen. De ene helft zal Smugglerstown aanvallen en het tweede deel zal de Lofty Chalice aanvallen. Als deze overgenomen zijn, worden deze gebruikt als uitvalbasissen voor aanvallen naar de Kingdom. Als de spelers zich aansluiten bij de Dark Dannings zullen ze hen in leven laten. Terwijl deze legers op het land vechten zal een horde van ondode zeemonsters de kust van de Kingdom aanvallen.</td>
+<td>- Lucius Vindex (Kampleider)
+- Serban Ripnu (Dark Dannings legerofficier)
+- 3-5 ondoden (generiek)</td>
+<td align="right">200</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">118</td>
+<td align="right">1</td>
+<td>Seducting Staff</td>
+<td>DIVINE</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- Seductress godenstaf (IC in bezit bij Enzio/Kasimir)</td>
+<td>Seductress kerk</td>
+<td>Enzio's godenstaff upgraden</td>
+<td>Enzio/Kasimir</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>Enzio's karakter (Kasimir) wil zijn band met de godenstaf versterken. Om dit te doen zal hij een ritueel moeten uitvoeren en de Seductress overtuigen om de godenstaf sterker te maken. Dit zal hij moeten doen in de kerk van de Seductress. Als hij de Seductress kan overtuigen, zal ze hem de kracht uitlenen totdat hij een opdracht van haar heeft voltooid. Hij krijgt ook de optie om zijn oude Mana naar Divinity points te veranderen, dit gaat met een ratio van 1+x voor Mana voor x Divinity. De Sluagh Apotamkin zal Kasimir helpen hiermee en hem helpen herinneren om het te doen.</td>
+<td>- Apotamkin (Sluagh/ Seductress Servitar)</td>
+<td align="right">900</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">114</td>
+<td align="right">1</td>
+<td>Peacetalks</td>
+<td>GENERAL:POLITICS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZO-OC</td>
+<td>&nbsp;</td>
+<td>Herberg</td>
+<td>Vrede tussen Dark Dannings en Aurum</td>
+<td>Spelers die in politiek geïnteresseerd zijn</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>Nadat het afgelopen evenement de vredesonderhandeling uitgelopen zijn in een fiasco, proberen de Kingdom of Aurum en Dark Dannings nog één keer om de oorlog te voorkomen. Deze vredesonderhandeling zal weer gehouden worden bij de herberg The Lofty Chalice. Vanwege de ondodenaanval tijdens de afgelopen onderhandeling, is de stemming om te snijden. Om deze reden zal een derde partij worden aangewezen om de onderhandelingen te leiden en zorgen dat er niets mis gaat. Deze derde partij zal bestaan uit spelers. Aurum wil handelsovereenkomsten sluiten en zorgen dat er geen ondoden meer over de grens komen. De Dark Dannings vinden deze handelsovereenkomsten erg éénzijdig en willen dat Smugglerstown opgeheven wordt. Aurum ontkent dat ze iets te maken hebben met Smugglerstown. Beide partijen vertrouwen elkaar niet en het zal aan de spelers liggen of deze onderhandeling succesvol zal aflopen.
+
+Smugglerstown is een dorp in Dark Dannings dat dichtbij de grens met de Kingdom ligt. Dit dorp wordt gebruikt voor illegale handelsroutes in Dark Dannings door de Kingdom. De Kingdom ontkent iets te maken te hebben met Smugglerstown. De Dark Dannings weet echter dat dit een leugen is en wil dat dit dorp verwoest wordt, aangezien het op hun grond staat en voor illegale activiteiten zorgt. De Kingdom wil dit niet omdat de illegale handel veel inkomsten oplevert en hun enige basis in de Dark Dannings is.
+
+Tijdens het gesprek zal het dorp worden aangevallen door ondoden (zie plot "Undeads are comming!").
+Beide partijen zullen eisen dat de andere in de herberg blijft terwijl de spelers het probleem oplossen. 
+
+De afgezanten van de Dark Dannings zijn in principe een afvaardiging van dezelfde huizen als die bij de vorige onderhandeling aanwezig waren:
+- Keya Imra* (hoofd van huis Keya-Imra) of Boenos(ia) Keya-Imra (hoofdgeplaatst waarnemend diplomaat huis Keya-Imra)
+- Heera Louisean-Gradely* (assistent en vertrouweling van Louisean Gradely) + evt. Louisean Gradely (hoofd van huis Louisean-Gradely)
+- Kasabaran Aegir-Bas* (Priesteres van de 8) en/of Thiryon Aegir-Bas (hogepriester van alle 8, uit huis Aegir-Bas)
+* Namen met een '*' zijn als het goed is afgelopen evenement ook reeds het spel in geweest tijdens de vorige onderhandelingen en hebben voorkeur om deze keer wederom ingezet te worden. Indien de figuranten die deze rollen eerder hebben vertolkt niet aanwezig/beschikbaar zijn, kunnen de anderen worden ingezet.
+
+De afvaardiging voor het Kingdom of Aurum bestaat uit de volgende deelnemers en ook veelal dezelfde als bij de vorige onderhandelingen:
+- Lucius Vindex (Kampleider) (DPC personage tijdens dit gehele weekend)
+- Cato  Antonius Maximus  (Hand  van  de  koning)
+- Erasas  Septus (Profeet  van  de  zon)
+- Sextus  Decima (Meester  van  de  munt)</td>
+<td>Afvaardiging Kingdom of Aurum:
+- Lucius Vindex (Kampleider)
+- Cato  Antonius Maximus  (Hand  van  de  koning)
+- Erasas  Septus (Profeet  van  de  zon)
+- Sextus  Decima (Meester  van  de  munt)
+
+Afgezanten van Dark Dannings:
+- Keya Imra (hoofd van huis Keya-Imra) of Boenos(ia) Keya-Imra (hoofdgeplaatst waarnemend diplomaat huis Keya-Imra)
+- Louisean Gradely (hoofd huis Louisean-Gradely) of Heera Louisean-Gradely (assistent en vertrouweling van Louisean Gradely)
+- Thiryon Aegir-Bas (hogepriester van alle 8, uit huis Aegir-Bas)</td>
+<td align="right">900</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">124</td>
+<td align="right">1</td>
+<td>Adventuring gear</td>
+<td>CRAFT</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Plaatharnas
+- componenten</td>
+<td>Herberg</td>
+<td>Laten repareren van kapot harnas</td>
+<td>Smid</td>
+<td>Galadriel en Rodney</td>
+<td>Galadriel</td>
+<td>Een groep met avonturiers is terug van een queeste en arriveren bij de herberg. Het was een gevaarlijke tocht en ze hebben o.a. een flinke trol bevochten.
+Hierdoor is het pantser stuk geraakt, deze willen ze graag laten repareren.
+Hun hebben bij hun beloning van de queeste alleen componenten gevonden. Deze bieden ze aan voor de reparatie van het pantser.</td>
+<td>- groep van 4 mensen (avonturiers)
+- minimaal 1 met harnas
+- de rest heeft adventuring gear aan</td>
+<td align="right">51</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">125</td>
+<td align="right">1</td>
+<td>Little girl</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Beschermend amulet (Teardrop, 1 van de 12)</td>
+<td>Herberg</td>
+<td>Genezen van een jong meisje</td>
+<td>Chantal (heks)</td>
+<td>Galadriel/Mels</td>
+<td>Galadriel/Mels</td>
+<td>Er is een klein meisje ontzettend ziek, de moeder gelooft dat alleen een echte heks haar meisje kan helpen. Ze heeft gehoord dat er een heks leeft in de buurt van de herberg en gaat op zoek naar haar (speler Chantal). 
+Als ze haar gevonden heeft, vraagt ze om haar dochter te genezen. Ze heeft niet veel om te geven, maar wil wel iets geven als dank. Madelijn (de moeder) gelooft sterk dat het amulet dat ze het personage van Chantal geeft, een beschermend amulet is.In werkelijkheid is dit één van de 12 amuletten waar zowel de Queen of the Fae, als de Dark Druids naar zoeken.
+
+* Spelers die proberen met gebeden dit meisje te helpen, merken dat hun gebeden geen effect hebben (dit gaan we schuiven onder de noemer van de problemen met het Duo). Geef door aan de Godenspelleiding welke spelers dit effect hebben gehad.
+* Spelers die proberen met spreuken dit meisje te helpen, merken dat zij hun spreuken niet willen afmaken (mind affecting effect). De bron hiervan is de nabijheid van het Duo en de geestmagiër daarvan, Eric(a).
+
+De ziekte waar Annelotte aan lijdt is "Roze Onvruchtbaarheid"
+Mogelijke symptomen:
+- een zere tong
+- uitslag
+- zwak voelen
+- gewichtstoename (niet in alle gevallen)
+- spierkrampen (soms)
+
+Wat te verwachten: een zere tong en uitslag kunnen binnen enkele dagen optreden, maar er kan slechts één symptoom worden waargenomen. Na het eerste begin, verdwijnt de pijnlijke tong in het algemeen, om later terug te komen. Rond deze tijd wordt het gevoel van zwakte ervaren door de overgrote meerderheid van de mensen die aan deze ziekte lijden.
+De ervaring van een zwak gevoel heeft vaak een versterkend effect op de ervaring van uitslag.
+Na enkele dagen wordt gewichtstoename door ongeveer 25% van de mensen ervaren en is het meest ervaren na het drinken.
+Gedurende de loop van de ziekte kunnen spierkrampen worden ervaren, maar slechts in zeldzame gevallen en kunnen worden ervaren op extreme niveaus.
+Oorzaak: Te veel stress en een verzwakt immuunsysteem.
+Verergerd door: het stimuleren van inspanning
+Behandeling (heks): de aanwezige uitslag met speeksel van een Woudelf insmeren, vermengd met wat Henbane. Vervolgens de patiënt op de rug leggen en zorgen dat zowel armen als benen ten minste een hoek van 30 graden maken met elkaar. Dit voor een uurtje laten inwerken en vervolgens de patiënt laten slapen onder voldoende warmte, zodat deze goed gaat zweten, voor minstens 4 uur.
+Zeldzaamheid: 1 op de 12 jonge kinderen heeft "Roze Onvruchtbaarheid".</td>
+<td>- Annelotte (ziek meisje)
+- Madelijn (moeder)</td>
+<td align="right">49</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">126</td>
+<td align="right">1</td>
+<td>What`s in the box ?</td>
+<td>CRAFT</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>- Kist (Mass) met lammie voor niv 2 slot
+- 40  dukaten  
+- 3-6 scrolls (Mels)
+- een aantal edelstenen  of  componenten</td>
+<td>Herberg</td>
+<td>Kist openen</td>
+<td>Spelers die slot open kunnen maken</td>
+<td>Ambachten</td>
+<td>Galadriel</td>
+<td>Een groep avonturiers (eender hoeveel personen er beschikbaar zijn) hebben een kist gevonden, maar krijgen deze niet open, omdat de specialist op dit vlak (de dief/rogue van de groep) het avontuur niet heeft overleefd. Dit heeft niets te maken met de kist, meer met de orks die ze zijn tegengekomen. Ze zullen de spelers om hulp vragen voor iemand die sloten kan openen. 
+Het slot is niveau 2 en de persoon biedt de helft van wat er in de kist zit als beloning. Er zitten 40 dukaten, wat scrolls, edelstenen en componenten in de kist.</td>
+<td>- 1-3 avonturiers (vechter, genezer, magiër)</td>
+<td align="right">34</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">127</td>
+<td align="right">1</td>
+<td>Oh look a map</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- Kaart
+- Mystery package (Plot Rik) mag hierbij, het vinden van kaart plus pakketje van de vroegere necromancer in het kerkje.</td>
+<td>Kerk</td>
+<td>Kaart vinden in de kerk</td>
+<td>Enzio en andere spelers bij de kerk</td>
+<td>Iedereen</td>
+<td>Galadriel</td>
+<td>Er zal een plattegrond gevonden worden in de kerk waar de onderkant van is verbrand. 
+Op deze kaart staan 5 niveaus (levels) onder de kerk, het gaat hierom een veranderende tombe. 
+Op deze manier kunnen er altijd nieuwe dungeons ontstaan onder de kerk.</td>
+<td>&nbsp;</td>
+<td align="right">20</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">147</td>
+<td align="right">1</td>
+<td>Bloodbringers III</td>
+<td>DIVINE</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>&nbsp;</td>
+<td>Overal</td>
+<td>Werkdruk bepalen van spelleiders m.b.t. "Proving gone wrong - Putifull Prayers"</td>
+<td>Gelovigen en priesters</td>
+<td>Galadriel + Rodney</td>
+<td>Mels</td>
+<td>"Level 1 gebeden hebben soms geen effect. Vertel de speler in kwestie direct na het bidden dat dit geen effect heeft. Het voelt aan alsof "je gebed niet gehoord werd".</td>
+<td>&nbsp;</td>
+<td align="right">0</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">148</td>
+<td align="right">1</td>
+<td>Bloodbringers IV</td>
+<td>DIVINE</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>ZO-OC</td>
+<td>&nbsp;</td>
+<td>Overal</td>
+<td>Werkdruk bepalen van spelleiders m.b.t. "Proving gone wrong - Putifull Prayers"</td>
+<td>Gelovigen en priesters</td>
+<td>Alle aanwezig spelleiders</td>
+<td>Mels</td>
+<td>"Level 1 gebeden hebben soms geen effect. Vertel de speler in kwestie direct na het bidden dat dit geen effect heeft. Het voelt aan alsof "je gebed niet gehoord werd".</td>
+<td>&nbsp;</td>
+<td align="right">0</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">150</td>
+<td align="right">1</td>
+<td>Let me see what you've got</td>
+<td>DIVINE:MAGIC</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>&nbsp;</td>
+<td>Overal</td>
+<td>De speler bespioneren welke voorwerpen ze allemaal bezitten die krachten bevatten.</td>
+<td>Iedereen met magische voorwerpen</td>
+<td>Magie- en Godenspelleiding</td>
+<td>Mels</td>
+<td>De zielen worden op pad gestuurd om te gaan verkennen welke voorwerpen de spelers allemaal bezitten. Tenzij er heel onvoorzichtig wordt omgegaan met deze voorwerpen, zullen deze nog niet worden gestolen.</td>
+<td>Dolende zielen (zie plot "Shimmering Souls")</td>
+<td align="right">100</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">152</td>
+<td align="right">1</td>
+<td>Give it to me</td>
+<td>BUTS:DIVINE:MAGIC</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>&nbsp;</td>
+<td>Overal</td>
+<td>De spelers beroven van hun magische voorwerpen</td>
+<td>Iedereen met magische voorwerpen</td>
+<td>Magie- en Godenspelleiding</td>
+<td>Mels</td>
+<td>De zielen gaan nu echt over tot het stelen van de voorwerpen en worden een stuk brutaler in hun zoektocht.</td>
+<td>Dolende zielen (zie plot "Shimmering Souls")</td>
+<td align="right">10</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">153</td>
+<td align="right">1</td>
+<td>Never enough power!</td>
+<td>BUTS:DIVINE:MAGIC</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>&nbsp;</td>
+<td>Voor de herberg</td>
+<td>Aan de spelers duidelijk maken dat ze een machtige tegenstander hebben aan het Duo.</td>
+<td>Met name personen met gevechtsvaardigheden</td>
+<td>Iedereen</td>
+<td>Mels</td>
+<td>Het Duo stuurt een legertje aan dolende zielen en servitars die zij onder hun controle hebben op de spelers af om hierdoor eventueel eenvoudiger de spullen te kunnen stelen of ze betaald te zetten voor eventuele problemen die de spelers hebben veroorzaakt voor het Duo.
+Dit gevecht mag best een beetje heftig zijn, maar we moeten niet per se voluit tegen de spelers in. Dat komt waarschijnlijk in de avond met de "Divine Showdown".</td>
+<td>- Een aantal dolende zielen
+- Een aantal 'bezeten' servitars (eender welke)</td>
+<td align="right">500</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">154</td>
+<td align="right">1</td>
+<td>Negotiating for a Nyaad</td>
+<td>MAGIC</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>VR-NA</td>
+<td>&nbsp;</td>
+<td>Hof van de Queen of the Fae (Droomwereld)</td>
+<td>De Rumeliana-groep een mogelijkheid geven om de zwarte Nyaad Mara terug te krijgen</td>
+<td>Rumeliana-groep</td>
+<td>Magiespelleiding (+ Mass/Mels)</td>
+<td>Mels/Mass</td>
+<td>Indien de Rumeliana-groep op audiëntie komt om over de zwarte Nyaad te komen praten, zal de Queen hen met plezier ontvangen.
+De groep zal in totale loyaliteit moeten zweren in ruil voor (het leven van) Mara, de zwart Nyaad.
+De Queen zal hen eventueel ook meer kunnen bieden, des noods "grootse kosmische krachten", maar daar zit een prijs aan vast en de Queen is er erg scherp op, dat deze krachten nimmer tegen *haar* kunnen worden gebruikt.
+Dat de loyaliteit ook nadelen zal kunnen hebben voor de groep zullen ze zelf moeten bedenken, de Queen zal ze daar niet per se op wijzen. Echter zal ze niet ontkennen, dat deze loyaliteit niet altijd even eenvoudig te houden zou kunnen zijn. Echter is ze er van overtuigd, dat ze dit kunnen. (zoniet, is dat voor een probleem voor de groep en niet voor de Queen ;) ).</td>
+<td>- Queen of the Fae (Sandra V.)
+- evt. 1 à 2 Redcaps/Pookahs</td>
+<td align="right">999</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">97</td>
+<td align="right">1</td>
+<td>Femme fatale</td>
+<td>GENERAL</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>- 2x ring of charged emotions (doet 1x "Fatal" als de drager in een heftige emotie verkeerd)</td>
+<td>Herberg</td>
+<td>De spelers opschrikken en de mogelijkheid creëren voor de oude speler(s) met Cure Fatal om een verschil te gaan merken in de manier waarop dit wordt gehanteerd in de nieuwe wereld.</td>
+<td>Oude spelers met genezingsgebeden van Mishka</td>
+<td>Godenspelleiders</td>
+<td>Mels</td>
+<td>Lorlunt Bargelsam komt bij de herberg vragen of er nog post is aangekomen voor hem en zijn vrouw Riarke. Dit is er niet en hij besluit om nog een drankje te doen voordat hij weer de reis terug gaat maken naar zijn vrouw. Lorlunt is simpele arbeider bij een naburig pakhuis in Kortoga en spendeert veel van zijn werkende uren tussen voornamelijk mannen. Dus als er in de herberg (en omgeving) vrouwen aanwezig zijn, zal hij graag met hen een gesprek aanknopen. Dit is niet per se om daadwerkelijk te flirten, maar vooral voor wat gezellige gesprekken. Blijf dus vooral met de vrouwelijke spelers aan de praat.
+
+Enige tijd later komt Riarke Bargelsam haar echtgenoot Lorlunt opzoeken bij de herberg "The Lofty Chalice" en zal hem met een dame 'betrappen'. Indien hij op het moment dat je aan komt niet met een vrouw aan het praten is, verander je je verhaal maar een beetje, dat je genoeg verhalen hebt vernomen over zijn gedrag met de vrouwen hier in de herberg. 
+Ze gaat door het lint en geeft hem een klap in het gezicht (niet per se fysiek raak, bespreek dit onderling) en gebruik één van de ringen. Deze ring geeft een "Fatal" effect als je bijv. erg boos bent. 
+Vervolgens loop je naar de speelster waarmee hij stond te praten en geef haar met de andere hand ook een klap, voor hetzelfde effect.
+Ze is niet voor reden vatbaar en denkt niet aan de consequenties voor haar eigen leven. 
+
+De spelers die genezende gebeden gebruiken van Mishka uit het oude systeem, zullen merken, dat er iets 'aparts' gebeurd. Het voelt niet meer als Mishka. (dit klopt, het is tegenwoordig Rach'tsor).</td>
+<td>- 1 vrouw - Riarke Bargelsam
+- 1 man - Lorlunt Bargelsam
+- Herbergin (Carola)</td>
+<td align="right">900</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">156</td>
+<td align="right">1</td>
+<td>Goodbye cruel world - Part I</td>
+<td>GENERAL:CRAFT</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- 1 Touw
+- 1 juweel (armband/ketting/ring)</td>
+<td>Herberg</td>
+<td>De spelers kennis laten maken met een minder fijne kant van het leven van de omwonenden.</td>
+<td>Handelaren</td>
+<td>Ambachtenspelleiders</td>
+<td>Mels</td>
+<td>In te zetten enige tijd na "Balm to the unfortunate".
+
+Shankar is het leven beu en is van plan zichzelf van het leven te gaan beroven. Om dit mogelijk te maken wil hij/zij zichzelf ophangen aan een boom (zie plot "Goodbye Cruel World - Part II"). Het touw dat hiervoor nodig is, zal moeten worden gekocht op de markt. Shankar zal met de laatste dukaten proberen om een touw te kopen. Dit gaat niet lukken, want hij/zij heeft te weinig geld. 
+Om de kosten toch te kunnen betalen, verkoopt Shankar een juweel, dat de laatste erfenis is van diens moeder. Met deze laatste extra dukaten zal het touw kunnen worden gekocht en vertrekt Shankar weer richting het bos.
+Probeer vooral niet te veel te praten met iedereen om je heen. Zij zijn allemaal nog veel te druk bezig met hun leven. Dat van jou heeft toch geen zin meer, dus val je hen ook maar niet lastig met je verhaal. Je vind het al een beetje vervelend, dat je zelf geen touw hebt en dus naar de markt moet voor zo'n ding.</td>
+<td>- Shankar Kashikar (suïcidale zeeman/-vrouw)</td>
+<td align="right">70</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">92</td>
+<td align="right">1</td>
+<td>Where Drugs arrr</td>
+<td>GENERAL</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>ZA-MI</td>
+<td>- Een vijftal single use pistol wands met Elemental Projectile
+- Het recept voor "Leafdust"
+- 1x schedel</td>
+<td>Herberg</td>
+<td>Ambachten onderdrukken en hen vertellen dat ze drugs moeten gaan maken, anders komen er consequenties</td>
+<td>Personen met "Potion Brewer" en "Botanist"</td>
+<td>Galadriel of Rodney</td>
+<td>Mass/Mels</td>
+<td>Lucas Monster komt zijn knokploeg (vermeld als 'Bandieten') langs om "potions te kopen". Ze zoeken naar lieden die drankjes kunnen maken of weten hoe ze de benodigde ingrediënten (componenten) kunnen vinden. 
+Zodra ze een dergelijk persoon alleen hebben, zullen ze deze persoon afgezonderd proberen te krijgen en met een groepje er om heen gaan staan. Vervolgens zal Lucas duidelijk maken dat ze niet komen om drankjes te kopen. De ware toedracht van hun bezoek zit in het dwingen tot het werken voor hen. Dit houdt in, dat ze een drug moeten gaan maken, Leafdust. 
+
+De boodschap is even simpel als gevaarlijk; je werkt voor Leafbrain, of we slaan je in elkaar (of erger).
+Nadat de boodschap is vertelt, slaan ze de persoon bewusteloos door herhaaldelijk "Non Lethal" schade te doen. Ze houden vervolgens de plek zo onschuldig, maar oplettend mogelijk, in de gaten.
+Nadat de persoon weer wakker wordt (na ong. 15 minuten) gaan ze verder met praten. Hierbij zullen ze mededelen dat, als je handel wilt blijven verkopen, dan mag je ook elke dag een paar drugs potions voor ons maken. Het recept en de spullen zal je van ons krijgen* en als ze verstandig zijn, gebruiken ze het niet voor andere spullen. Er wordt, afhankelijk van hoe goed de spelers meewerken, ten minste 2 drankjes per dag geëist. 
+
+Leafdust wordt gemaakt door een combinatie van Fixam, Kattekruid en Drakenglas fijn te vermalen.
+De gebruiker dient vervolgens witte poeder op te snuiven.</td>
+<td>- 2-4 leden van filibuster knokploeg
+- Lucas "de Dab" Monster (bootsman)</td>
+<td align="right">90</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">155</td>
+<td align="right">1</td>
+<td>Reborn from the ashes of the flame</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>&nbsp;</td>
+<td>Daar waar de speler zich bevindt.</td>
+<td>Een aantal (oude) spelers de mogelijkheid geven om hun personage in-game om te bouwen naar het nieuwe systeem/setting</td>
+<td>Oude spelers die graag een in-game ombouw van hun personage doen.</td>
+<td>Mels/Mass</td>
+<td>Mels</td>
+<td>Een aantal spelers (o.a. Joke P. en Mark v.d. B.) hebben aangegeven graag met het nieuwe systeem verder te spelen en hun personage te willen ombouwen naar het nieuwe systeem. Aangezien wij oude spelers de mogelijkheid hebben gegeven om met de oude vaardigheden te blijven spelen en hun behaalde punten t/m Kederan 30 te besteden in het oude systeem, zijn er een aantal personages die dus een hybride vorm hebben.
+De personages die hier gebruik van gaan maken, zullen tijdens het spel een ritueel/ceremonie gaan houden. Hierin wordt kort door de bocht het volledige personage wat betreft vaardigheden 'leeggegooid' en opnieuw opgebouwd. Het is aan de betrokken spelleider om te beoordelen of het personage in essentie sterk vergelijkbaar blijft aan de oude opbouw. 
+Tijdens het ritueel/de ceremonie zal een globale schets worden besproken, de details worden off-screen nog wel besproken als daar tijd voor is. 
+Sowieso zullen de spelers die dit willen doen *van te voren* een nieuw karakteropbouw moeten aanleveren. Tenzij er uit het ritueel hele andere vaardigheden komen, zal dat de nieuwe build worden.</td>
+<td>&nbsp;</td>
+<td align="right">999</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">162</td>
+<td align="right">3</td>
+<td>Bananenbar</td>
+<td>GENERAL</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Joke</td>
+<td>Mels</td>
+<td>Mels</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td align="right">999</td>
+<td>N</td>
+	</tr>
+	<tr>
+<td align="right">137</td>
+<td align="right">1</td>
+<td>What was yours, is now mine!</td>
+<td>DIVINE</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>* Evt. 1 lichtbol op batterijen (bij voorkeur goed fel, licht blauw en ong. ter grootte van een voetbal).</td>
+<td>Overal/Mistwereld</td>
+<td>Hoeders van religieuze voorwerpen (zoals de Godenstaven) voorzichtig laten omgaan met deze objecten, danwel hun kracht en/of voorwerp stelen</td>
+<td>Hoeders van religieuze voorwerpen</td>
+<td>Godenspelleiders</td>
+<td>Mels</td>
+<td>Naast de problemen die de spelers gaan hebben met servitars die dood neervallen en gebeden die daardoor niet of amper functioneren, gaat het Duo vanuit de Mistwereld ook proberen om krachten te verzamelen van religieuze voorwerpen, zoals de Godenstaven/-artefacten. 
+Bij ieder ritueel (elementair) of ceremonie (Divine) waarbij deze voorwerpen worden gebruikt, met name als Goden/servitars worden aangeroepen, zal 1/3 van de Divinity en 1/4 van de elementaire mana naar het Duo gaan. Deze tappen de kracht af voordat het via de servitar wordt gebruikt. Ze houden de servitar net genoeg in leven, dat deze nog net zijn/haar taak kan uitvoeren. (anders heeft het geen zin, omdat men anders helemaal geen Divinity/elementaire mana meer gebruikt).
+Het Duo kent de oude elementaire mana niet, dus weet niet goed hoe hier mee om te gaan. 
+Elementaire mana is wel bekend, maar voor hen minder nodig, aangezien ze vooral Goddelijke krachten willen bezitten.
+De Divinity wordt opgeslagen in het artefact (de lichtbol) dat ze hebben weten te bemachtigen.
+
+Indien meerdere van dergelijke ceremonies/rituelen tegelijk plaatsvinden, zal de eerste worden afgetapt, totdat deze afgelopen is. Daarna gaan ze door naar de volgende. 
+Als spelers dus overlappingen creëren, of zelf kleine rituelen tussendoor doen, kunnen ze hier handig gebruik van maken.
+
+In het geval dat de spelers erg onvoorzichtig zijn met de religieuze voorwerpen, zoals ze onbeheerd achterlaten of ze volledig inzetten als krachtbron of centraal punt van het ritueel/de ceremonie, zal een helder fel licht op het voorwerp gaan schijnen uit een klein portaal tussen de Mistwereld en Kederan (evt. ingang naar "Into the Mist"). Dit licht zal het voorwerp leegzuigen en waar mogelijk mee opstralen (bedenk je hierbij een soort van teleportatiestraal).</td>
+<td>&nbsp;</td>
+<td align="right">30</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">149</td>
+<td align="right">1</td>
+<td>Shimmering Souls</td>
+<td>DIVINE:MAGIC</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>EVENT</td>
+<td>&nbsp;</td>
+<td>Overal</td>
+<td>Spionnen in het spel hebben voor het Duo, zodat zij beter kunnen nagaan welke voorwerpen de krachten hebben die zij wensen.</td>
+<td>Bezitters van magische/Goddelijke voorwerpen</td>
+<td>Magie- en Godenspelleiding</td>
+<td>Mels</td>
+<td>Dit plot kan door het gehele weekend heen worden gebruikt, zolang het Duo nog actief is.
+De zielen zullen ronddwalen in allerlei lichamen en als spionnen dienen voor het Duo dat de kracht van de Goden wil bezitten. Het is de bedoeling dat deze zielen voorwerpen met kracht (magisch en Goddelijk) gaan opzoeken om deze later te stelen. Hiertoe zullen zij af en toe in het spel aanwezig zijn en van tijd tot tijd (on)zichtbaar rondlopen. De zielen lopen redelijk op hun gemak en proberen (zowel zichtbaar als onzichtbaar) geen verdachte bewegingen te maken. Loop bijv. een eind langzaam rechtuit en verdwijn ergens halverwege je pas en verschijn een paar meter verder weer.
+
+Het stelen doen ze door met minstens 2 personen het voorwerp vast te pakken en ten minste een seconde vast te houden. Op dit moment verdwijnen beide zielen/lichamen.
+Vervolgens mag je met het voorwerp naar een spelleiding toestappen en vertellen waar en van wie je dit hebt meegenomen. 
+Enkel voorwerpen die niet worden vastgehouden kunnen op deze manier worden gestolen.
+
+De zielen zijn enkel bevattelijk voor magische schade (normale wapens doen je niets), hebben 2 HP en kunnen naar eigen wil zichtbaar/onzichtbaar worden.
+
+Deze dolende zielen worden sowieso op de volgende moment reeds ingezet:
+- Zaterdagochtend =&gt; Verkennen (zie plot "Let me see what you've got")
+- Zaterdagmiddag (begin) =&gt; actief stelen (zie plot "Give it to me")
+- Zaterdagmiddag (eind) =&gt; buts samen met 'bezeten' servitars (zie plot "Never enough power!")</td>
+<td>Dolende zielen</td>
+<td align="right">40</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">138</td>
+<td align="right">1</td>
+<td>Divine showdown</td>
+<td>BUTS:DIVINE</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>* De lichtgevende bol</td>
+<td>Mistwereld/Kederan (op een lege plek op grasveld of bos)</td>
+<td>Een gevecht om de kracht van de Goden uitspelen</td>
+<td>Iedereeen, met name religieuze personages</td>
+<td>Godenspelleiders (incl. Mels)</td>
+<td>Mels</td>
+<td>Zodra het Duo voldoende kracht heeft om hun plan uit te voeren, ontsnapt er even iets te veel energie bij een ritueel dat ze uitvoeren en een gebied om hen heen (in de Mistwereld) wordt tijdelijk in blijvende verbinding gelegd met Kederan.
+Dit is een kwalijke zaak, aangezien hierdoor veel zielen zouden kunnen ontsnappen uit de Mistwereld (met alle gevolgen nadien) en de ruwe kracht van de Mistwereld kan op den duur geheel Kederan vernietigen.
+
+Zodra dit gebeurd, wordt een "Time Freeze" call gemaakt en omschreven dat iedereen, met name personages met connectie met Goden/servitars, voelen dat er iets heftigs heeft plaatsgevonden. Gelovigen voelen een bekende kracht (die van de Mistwereld en de 'geur' die de servitars meedragen) sterk uit een hoek komen en zelfs deel om hen heen.
+
+Leona(rdo) en Eric(a) verschijnen te midden van een plek op Kederan en worden omringd door een aantal servitars van Mishka en Rach'tsor. Sommigen van hen hebben speciale tekens en gehoorzamen het Duo, de anderen bestrijden hen. Het Duo, en hun servitars, houden de anderen goed van zich af (ze zijn in de meerderheid). Het gevecht hoeft pas echt plaats te vinden zodra de spelers in de buurt zijn. 
+De servitars vechten met zowel de gebeden van hun Godheid, als de spreuken die bij diens element horen. Het duo vecht met de vaardigheden die op hun sheet staan.</td>
+<td>Zoveel sylphs, nymphen en Chaosgeesten als we maar kunnen neerzetten
+* 2/3 van de groep krijgen speciale markeringen
+* 1/3 geen speciale markeringen 
+
+Het duo: 
+* Leona(rdo) Bohemond, oud-voorvechter/paladijn van Mishka en ex-lid van Clan Kazila 
+* Eric(a) Galdua, gelovige en priester van Rach’tsor en bekwaam Geestmagiër.</td>
+<td align="right">901</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">139</td>
+<td align="right">1</td>
+<td>Bloodbringers I</td>
+<td>DIVINE:MAGIC</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>&nbsp;</td>
+<td>Overal</td>
+<td>Werkdruk bepalen van spelleiders m.b.t. "Proving gone wrong - Putifull Prayers"</td>
+<td>Gelovigen en priesters</td>
+<td>Jop, Bram (+ Mels)</td>
+<td>Mels</td>
+<td>Level 1 gebeden hebben soms geen effect. Vertel de speler in kwestie direct na het bidden dat dit geen effect heeft. Het voelt aan alsof "je gebed niet gehoord werd".
+Frequentie: max. 1x per half uur per spelleider.
+Stel onderling af welke speler je deze call hebt gegeven.</td>
+<td>&nbsp;</td>
+<td align="right">0</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">123</td>
+<td align="right">1</td>
+<td>A church fit for a Goddess</td>
+<td>DIVINE</td>
+<td>X-SMALL</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- evt. eetbare insecten
+- Speciaal artefact (physrep nog verzinnen)</td>
+<td>kerk</td>
+<td>Enzio wil de kerk toewijden aan de Seductress, daar moet hij nog veel voor doen.</td>
+<td>Enzio</td>
+<td>Godenspelleiders</td>
+<td>Galadriel</td>
+<td>Een Servitar van de Seductress, de dienstbare Sluagh Apotamkin, komt kijken wat Enzio (Kasimir) aan het doen is om de kerk opnieuw op te bouwen. Er is immers meer nodig dan een klein ritueel en wat hout en stenen om een kerk goed genoeg te maken voor de Godin. 
+Wanneer hij Kasimir komt helpen, is hij zeer onderdanig, denkt graag mee met Kasimir over manieren om dit een waardig bolwerk te maken voor de Seductress. 
+Echter komt alle hulp met een prijs en hoe meer hulp Kasimir van hem vraagt, hoe meer emotie hij af moet staan aan de Sluagh. In het begin zullen dit triviale emoties zijn, zoals blijdschap om een lekker hap eten of het gevoel dat je krijgt als je behaaglijke warme sokken aantrekt op een koude dag.
+ 
+Alle emoties worden afgestaan in de vorm van samen eten of drinken. In de handen van de Sluagh rot echter alles weg, voordat hij het consumeert. Drinken gaat stinken. Eten verrot totdat de maden erop zitten (evt. eetbare insecten kopen om dit te physreppen). Elke emotie om de Seductress, en zijn band met Haar te sterken, wordt geplaatst in een speciaal artefact, welke Kasimir kan gebruiken in het eindritueel om de kerk weer op te bouwen en aan Seductress te binden.</td>
+<td>- Apotamkin (Sluagh/ Seductress Servitar)</td>
+<td align="right">5</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">143</td>
+<td align="right">1</td>
+<td>Undeads are comming!</td>
+<td>GENERAL</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>ZO-OC</td>
+<td>Zie NPC's</td>
+<td>Herberg</td>
+<td>Eindbuts</td>
+<td>Alle spelers die willen vechten</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>Terwijl de onderhandeling tussen Dark Dannings en Aurum plaatsvind wordt het dorp plotseling aangevallen door een horde ondoden. Deze horde komt uit de Dark Dannings en wordt geleid door een krachtige wraith met 2 geesten onder zich. Net als afgelopen evenement is deze horde gestuurd door één van de huizen om de onderhandeling te verstoren, alleen deze keer zal de onderhandeling doorgaan terwijl de spelers dit probleem oplossen. De prioriteit voor de spelers is om de wraith en zijn geesten te verslaan omdat zij de ondoden in 'leven' houden. Als deze verslagen zijn, zullen de ondoden langzaam afsterven. Als de horde verslagen is zal de rust terugkeren rondom de herberg. In ieder geval wat betreft de ondoden. De onderhandelingen zijn waarschijnlijk een ander verhaal... (zie plot "Peacetalks")</td>
+<td>Veel ondoden (zombies/skeletten)
+1 Wraith (Leider)
+2 Ghosts (Officieren)</td>
+<td align="right">1000</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">106</td>
+<td align="right">1</td>
+<td>Fair Trees</td>
+<td>BUTS:MAGIC</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>Treant pantser</td>
+<td>Houtzagerij van Zwartschild Inc.</td>
+<td>Elven gaan over op oorlog met treants, vervolg op "Fair Flowers"</td>
+<td>Alle spelers</td>
+<td>Rik,+2</td>
+<td>Rik</td>
+<td>Achtergrond:
+Wegens het succes dat geboekt is met het infuseren van de bloemen met magie van tijdens "Fair Flowers" zijn de elven omhoog gegaan in schaal. Om dit te succes te verbeteren zijn ze bomen gaan infuseren met magie om hun punt duidelijk te maken aan Kortoga.
+Afhankelijk van hoe de spelers het bloemenprobleem opgelost hebben, is er een kleine aanpassing op de treants
+- Gepot gemaakt met slaan: +5 HP
+- Magie eruit getrokken: magical shield van 5 mana
+- Weggebrand: Fire shield 5 HP
+
+De elven sturen een groep samen met de Treants mee om hun opinie duidelijk te maken. Ze zullen voordat ze aanvallen nog eenmaal vragen aan de spelers of ze instemmen met de eisen van de elven, dit wordt in de taal van de Elven geschreeuwd!
+De eisen:
+Jullie zullen de bomen met rust laten en het bos niet meer betreden tenzij jullie uitgenodigd zijn. Ook zullen jullie respect tonen aan elk levend wezen dat aan het Mystic Forest toebehoort.
+Doe dit en wij zullen genoegen nemen met jullie aanwezigheid naast het bos.
+
+Indien hier op wordt ingegaan --&gt; De woudelven gaan terug
+Indien de eleven worden aangevallen of er geen reactie wordt gegeven --&gt; De woudelven vallen aan
+Indien het houthakken, ondanks instemming, doorgaat --&gt; De woudelven komen later terug
+
+In gevecht is de tactiek van de elven simpel; ze blijven om/achter de treants en zullen gezamelijk een enkele richting op gaan. Ze sturen de saplings op de spelers af, om de flanken aan te vallen.</td>
+<td>- 2 Treants
+- 2-4 Saplings
+- 3-5 Woudelven (waarvan 1 leider)</td>
+<td align="right">200</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">142</td>
+<td align="right">1</td>
+<td>Camp of the Kingdom</td>
+<td>GENERAL</td>
+<td>X-LARGE</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- Aurum Documenten
+- Grondstoffen
+- Geld</td>
+<td>Herberg</td>
+<td>Aurum's aanwezigheid duidelijk maken</td>
+<td>Alle spelers</td>
+<td>Jop</td>
+<td>Jop</td>
+<td>Aurum heeft een kamp opgezet naast de herberg als voorbereiding op de mogelijk komende oorlog. Ze zijn in volle gang met het opzetten. Als voorbereiding hebben ze meer wapens en bepantsering nodig, hiervoor zullen ze spelers inhuren om dit voor hun te maken. De grondstoffen worden geleverd door het kamp en de spelers krijgen compensatie voor hun werk. De kampleider zal met de Morgendauwlanden groep praten om hun invloed op het dorp te vergroten. Een paar soldaten zullen proberen Orkbal teams te vormen.
+
+Lucius Vindex is een officier in het leger van Aurum. Hij heeft de opdracht gekregen om een kamp op te zetten in het nieuwe dorp naast de Lofty Chalice. Hier moet hij de invloed van Aurum vergroten in deze regio en de lokale problemen oplossen. Voor de problemen heeft hij niet genoeg mankrachten en zal spelers inhuren om deze op te lossen.</td>
+<td>- Lucius Vindex (KampLeider)
+- Veel soldaten
+- 1 Bewaker van de mensheid</td>
+<td align="right">2</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">145</td>
+<td align="right">1</td>
+<td>Oostenbiggels tale</td>
+<td>GENERAL:CRAFT:MAGIC</td>
+<td>SMALL</td>
+<td>&nbsp;</td>
+<td>ZA-AV</td>
+<td>- Zakgeld om spelers in te huren en de herberg te betalen (200 dukaten)</td>
+<td>Herberg</td>
+<td>Het verhaal van meneer Oostenbiggel/'Anti-theft' afronden en een interessant character en zijn beroep introduceren.</td>
+<td>Iedereen</td>
+<td>Magie-/ambachtenspelleiding</td>
+<td>Jennifer</td>
+<td>Ruud Oostenbiggel komt na een lange reis aan bij de herberg. Hij heeft een zware reis gehad met de bandieten en woudelfen tegenwoordig. Hij heeft het meeste ongemak kunnen ontwijken, maar met de kost van een extra paar dagen van zijn reis. Wat hij nu wilt is een goede maaltijd, een zachte nachtrust en morgen richting zijn huis, verderop in Kortoga, vertrekken om aan zijn nieuwste project te beginnen: een beker die zichzelf bijvult met een drankje naar keuze.
+
+In de herberg begroet hij de barvrouw als een oude kennis, wellicht geeft hij haar een compliment over haar nieuwe inrichting, waarna hij vraagt naar een zacht bed en een warme maaltijd. "Heb je toevallig nog een pakket voor mij binnengekregen?"'
+
+Vanaf dit punt ligt of het pakket er nog, welke hij die avond rustig kan uitpakken. Hij kan iedereen vol trots vertellen over zijn creatie (de "Fantastische Anti-Inbraak Lamp")en zijn nieuwste idee. (zie plot "Anti-Theft")
+Wanneer het pakket er niet meer ligt, gaat meneer Oostenbiggel op zoek naar waar het pakket heen is met behulp van spelers die hij zover krijgt hem te helpen. Hij kan spelers inhuren indien nodig.
+
+Meneer Oostenbiggel is een trots man die kan vergeven, mocht hij eerlijk zijn pakket krijgen, anders zou hij wellicht dreigen met het uitvindingsinstituut en boodschappersgilde die dieven opsporen.</td>
+<td>- Ruud Oostenbiggel (magisch uitvinder)</td>
+<td align="right">10</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">146</td>
+<td align="right">1</td>
+<td>Bloodbringers II</td>
+<td>DIVINE</td>
+<td>LARGE</td>
+<td>&nbsp;</td>
+<td>ZA-OC</td>
+<td>&nbsp;</td>
+<td>Overal</td>
+<td>Werkdruk bepalen van spelleiders m.b.t. "Proving gone wrong - Putifull Prayers"</td>
+<td>Gelovigen en priesters</td>
+<td>Jennifer + Rik</td>
+<td>Mels</td>
+<td>Level 1 gebeden hebben soms geen effect. Vertel de speler in kwestie direct na het bidden dat dit geen effect heeft. Het voelt aan alsof "je gebed niet gehoord werd".</td>
+<td>&nbsp;</td>
+<td align="right">1</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">158</td>
+<td align="right">1</td>
+<td>He who is trapped will be free - Part II</td>
+<td>POLITICS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- IC-verantwoord touw om ten minste 2 personen mee 'vast te binden'
+- Dekens tegen de eventuele kou (OC noodzaak)
+- losse takken om een (koud) kampvuurtje mee voor te laten stellen. 
+- doeken om wat beschutting te maken en het een kampje te laten lijken.</td>
+<td>Woudelven kampement in Mystic Forest</td>
+<td>De goodwill van de Queeen of the Fae laten tonen + introductie nieuwe spelers bij Zwartschild Inc.</td>
+<td>Zwart schild Inc.</td>
+<td>Rodney</td>
+<td>Mass</td>
+<td>Vervolg van "He who is trapped will be free - Part I"
+Achtergrond: 
+Er is een houthakker van Zwartschild Inc. gevangen genomen door de woudelven. Deze houthakker zal, samen met eventuele nieuwe spelers die in de deze buurt het spel in komen, gevangen gehouden worden in een kampement van de woudelven in het Mystic Forest.
+1 van de ambachtslieden is ontsnapt en hulp komen halen bij de spelers van Zwartschild Inc. (locatie nader te bepalen....) en hen hopelijk overtuigd om met spoed de anderen ook te gaan redden.
+
+Het ontsnapte ambachtslid van Zwartschild Inc. leidt de spelers (en evt. hulp van de Redcap(s) die mee komen) naar het kampement in het Mystic Forest (dit zal waarschijnlijk achter in het bos zijn, tegen het einde van het pad langs het weiland. Dit is het uiterste hoekje van ons terrein).
+Hier zitten de woudelven op hun gemak bij hun kampvuur en converseren in de taal van de Elven (spreek Engels onderling. Dit mag in wat 'shortspeak': "Very cold here. Even fire soon not warm enough. Humans better take bait. Or else pay price for coming into forest."
+
+Zodra de spelersgroep (+ hulp) arriveren, zullen ze zich gereedmaken om te communiceren of zich te verdedigen (je weet nooit met dat onbeschofte gespuis). 
+Één van de woudelven spreekt behoorlijk Common, de rest verstaat het vooral een beetje en spreken het zeer gebrekkig. De leider zal met de spelers praten, de rest houdt de spelers en gevangenen in de gaten.
+Zij eisen van de spelers losgeld in de vorm van componenten (Jojojopo, Paarse vlam en Febfendu, ieder ten minste 1 per gevangene). 
+
+N.B. LET HIERBIJ OP DE TOUWEN DIE IN HET BOS HANGEN. ZIE ALGEMENE CALLS VOORAAN WAT DEZE TOUWEN DOEN!</td>
+<td>- 2 houthakkers/ambachtslieden van Zwartschild Inc.
+- 2-4 woudelven (met bogen) (bij voorkeur ten minste 1 meer dan de gevangen)
+- 1-2 Redcaps</td>
+<td align="right">11</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">161</td>
+<td align="right">1</td>
+<td>You walk into my trap</td>
+<td>BUTS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>&nbsp;</td>
+<td>Op de weg tussen Kortoga en het Mystic Forest</td>
+<td>De spelers duidelijk maken wie de vallen hebben gezet waar ze op de weg tussen het bos en de herberg last van hebben.</td>
+<td>Iedereen</td>
+<td>Iedereen</td>
+<td>Mels</td>
+<td>De woudelven zullen de vallen die ze hebben gezet af en toe ook daadwerkelijk in de gaten houden om spelers te overvallen, om ze vervolgens weg te jagen bij het bos of ze proberen te doden.</td>
+<td>- een aantal (2-5) woudelven. (evt. met bogen, maar niet schieten in het donker, calls mogen wel)</td>
+<td align="right">50</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">159</td>
+<td align="right">1</td>
+<td>The Queen's Gambit</td>
+<td>MAGIC:POLITICS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-NA</td>
+<td>- 10x lammie met "Locked Trauma" (1x/dag een weerstand tegen een "Fear" effect)
+- 10x lammie met "Kissed by the Fae Queen" (1x/dag op eigen keuze de Droomwereld betreden)</td>
+<td>Hof van de Queen of the Fae (Droomwereld)</td>
+<td>De spelers die een keuze hebben gemaakt na de kus van de Redcaps een audiëntie met de Queen geven om hun zegen/vloek te ontvangen.</td>
+<td>De spelers die een keuze hebben gemaakt na de kus van de Redcaps</td>
+<td>Magiespelleiding (+ Mass/Mels)</td>
+<td>Mels</td>
+<td>De Queen zal tijdens haar audiëntieronde (zie bijv. plots "Negotiating for a Nyaad" voor de vrijdag en "Kyna, my little child" op zaterdag) ook (een aantal van) de lieden ontvangen die een kus hebben gehad van de Redcaps (zie plot "Sweet Red Amulet"). De aanwezige spelleider zal per speler de karaktersheet vragen. Dit kan worden uitgespeeld door een aanwezig Redcap te laten vertellen wat de keuze was (indien dit nog onthouden is) of bijv. een Pookah "te laten ruiken", zodat dit bekend wordt aan de Queen.
+
+* Ieder die gekozen heeft voor het trauma (en dus een "B" op het karaktersheet heeft staan) zal één trauma/beangstigende herinnering voor altijd met zich mee kunnen dragen op een manier die voor hen fijn is. Deze zegen sterkt hun wilskracht en geeft 1x/dag een weerstand tegen een "Fear" effect. Lammie: "Locked Trauma"
+
+* Ieder die gekozen heeft voor het geschenk (en dus een "C" op het karaktersheet heeft staan) zal naar voren mogen (eigenlijk moeten) komen en de 'kus' van de Queen zelf komen halen (wederom geldt hier: houd dit netjes, des noods met een luchtkus). Deze 'zegen' geeft hen de mogelijkheid om 1x/dag op eigen keuze de Droomwereld (dus het rijk van de Queen) te betreden. Wat de spelers zich wellicht niet meteen zullen beseffen, is dat dit niet zomaar een retourticket is... Lammie: "Kissed by the Fae Queen".</td>
+<td>- Queen of the Fae (Sandra V.)
+- evt. 1 à 2 Redcaps/Pookahs</td>
+<td align="right">999</td>
+<td>J</td>
+	</tr>
+	<tr>
+<td align="right">89</td>
+<td align="right">1</td>
+<td>Sweet red amulet</td>
+<td>GENERAL:MAGIC:POLITICS</td>
+<td>MEDIUM</td>
+<td>&nbsp;</td>
+<td>VR-AV</td>
+<td>- Een pen voor elke 2 redcaps.</td>
+<td>Herberg</td>
+<td>Redcaps kennis laten maken met hun nieuwe volk.</td>
+<td>iedereen die alleen zit, stil zit of afzijdig is</td>
+<td>Jennifer of Rik</td>
+<td>Mass</td>
+<td>De Redcaps zijn door hun Queen op pad gestuurd om zieltjes te winnen. Er komen een aantal Redcaps aan bij de herberg. Zij zullen met personen gaan praten die afgezonderd of alleen zijn.
+Loop dus niet een groep in en wacht rustig je tijd af. Gebruik des noods de schaduwen en je vaardigheid om je te verstoppen in deze schaduwen om ongezien te blijven. Let er hierbij wel op, dat harde geluiden nog steeds worden opgemerkt.
+Ga niet met ze allen bij elkaar staan en zorg dat je steeds per twee in de schaduw zit. Wacht rustig af tot je een solo speler ziet.
+Als spelers je aanspreken wat je komt doen, is er niets aan de hand. Er lopen hier immers wel meer 'rare' wezens rond onder de spelers bevind zich zelfs ook een Redcap.
+
+Zodra je iemand hebt gevonden die wat afgezonderd of alleen is, loop je er met max. 2 redcaps op af en geef hem een (lucht)kus. (niet fysiek contact). 
+Meld de speler: 
+
+"Deze kus van de moeder kan 2 dingen betekenen.
+Aan de ene kant kan je ervoor kiezen dat deze kus een trauma is. dat je met je mee kan nemen. 
+Aan de andere kant kan je deze kus aanvaren als een geschenk.
+Wat betekent het voor u?"
+
+N.B. als een speler door de redcap heen praat zal de andere hem muten. "Bij de krachten van de Natuur, Geest Zwart en Wit, Mute, Mindeffecting" 
+Spreek rustig en niet te luid. Indien je onderbroken bent, herhaal de tekst nogmaals en verbreek de verstomming: "Bij de krachten van de Natuur, Geest Zwart en Wit, Dispel Mute"
+
+Geef de speler 2 seconden bedenktijd over wat er net gebeurd is. Als de speler een keuze heeft gemaakt, maak een aantekening op hun karaktersheet (C = geschenk/Curse, B = trauma/Blessing). Dit zal later in het spel worden gebruikt.
+Zodra je dit hebt gedaan, bedank je de speler en wandel je rustig naar de schaduwen om je daar weer te verstoppen.
+
+Dit plot zal later die avond of zaterdagavond worden vervolgd met een uitnodiging van de Queen of the Fae om op audiëntie te komen. Zie hiervoor plot "The Queen's Gambit" op vrijdagavond.</td>
+<td>- Ten minste 2 redcaps</td>
+<td align="right">40</td>
+<td>J</td>
+	</tr>
+</tbody></table><!-- SQL:
+select PLOT_ID PLOT_ID, EVENT_ID EVENT_ID, PLOT_TITLE PLOT_TITLE, PLOT_CATEGORY PLOT_CATEGORY, PLOT_SIZE PLOT_SIZE, PLOT_GROUP_TYPE PLOT_GROUP_TYPE, PLOT_TIMING PLOT_TIMING, PLOT_PROPPS PLOT_PROPPS, PLOT_LOCATION PLOT_LOCATION, PLOT_GOAL PLOT_GOAL, PLOT_TARGET PLOT_TARGET, PLOT_GAMEMASTER PLOT_GAMEMASTER, PLOT_AUTHOR PLOT_AUTHOR, PLOT_DESCRIPTION PLOT_DESCRIPTION, PLOT_NPCS PLOT_NPCS, PLOT_SEQ PLOT_SEQ, PLOT_CHECKED PLOT_CHECKED from (select * from "SH1BLUE21"."KDR_PLOT")--></body></html>

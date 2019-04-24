@@ -1,0 +1,1 @@
+$(".t-Form-itemWrapper [name]").each(function() { if (this.id && apex.item(this.id).isChanged) { console.log($(this)) } });

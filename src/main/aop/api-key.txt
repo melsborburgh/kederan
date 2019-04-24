@@ -1,0 +1,8 @@
+
+AXI:
+    Key - 795B294021321A29E0530100007F4B2E
+    URL - http://ab00s018:8010
+
+KDR:
+    Key - 7855BA1CBD0E66F5E0530100007F76AA
+    URL - http://api.apexofficeprint.com/
