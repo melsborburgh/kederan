@@ -4,7 +4,7 @@ return number
 is
     r_hp number;
 begin
-    select      coalesce(sum(sl.skill_hp_gain),4)
+    select      coalesce(sum(sl.skill_hp_gain),0) + 4
     into        r_hp
     from        kdr_skill_levels sl,
                 kdr_npc_skills cs
