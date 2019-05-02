@@ -23,14 +23,14 @@ create or replace package body pck_kdr_lov as
     ) return clob
     is
     begin
-        return  q'{ select      st.spell_type_name || ' -' || sp.spell_level || ' - ' || sp.spell_name display_value,
+        return  q'{ select      st.spell_type_name || ' - ' || sp.spell_level || ' - ' || sp.spell_name display_value,
                                 sp.spell_id return_value,
                                 st.spell_type_name
                     from        kdr_spells sp,
                                 kdr_spell_types st
                     where       sp.spell_type_code = st.spell_type_code
-                    and         sp.spell_id not in (select spell_id from kdr_char_spells where nvl(}'
-                                || nvl(to_char(i_char_id),'null') || q'{,char_id) = char_id)
+                    and         sp.spell_id not in (select spell_id from kdr_char_spells where }'
+                                || nvl(to_char(i_char_id),'null') || q'{ = char_id)
                     order by    st.spell_type_name, sp.spell_level, sp.spell_name}';
     end;
 
@@ -41,8 +41,8 @@ create or replace package body pck_kdr_lov as
     begin
         return  q'{ select      skill_level_name, skill_level_id, category_name
                     from        kdr_skills_per_level
-                    where       skill_level_id not in (select skill_level_id from kdr_char_skills where nvl(}'
-                                || nvl(to_char(i_char_id),'null') || q'{,char_id) = char_id)
+                    where       skill_level_id not in (select skill_level_id from kdr_char_skills where }'
+                                || nvl(to_char(i_char_id),'null') || q'{ = char_id)
                     order by    category_name, skill_level_name, level_id}';
     end;
 

@@ -36,6 +36,6 @@ begin
     return r_amount;
 exception
     when no_data_found then
-        return 20;
+        return 0;
 end;
 /
