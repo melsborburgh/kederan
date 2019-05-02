@@ -6,3 +6,9 @@ AXI:
 KDR:
     Key - 7855BA1CBD0E66F5E0530100007F76AA
     URL - http://api.apexofficeprint.com/
+
+
+
+AXI (speeltuin)
+    Key - 714651D842CF3F38E0530100007FD8D0
+    URL - http://api.apexofficeprint.com/
