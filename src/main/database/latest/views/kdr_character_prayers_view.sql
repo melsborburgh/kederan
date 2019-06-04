@@ -2,10 +2,7 @@ create or replace force view kdr_character_prayers_view as
 select  cs.char_prayer_id,
         cs.char_id,
         cv.char_name,
-        sp.prayer_id,
-        sp.prayer_level,
-        sp.prayer_name,
-        sp.deity_code,
+        sp.*,
         dt.deity_name
 from    kdr_prayers           sp,
         kdr_char_prayers      cs,

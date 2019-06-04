@@ -21,6 +21,8 @@ select  ch.char_id,
         ra.race_name,
         ch.race_id_sub,
         ra2.race_name sub_race_name,
+        ch.player_id,
+        pl.player_name,
         ch.char_notes,
         ch.char_background,
         ch.char_bg_mimetype,
@@ -85,10 +87,12 @@ from    kdr_characters     ch,
         prayers            pr,
         skills             sk,
         spells             sp,
-        kdr_deities        dt
+        kdr_deities        dt,
+        kdr_players        pl
 where   ra.race_id      = ch.race_id
 and     ch.race_id_sub  = ra2.race_id(+)
 and     ch.char_id      = sk.char_id(+)
 and     ch.char_id      = sp.char_id(+)
 and     ch.char_id      = pr.char_id(+)
-and     ch.char_deity   = dt.deity_code;
+and     ch.char_deity   = dt.deity_code(+)
+and     ch.player_id    = pl.player_id(+);

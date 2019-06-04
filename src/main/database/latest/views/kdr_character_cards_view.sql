@@ -69,7 +69,18 @@ create or replace force view kdr_character_cards_view as
            null attribute8,
            null attribute9,
            null attribute10,
-           char_id
+           char_id,
+           case
+               when total_xp_left = 0 then
+                   'Geen xp te besteden'
+               when total_xp_left < 0 then
+                   total_xp_left * - 1 || ' xp tekort!'
+               when total_xp_left > 0 then
+                   total_xp_left || ' xp te besteden'
+               else
+                   'Geen xp te besteden'
+           end xp_desc,
+           player_id
     from kdr_characters_view
     order by char_name;
     /

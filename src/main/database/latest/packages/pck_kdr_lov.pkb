@@ -39,7 +39,9 @@ create or replace package body pck_kdr_lov as
     ) return clob
     is
     begin
-        return  q'{ select      skill_level_name, skill_level_id, category_name
+        return  q'{ select      skill_level_name || ' (' || apex_string.get_initials(skill_name,4) || level_id || ')' skill_level_name,
+                                skill_level_id,
+                                category_name
                     from        kdr_skills_per_level
                     where       skill_level_id not in (select skill_level_id from kdr_char_skills where }'
                                 || nvl(to_char(i_char_id),'null') || q'{ = char_id)
@@ -268,7 +270,9 @@ create or replace package body pck_kdr_lov as
     ) return clob
     is
     begin
-        return  q'{ select      skill_level_name, skill_level_id, category_name
+        return  q'{ select      skill_level_name || ' (' || apex_string.get_initials(skill_name,4) || level_id || ')' skill_level_name,
+                                skill_level_id,
+                                category_name
                     from        kdr_skills_per_level
                     where       skill_level_id not in (select skill_level_id from kdr_npc_skills where nvl(}'
                                 || nvl(to_char(i_npc_id),'null') || q'{,npc_id) = npc_id)
