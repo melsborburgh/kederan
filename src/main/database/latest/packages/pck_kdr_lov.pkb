@@ -311,5 +311,14 @@ create or replace package body pck_kdr_lov as
                     order by    st.deity_code, sp.prayer_level, sp.prayer_name}';
     end;
 
+    function players
+    return clob
+    is
+    begin
+        return  q'{ select      player_name, player_id
+                    from        kdr_players
+                    order by    1}';
+    end;
+
 end pck_kdr_lov;
 /

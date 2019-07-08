@@ -85,5 +85,8 @@ create or replace package pck_kdr_lov as
     function prayers_per_npc(
         i_npc_id in kdr_npcs.npc_id%type default null
     ) return clob;
+
+    function players
+    return clob;
 end pck_kdr_lov;
 /
