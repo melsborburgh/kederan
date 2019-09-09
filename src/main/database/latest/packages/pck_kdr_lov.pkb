@@ -114,7 +114,7 @@ create or replace package body pck_kdr_lov as
     ) return clob
     is
     begin
-        return  q'{ select      get_char_desc(char_id),
+        return  q'{ select      get_char_desc(char_id) || ' - ' || player_name,
                                 char_id,
                                 race_name
                     from        kdr_characters_view
@@ -319,6 +319,18 @@ create or replace package body pck_kdr_lov as
                     from        kdr_players
                     order by    1}';
     end;
+
+    function characters
+    return clob
+    is
+    begin
+        return q'{  select      get_char_desc(char_id) char_desc,
+                                char_id as char_id
+                    from        kdr_characters_view
+                    order by    1}';
+    end;
+
+
 
 end pck_kdr_lov;
 /

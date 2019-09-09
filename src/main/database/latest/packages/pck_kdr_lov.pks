@@ -88,5 +88,9 @@ create or replace package pck_kdr_lov as
 
     function players
     return clob;
+
+    function characters
+    return clob;
+
 end pck_kdr_lov;
 /
