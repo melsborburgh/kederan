@@ -1,6 +1,6 @@
 create or replace function get_char_desc (
         i_char_id   in kdr_characters.char_id%type,
-        i_type      in varchar2
+        i_type      in varchar2 default null
 )
 return varchar2
 is
