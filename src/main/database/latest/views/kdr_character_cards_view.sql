@@ -1,7 +1,8 @@
+set define off;
 create or replace force view kdr_character_cards_view as
     select  '1' level_value,
             char_name label,
-            'f?p=&APP_ID.:CHAR_SHEET:&SESSION.::&DEBUG.::P16_CHAR_ID:' || char_id target,
+            'f?p=&APP_ALIAS.:CHAR_SHEET:&SESSION.::&DEBUG.::P16_CHAR_ID:' || char_id target,
             null is_current_list_entry,
             case
                 when char_soul_left = 0             then
@@ -18,33 +19,6 @@ create or replace force view kdr_character_cards_view as
             null image_attribute,
             null image_alt_attribute,
             null attribute1,
-            case
-                when total_xp_left = 0 then
-                    '<strong><font color=''forestgreen''>Geen xp te besteden</font></strong>'
-                when total_xp_left < 0 then
-                    '<strong><font color=''crimson''>'
-                    || total_xp_left * - 1
-                    || ' xp tekort!</font></strong>'
-                when total_xp_left > 0 then
-                    '<strong><font color=''RoyalBlue''>'
-                    || total_xp_left
-                    || ' xp te besteden</font></strong>'
-                else
-                    '<font color=''red''>Geen xp te besteden</font>'
-            end attribute2,
-            null attribute3,
-            null attribute4,
-            null attribute5,
-            case
-                when total_xp_left = 0 then
-                    'u-success'
-                when total_xp_left < 0 then
-                    'u-danger'
-                when total_xp_left > 0 then
-                    'u-warning'
-                else
-                    'u-primary'
-            end attribute6,
             race_name
             ||
                 case
@@ -63,8 +37,26 @@ create or replace force view kdr_character_cards_view as
                         ' ' || char_occupation
                     when char_class is not null then
                         ' ' || char_class
-                end
-            attribute7,
+            end attribute2, -- Description
+            null attribute3,
+            null attribute4,
+            null attribute5,
+            case
+                when total_xp_left = 0 then
+                    'u-success'
+                when total_xp_left < 0 then
+                    'u-danger'
+                when total_xp_left > 0 then
+                    'u-warning'
+                else
+                    'u-primary'
+            end attribute6, -- CSS class for template
+            case
+                when player_name is not null then
+                    '<strong>Gespeeld door: ' || player_name || '</strong>'
+                else
+                    null
+            end attribute7, -- Subtext
             null attribute8,
             null attribute9,
             null attribute10,
@@ -83,4 +75,3 @@ create or replace force view kdr_character_cards_view as
             total_xp_left
     from kdr_characters_view
     order by char_name;
-    /
