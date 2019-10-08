@@ -330,6 +330,57 @@ create or replace package body pck_kdr_lov as
                     order by    1}';
     end;
 
+    function skills_per_category
+    return clob
+    is
+    begin
+        return q'{  select      distinct skill_name,
+                                skill_id,
+                                category_name
+                    from        kdr_skills_per_level
+                    order by    1}';
+    end;
+
+    function plot_categories_concat
+    return clob
+    is
+    begin
+        return q'{  select      ltrim(sys_connect_by_path(category_desc, ', '), ', ')   display_value,
+                                ltrim(sys_connect_by_path(category_name, ':'), ':')     return_value
+                    from        kdr_plot_categories connect by
+                                category_name > prior category_name
+                    order by    1}';
+    end;
+
+    function plot_categories
+    return clob
+    is
+    begin
+        return q'{  select      category_desc display_value,
+                                category_name return_value
+                    from        kdr_plot_categories
+                    order by    1}';
+    end;
+
+    function plot_sizes
+    return clob
+    is
+    begin
+        return q'{  select      size_desc as display_value,
+                                size_name as return_value
+                    from        kdr_plot_sizes
+                    order by    size_seq}';
+    end;
+
+    function plot_timing
+    return clob
+    is
+    begin
+        return q'{  select      time_desc as display_value,
+                                time_code as return_value
+                    from        kdr_plot_timing
+                    order by    time_seq}';
+    end;
 
 
 end pck_kdr_lov;

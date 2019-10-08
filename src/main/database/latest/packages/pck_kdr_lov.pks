@@ -92,5 +92,20 @@ create or replace package pck_kdr_lov as
     function characters
     return clob;
 
+    function skills_per_category
+    return clob;
+
+    function plot_categories_concat
+    return clob;
+
+    function plot_categories
+    return clob;
+
+    function plot_sizes
+    return clob;
+
+    function plot_timing
+    return clob;
+
 end pck_kdr_lov;
 /
