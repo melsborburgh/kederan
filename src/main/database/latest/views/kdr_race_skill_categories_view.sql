@@ -1,0 +1,11 @@
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_RACE_SKILL_CATEGORIES_VIEW (CATEG
+ORY_ID, CATEGORY_NAME, CATEGORY_DESC, CATEGORY_TYPE, TYPE_ID, TYPE_NAME, TYPE_DE
+SC) AS 
+  select      CATEGORY_ID,CATEGORY_NAME,CATEGORY_DESC,CATEGORY_TYPE,TYPE_ID,TYPE
+_NAME,TYPE_DESC
+from        KDR_SKILL_CATEGORIES sc,
+            kdr_skill_category_types sct
+where       sc.category_type = sct.type_id
+and         lower(sct.type_name) = 'ras';
+

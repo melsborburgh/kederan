@@ -1,5 +1,10 @@
-create or replace force view kdr_skills_view as
-select  *
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_SKILLS_VIEW (SKILL_ID, SKILL_NAME
+, SKILL_DESC, SKILL_CATEGORY, CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESC, CATEGOR
+Y_TYPE) AS 
+  select  SKILL_ID,SKILL_NAME,SKILL_DESC,SKILL_CATEGORY,CATEGORY_ID,CATEGORY_NAM
+E,CATEGORY_DESC,CATEGORY_TYPE
 from    kdr_skills             sk,
         kdr_skill_categories   sc
 where   sc.category_id = sk.skill_category;
+

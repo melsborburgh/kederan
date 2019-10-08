@@ -1,5 +1,8 @@
-create or replace view kdr_character_recipes_view as
-select      cr.char_recipe_id char_recipe_id,
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_CHARACTER_RECIPES_VIEW (CHAR_RECI
+PE_ID, RECIPE_ID, CHAR_ID, RECIPE_TYPE_NAME, RECIPE_NAME, RECIPE_LEVEL, RECIPE_I
+NSTRUCTIONS, RECIPE_EFFECT, RECIPE_TYPE_ID, CHAR_NAME) AS 
+  select      cr.char_recipe_id char_recipe_id,
             re.recipe_id recipe_id,
             ch.char_id char_id,
             rt.recipe_type_name,
@@ -16,3 +19,4 @@ from        kdr_char_recipes cr,
 where       cr.recipe_id        = re.recipe_id
 and         cr.char_id          = ch.char_id
 and         re.recipe_type_id   = rt.recipe_type_id;
+

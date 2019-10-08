@@ -1,5 +1,7 @@
-create or replace force view KDR_CHAR_RACE_SKILL_AMOUNT_VW as
-with x as(
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_CHAR_RACE_SKILL_AMOUNT_VW (CHAR_I
+D, CHAR_NAME, RACE_NAME, SKILL_CATEGORY, RACE_SKILL_AMOUNT, CURRENT_AMOUNT) AS 
+  with x as(
     select      ch.char_name,
                 ra.race_name,
                 ra.race_skill_amount,
@@ -26,6 +28,7 @@ from        kdr_char_allowed_race_skills                                    a,
             x
 where       b.column_value = a.skill_level_id
 and         x.race_skill_category = a.skill_category
-group by    a.char_id, a.char_name, a.skill_category, x.race_skill_amount, x.race_name
+group by    a.char_id, a.char_name, a.skill_category, x.race_skill_amount, x.rac
+e_name
 order by    1, 3;
-/
+

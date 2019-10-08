@@ -1,5 +1,10 @@
-create or replace force view kdr_skills_per_level as
-select      skill_name
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_SKILLS_PER_LEVEL (SKILL_LEVEL_NAM
+E, CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESC, CATEGORY_TYPE, SKILL_ID, SKILL_NAM
+E, SKILL_DESC, SKILL_CATEGORY, SKILL_LEVEL_ID, LEVEL_ID, SKILL_COST, SKILL_LEVEL
+_DESC, SKILL_MANA_GAIN, SKILL_DIV_GAIN, SKILL_XP_GAIN, SKILL_ARCANE_GAIN, SKILL_
+CHAOS_GAIN, SKILL_HP_GAIN) AS 
+  select      skill_name
                 || ' (' || sc.category_name || ')'
                 || ' - '
                 || level_id
@@ -27,3 +32,4 @@ from        kdr_skills              sk,
             kdr_skill_levels        sl
 where       sc.category_id  = sk.skill_category
 and         sl.skill_id     = sk.skill_id;
+

@@ -1,8 +1,13 @@
-set define off;
-create or replace force view kdr_character_cards_view as
-    select  '1' level_value,
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_CHARACTER_CARDS_VIEW (LEVEL_VALUE
+, LABEL, TARGET, IS_CURRENT_LIST_ENTRY, IMAGE, IMAGE_ATTRIBUTE, IMAGE_ALT_ATTRIB
+UTE, ATTRIBUTE1, ATTRIBUTE2, ATTRIBUTE3, ATTRIBUTE4, ATTRIBUTE5, ATTRIBUTE6, ATT
+RIBUTE7, ATTRIBUTE8, ATTRIBUTE9, ATTRIBUTE10, CHAR_ID, XP_DESC, PLAYER_ID, TOTAL
+_XP_LEFT) AS 
+  select  '1' level_value,
             char_name label,
-            'f?p=&APP_ALIAS.:CHAR_SHEET:&SESSION.::&DEBUG.::P16_CHAR_ID:' || char_id target,
+            'f?p=&APP_ALIAS.:CHAR_SHEET:&SESSION.::&DEBUG.::P16_CHAR_ID:' || cha
+r_id target,
             null is_current_list_entry,
             case
                 when char_soul_left = 0             then
@@ -75,3 +80,4 @@ create or replace force view kdr_character_cards_view as
             total_xp_left
     from kdr_characters_view
     order by char_name;
+

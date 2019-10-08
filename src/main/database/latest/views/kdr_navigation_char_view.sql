@@ -1,6 +1,8 @@
-set define off
-create or replace force view kdr_navigation_char_view as
-select
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_NAVIGATION_CHAR_VIEW (LEVEL_VALUE
+, LABEL_VALUE, TARGET_VALUE, IS_CURRENT, IMAGE_VALUE, IMAGE_ATTR_VALUE, IMAGE_AL
+T_VALUE, ATTRIBUTE1, ATTRIBUTE2, ATTRIBUTE3) AS 
+  select
         level as level_value,
         name as label_value,
         target_value,
@@ -31,7 +33,8 @@ from (
 --        select      EVENT_TYPE_NAME         as id,
 --                    to_char(-1)             as parent_id,
 --                    EVENT_TYPE_DESC         as name,
---                    'f?p=&APP_ALIAS.:EVENTS:&SESSION.::&DEBUG.:RIR:IREQ_EVENT_TYPE:' || EVENT_TYPE_DESC || ':' as target_value,
+--                    'f?p=&APP_ALIAS.:EVENTS:&SESSION.::&DEBUG.:RIR:IREQ_EVENT_
+TYPE:' || EVENT_TYPE_DESC || ':' as target_value,
 --                    null                    as image_value,
 --                    null                    as image_attr_value,
 --                    null                    as image_alt_value,
@@ -45,5 +48,5 @@ from (
      )
 start with parent_id is null
 connect by parent_id = prior id
-order siblings by seq
-/
+order siblings by seq;
+
