@@ -107,5 +107,28 @@ create or replace package pck_kdr_lov as
     function plot_timing
     return clob;
 
+    function prayers_overall
+    return clob;
+
+    function spells_overall
+    return clob;
+
+    function yes_no
+    return clob;
+
+    function signup_type
+    return clob;
+
+    function gender
+    return clob;
+
+    function countries
+    return clob;
+
+    function buildup_friday
+    return clob;
+
+    function yes_no_icons
+    return clob;
+
 end pck_kdr_lov;
-/

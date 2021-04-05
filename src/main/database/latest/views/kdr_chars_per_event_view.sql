@@ -1,8 +1,5 @@
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_CHARS_PER_EVENT_VIEW (CHAR_EVENT_
-ID, EVENT_ID, CHAR_ID, CHAR_EVENT_XP_ADJ, CHAR_EVENT_XP_REMARK, EVENT_NAME, EVEN
-T_LOCATION, EVENT_TYPE, EVENT_START_DATE, EVENT_END_DATE, EVENT_XP, EVENT_TYPE_D
-ESC, CHAR_NAME, PLAYER_NAME) AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW KDR_CHARS_PER_EVENT_VIEW AS
   select  ce.char_event_id,
         ce.event_id,
         ce.char_id,
@@ -16,6 +13,8 @@ ESC, CHAR_NAME, PLAYER_NAME) AS
         ev.event_xp,
         et.event_type_desc,
         ch.char_name,
+        get_total_xp(ch.char_id) - get_total_xp_spend(ch.char_id) char_unspend_xp,
+        pl.player_id,
         pl.player_name
 from    kdr_char_events     ce,
         kdr_events          ev,
@@ -26,4 +25,3 @@ where   ev.event_id     = ce.event_id
 and     ev.event_type   = et.event_type_name
 and     ch.char_id      = ce.char_id
 and     ch.player_id    = pl.player_id;
-

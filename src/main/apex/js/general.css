@@ -5,3 +5,26 @@
 .color_red{
     color:red;
 }
+
+.plot_ready{
+    background-color:LimeGreen;
+}
+
+.plot_not_ready{
+    background-color:LimeGreen;
+}
+
+.kdr_fail{
+    background-color: white!important;
+    color: crimson!important;
+}
+
+.kdr_success{
+    background-color: white!important;
+    color: green!important;
+}
+
+.kdr_warning{
+    background-color: white!important;
+    color: orange!important;
+}

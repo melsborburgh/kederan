@@ -39,13 +39,16 @@ create or replace package body pck_kdr_lov as
     ) return clob
     is
     begin
-        return  q'{ select      skill_level_name || ' (' || apex_string.get_initials(skill_name,4) || level_id || ')' skill_level_name,
-                                skill_level_id,
-                                category_name
-                    from        kdr_skills_per_level
-                    where       skill_level_id not in (select skill_level_id from kdr_char_skills where }'
+        return  q'{ select      spl.skill_level_name || ' (' || apex_string.get_initials(spl.skill_name,4) || level_id || ')' skill_level_name,
+                                spl.skill_level_id,
+                                spl.category_name
+                    from        kdr_skills_per_level spl,
+                                kdr_skill_category_types sct
+                    where       spl.category_type = sct.type_id
+                    and         lower(sct.type_name) != 'npc'
+                    and         spl.skill_level_id not in (select skill_level_id from kdr_char_skills where }'
                                 || nvl(to_char(i_char_id),'null') || q'{ = char_id)
-                    order by    category_name, skill_level_name, level_id}';
+                    order by    spl.category_name, spl.skill_level_name, spl.level_id}';
     end;
 
     function recipes_per_character(
@@ -382,6 +385,126 @@ create or replace package body pck_kdr_lov as
                     order by    time_seq}';
     end;
 
+    function prayers_overall
+    return clob
+    is
+    begin
+        return  q'{ select      deity_name || ' - ' || sp.prayer_level || ' - ' || sp.prayer_name display_value,
+                                sp.prayer_id return_value,
+                                deity_name
+                    from        kdr_prayers sp,
+                                kdr_deities st
+                    where       sp.deity_code = st.deity_code
+                    order by    st.deity_code, sp.prayer_level, sp.prayer_name}';
+    end;
+
+    function spells_overall
+    return clob
+    is
+    begin
+        return  q'{ select      st.spell_type_name || ' - ' || sp.spell_level || ' - ' || sp.spell_name display_value,
+                                sp.spell_id return_value,
+                                st.spell_type_name
+                    from        kdr_spells sp,
+                                kdr_spell_types st
+                    where       sp.spell_type_code = st.spell_type_code
+                    order by    st.spell_type_name, sp.spell_level, sp.spell_name}';
+    end;
+
+    function yes_no
+    return clob
+    is
+    begin
+        return  q'{ select      'Ja'    display_value,
+                                'J'     return_value
+                    from        dual
+                    union all
+                    select      'Nee'   display_value,
+                                'N'     return_value
+                    from        dual}';
+    end;
+
+    function signup_type
+    return clob
+    is
+    begin
+        return  q'{ select      'Speler'     display_value,
+                                'Speler'     return_value
+                    from        dual
+                    union all
+                    select      'Figurant',
+                                'Figurant'
+                    from        dual
+                    union all
+                    select      'Spelleiding',
+                                'Spelleiding'
+                    from        dual
+                    union all
+                    select      'Crew/helpende handjes',
+                                'Support'
+                    from        dual                    }';
+    end;
+
+    function gender_icons
+    return clob
+    is
+    begin
+        return  q'{ select '<span class="fas fa-mars fa-2x"></span>   '            || 'Man' display_value, 'mars' from dual union all
+                    select '<span class="fas fa-venus fa-2x"></span>   '           || 'Vrouw' display_value, 'venus' from dual union all
+                    -- select '<span class="fas fa-neuter fa-2x"></span>   '          || 'Niet meer' display_value, 'neuter' from dual union all
+                    select '<span class="fas fa-transgender fa-2x"></span>   '     || 'Transgender' display_value, 'transgender' from dual union all
+                    -- select '<span class="fas fa-genderless fa-2x"></span>   '      || 'Onzijdig' display_value, 'genderless' from dual union all
+                    select '<span class="fas fa-question fa-2x"></span>   '        || 'Zeg ik liever niet/onbekend/staat niet in de lijst' display_value, 'question' from dual}';
+    end;
+
+    function yes_no_icons
+    return clob
+    is
+    begin
+        return  q'{ select '<i color="green" class="fas fa-check-circle"></i>' display_value, 'J' from dual union all
+                    select '<i color="green" class="fas fa-check-circle"></i>' display_value, 'Y' from dual union all
+                    select '<i color="red" class="fas fa-times-circle"></i>' display_value, 'N' from dual}';
+    end;
+
+    function gender
+    return clob
+    is
+    begin
+        return  q'{ select 'Man' display_value, 'M' from dual union all
+                    select 'Vrouw' display_value, 'V' from dual union all
+                    select 'Transgender' display_value, 'T' from dual union all
+                    select 'Zeg ik liever niet/onbekend/staat niet in de lijst' display_value, 'O' from dual}';
+    end;
+
+    function countries
+    return clob
+    is
+    begin
+        return  q'{ select  country_name display_value,
+                            country_id return_value
+                    from    kdr_countries}';
+    end;
+
+    function buildup_friday
+    return clob
+    is
+    begin
+        return  q'{ select      'Ja, vanaf 10:00'     display_value,
+                                'Vroeg'     return_value
+                    from        dual
+                    union all
+                    select      'Ja, vanaf 13:00',
+                                'Lunch'
+                    from        dual
+                    union all
+                    select      'Ja, vanaf 16:00',
+                                'Laat'
+                    from        dual
+                    union all
+                    select      'Nee',
+                                'Nee'
+                    from        dual                    }';
+    end;
+
 
 end pck_kdr_lov;
-/

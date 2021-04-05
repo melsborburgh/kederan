@@ -1,0 +1,7 @@
+CREATE table KDR_COUNTRIES (
+    COUNTRY_ID              NUMBER GENERATED ALWAYS AS IDENTITY,
+    COUNTRY_CODE            VARCHAR2(10),
+    COUNTRY_NAME            VARCHAR2(400),
+    constraint  KDR_COUNTRIES_PK primary key (COUNTRY_ID)
+)
+/
