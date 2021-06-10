@@ -119,6 +119,9 @@ create or replace package pck_kdr_lov as
     function signup_type
     return clob;
 
+    function menu_types
+    return clob;
+
     function gender
     return clob;
 

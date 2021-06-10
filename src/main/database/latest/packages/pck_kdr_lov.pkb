@@ -205,7 +205,8 @@ create or replace package body pck_kdr_lov as
                         select    1 as VLGNR,
                                   EVENT_NAME as display_value,
                                   EVENT_ID as return_value,
-                                  'Toekomst' as grouping
+                                  'Toekomst' as grouping,
+                                  EVENT_START_DATE
                         from      KDR_EVENTS
                         where     COALESCE(EVENT_START_DATE,sysdate-1) >= sysdate
                         order by  EVENT_START_DATE, EVENT_NAME
@@ -214,7 +215,8 @@ create or replace package body pck_kdr_lov as
                         select    2 as VLGNR,
                                   EVENT_NAME || ' (verleden)' as display_value,
                                   EVENT_ID as return_value,
-                                  'Verleden' as grouping
+                                  'Verleden' as grouping,
+                                  EVENT_START_DATE
                         from      KDR_EVENTS
                         where     COALESCE(EVENT_START_DATE,sysdate) <= sysdate
                         order by  EVENT_START_DATE, EVENT_NAME
@@ -223,7 +225,7 @@ create or replace package body pck_kdr_lov as
                     select display_value, return_value}'
                     || case when i_grouping = 'J' then ', grouping' end
                     || q'{ from data
-                    order by vlgnr, display_value, return_value}';
+                    order by vlgnr, EVENT_START_DATE, return_value}';
     end;
 
     function plots_per_event(
@@ -442,6 +444,27 @@ create or replace package body pck_kdr_lov as
                     union all
                     select      'Crew/helpende handjes',
                                 'Support'
+                    from        dual                    }';
+    end;
+
+    function menu_types
+    return clob
+    is
+    begin
+        return  q'{ select      'Beheer'     display_value,
+                                'MAIN'     return_value
+                    from        dual
+                    union all
+                    select      'Publiekelijk',
+                                'PUBLIC'
+                    from        dual
+                    union all
+                    select      'Plottool',
+                                'PLOT'
+                    from        dual
+                    union all
+                    select      'Spelersportaal',
+                                'CHAR'
                     from        dual                    }';
     end;
 
