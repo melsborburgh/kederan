@@ -1,4 +1,4 @@
-create or replace function get_item_types
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_ITEM_TYPES"
 (
   i_array in varchar2
 ) return varchar2 as

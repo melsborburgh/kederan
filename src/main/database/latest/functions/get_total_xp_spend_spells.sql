@@ -1,4 +1,4 @@
-create or replace function get_total_xp_spend_spells
+create or replace FUNCTION GET_TOTAL_XP_SPEND_SPELLS
 ( i_char_id in kdr_characters.char_id%type)
 return number
 is
@@ -20,4 +20,3 @@ exception
     when no_data_found then
         return 0;
 end;
-/

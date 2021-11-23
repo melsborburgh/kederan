@@ -1,4 +1,4 @@
-create or replace function replace_audit_text (
+CREATE OR REPLACE EDITIONABLE FUNCTION  "REPLACE_AUDIT_TEXT" (
         i_audit_text in varchar2,
         i_table_name in varchar2,
         i_audit_type in varchar2
@@ -41,4 +41,3 @@ begin
 
     return r_audit_text;
 end;
-/

@@ -1,4 +1,4 @@
-create or replace function get_recipe_base_cost(
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_RECIPE_BASE_COST" (
     i_recipe_id in kdr_recipes.recipe_id%type
 )
 return number

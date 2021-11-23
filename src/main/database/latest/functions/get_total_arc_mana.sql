@@ -1,4 +1,4 @@
-create or replace function get_total_arc_mana
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_TOTAL_ARC_MANA"
 ( i_char_id in kdr_characters.char_id%type)
 return number
 is
@@ -16,4 +16,3 @@ exception
     when no_data_found then
         return 0;
 end;
-/

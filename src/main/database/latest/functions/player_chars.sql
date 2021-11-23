@@ -1,4 +1,5 @@
-create or replace function player_chars (i_user_name in varchar2)
+
+CREATE OR REPLACE EDITIONABLE FUNCTION  "PLAYER_CHARS" (i_user_name in varchar2)
 return varchar2
 is
     r_char_ids varchar2(4000);
@@ -19,4 +20,5 @@ begin
 
     return r_char_ids;
 end;
+
 /

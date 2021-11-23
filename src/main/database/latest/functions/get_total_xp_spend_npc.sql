@@ -1,4 +1,4 @@
-create or replace function get_total_xp_spend_npc
+create or replace FUNCTION GET_TOTAL_XP_SPEND_NPC
 ( i_npc_id in kdr_npcs.npc_id%type)
 return number
 is
@@ -38,4 +38,3 @@ exception
     when no_data_found then
         return 0;
 end;
-/

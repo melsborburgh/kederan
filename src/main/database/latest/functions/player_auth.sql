@@ -1,4 +1,4 @@
-create or replace function player_auth (i_user_name in varchar2)
+CREATE OR REPLACE EDITIONABLE FUNCTION  "PLAYER_AUTH" (i_user_name in varchar2)
 return boolean
 is
     v_count number;
@@ -8,7 +8,7 @@ begin
     from    kdr_players
     where   lower(player_user_name) = lower(i_user_name);
 
-    if v_count = 1 or 1=1 then
+    if v_count = 1 or is_developer_email(i_user_name) then
         return true;
     end if;
 

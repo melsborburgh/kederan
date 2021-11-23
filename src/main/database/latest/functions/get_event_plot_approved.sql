@@ -1,4 +1,4 @@
-create or replace function get_event_plot_approved(i_event_id kdr_events.event_id%type)
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_EVENT_PLOT_APPROVED" (i_event_id kdr_events.event_id%type)
 return number
 is
     r_approved_prc number;
@@ -12,4 +12,3 @@ begin
 
     return r_approved_prc;
 end;
-/

@@ -1,4 +1,4 @@
-create or replace function get_total_elem_mana_npc
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_TOTAL_ELEM_MANA_NPC"
 ( i_npc_id in kdr_npcs.npc_id%type)
 return number
 is
@@ -27,4 +27,3 @@ exception
     when no_data_found then
         return 0;
 end;
-/

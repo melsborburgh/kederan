@@ -1,4 +1,4 @@
-create or replace function get_search_skill_color
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_SEARCH_SKILL_COLOR"
 (
   i_array in varchar2
 ) return varchar2 as
@@ -12,7 +12,7 @@ begin
     select  listagg('<font color='''
                       || ss.search_skill_color || '''>'
                       || '<b'
-                      || case when search_skill_bg_color is not null then ' style="background-color:' || ss.search_skill_bg_color || '"' end
+                      || case when search_skill_bg_color is not null then ' style=background-color:' || ss.search_skill_bg_color || '' end
                       || '>'
                       || ss.search_skill_name
                       || '</b></font>',', ' )
@@ -23,4 +23,3 @@ begin
 
   return r_skill_list;
 end get_search_skill_color;
-/

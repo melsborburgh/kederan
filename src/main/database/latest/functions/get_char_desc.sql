@@ -1,4 +1,4 @@
-create or replace function get_char_desc (
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_CHAR_DESC" (
         i_char_id   in kdr_characters.char_id%type,
         i_type      in varchar2 default null
 )
@@ -39,4 +39,3 @@ exception
     when no_data_found then
         return null;
 end;
-/

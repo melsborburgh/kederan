@@ -1,4 +1,4 @@
-create or replace function get_tooltip_icon
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_TOOLTIP_ICON"
 (
     i_table_name    in varchar2,
     i_column_name   in varchar2,
@@ -16,4 +16,3 @@ begin
 
     return ' <span class="fa fa-question-circle" aria-hidden="true" title="' || v_description || '">' || '' || '</span>';
 end;
-/

@@ -1,4 +1,4 @@
-create or replace function get_lowest_component_price(
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_LOWEST_COMPONENT_PRICE" (
     i_component_type_id in kdr_components_view.component_type_id%type,
     i_item_level        in kdr_components_view.item_level%type
 )

@@ -1,4 +1,4 @@
-create or replace function get_total_chaos_mana
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_TOTAL_CHAOS_MANA"
 ( i_char_id in kdr_characters.char_id%type)
 return number
 is

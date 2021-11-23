@@ -27,7 +27,10 @@ begin
     order by    ce.event_id;
 
     -- Adjust XP according to data from KDR_CHARACTERS
+    -- Manual adjustment
     r_amount := r_amount + to_number(coalesce(kdr_characters_api.get_char_xp_adjust( p_char_id => i_char_id),0));
+    -- Legacy xp granted due to ending of an old character
+    r_amount := r_amount + to_number(coalesce(kdr_characters_api.get_char_xp_legacy( p_char_id => i_char_id),0));
 
     r_amount := r_amount + r_xp_pen + r_event_xp;
 
@@ -36,4 +39,3 @@ exception
     when no_data_found then
         return 20;
 end;
-/

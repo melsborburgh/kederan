@@ -1,4 +1,4 @@
-create or replace function fnc_get_audit_user
+CREATE OR REPLACE EDITIONABLE FUNCTION  "FNC_GET_AUDIT_USER"
 return varchar2
 is
     v_user varchar2(200);
@@ -16,4 +16,3 @@ begin
 
     return v_user;
 end fnc_get_audit_user;
-/

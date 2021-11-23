@@ -1,4 +1,4 @@
-create or replace function get_plot_props_event
+CREATE OR REPLACE EDITIONABLE FUNCTION  "GET_PLOT_PROPS_EVENT"
 (
     i_event_id in kdr_plot.event_id%type
 )
@@ -16,4 +16,3 @@ begin
 
     return      r_props;
 end;
-/
